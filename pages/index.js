@@ -15,7 +15,7 @@ import styles from '../styles/Home.module.css'
  <main className="min-vh-100">
  <button className="btn btn-lg btn-primary my-4"> Couleur Primaire </button>
 
-<button className="btn btn-lg btn-secondary my-4"> Couleur Primaire </button>
+<button className="btn btn-lg btn-secondary my-4"> Couleur Secondaire </button>
 <button className="btn btn-lg btn-warning my-4"> Couleur Orange </button>
 <button className="btn btn-lg btn-dark my-4"> Couleur noir </button>
  
