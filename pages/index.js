@@ -11,60 +11,16 @@ import styles from '../styles/Home.module.css'
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-            SINAA
-        </h1>
+       <h2 className="py-4 mx-auto ">Reste  du site  </h2>
+ <main className="min-vh-100">
+ <button className="btn btn-lg btn-primary my-4"> Couleur Primaire </button>
 
-        <p className={styles.description}>
-          Couleur du site 
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+<button className="btn btn-lg btn-secondary my-4"> Couleur Primaire </button>
+<button className="btn btn-lg btn-warning my-4"> Couleur Orange </button>
+<button className="btn btn-lg btn-dark my-4"> Couleur noir </button>
+ 
+ </main>
 
-        <div className={styles.grid}>
-          <a href="#gdocs/" className={"bg-dark text-light "+ styles.card}>
-            <h2>dark &rarr;</h2>
-            <p>couleur Noir</p>
-          </a>
-
-          <a href="#learn" className={"bg-primary text-light " +styles.card}>
-            <h2>Couleur Primaire  &rarr;</h2>
-            <p> couleur bleu</p>
-          </a>
-
-          <a
-            href="#xamples"
-            className={"bg-warning text-light " + styles.card}
-          >
-            <h2>warning &rarr;</h2>
-            <p>Couleur Orange  .</p>
-          </a>
-
-          <a
-            href="#}app"
-            className={"bg-secondary text-light " +styles.card}
-          >
-            <h2>secondary &rarr;</h2>
-            <p>
-               Couleur Gris secondaire
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }

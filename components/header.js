@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import {Lang} from "../plugins/lang.js"
 
 
-const Header = ( ) =>
+const Header = () =>
 {
   
   const router = useRouter();
@@ -39,17 +39,18 @@ const handleChangeLang=(event , e )=>{
 
 
   return ( 
-    <>
+   <>
     <header >
         <Link href="/" ><a title="home" className="navbar-brand"> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
         </Link>
-</header>
+      </header>
+
 
       <Navbar className={StyleHeader.sticky}  collapseOnSelect expand="lg" bg="light" variant="light">
       
     
   <NavDropdown className="m-auto" title={textLang.lang} >
-        {["fr","en","ar"].map(e=> <NavDropdown.Item onClick={event=>handleChangeLang(event , e ) }>{e} </NavDropdown.Item>
+        {["fr","en","ar"].map((e,i )=> <NavDropdown.Item key={i} onClick={event=>handleChangeLang(event , e ) }>{e} </NavDropdown.Item>
         )}
       </NavDropdown>
 
@@ -86,8 +87,7 @@ const handleChangeLang=(event , e )=>{
         </Navbar.Collapse>
       </Navbar>
  
-    </>
-      
+      </>
   );
 };
 
