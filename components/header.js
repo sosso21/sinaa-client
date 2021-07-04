@@ -59,31 +59,34 @@ const handleChangeLang=(event , e )=>{
 
   <div className="mx-auto">
 <form className="input-group">
-  <input type="text" className="form-control form-control-sm" placeholder={textLang.search}/>
-  <button className="btn btn-outline-primary btn-sm bi bi-search "> </button>
+  <input type="text" className="form-control form-control-lg" placeholder={textLang.search}/>
+  <button className="btn btn-outline-primary btn-lg bi bi-search "> </button>
 </form>
   </div>
- 
+   
+    
           <Nav>
             
             <Link href="/legal">
-              <a className="nav-link"><i className="d-block fs-5 bi bi-question-circle-fill mx-1"></i>{textLang.faq}</a>
+              <a className="mx-4 nav-link"><i className="d-block fs-2 bi bi-question-circle-fill mx-1"></i>{textLang.faq}</a>
             </Link>
             </Nav> 
 
 {isConnect ?  
 <Nav>
-              <Link href="/setting"><a className="nav-link"><i className="d-block fs-5 bi bi-people-fill mx-1"></i>{textLang.setting}</a></Link>
-              <Link href="/profil"><a className="nav-link"><i className="d-block fs-5 bi bi-person-bounding-box mx-1"></i>Profil</a></Link>
-              <button className="nav-link btn btn-link" onClick={(e) => disconnect()} ><i className="d-block fs-5 bi bi-person-x-fill mx-1"></i> {textLang.disconnect}</button>
+              <Link href="/setting"><a className="mx-4 nav-link"><i className="d-block fs-2 bi bi-people-fill mx-1"></i>{textLang.setting}</a></Link>
+              <Link href="/profil"><a className="mx-4 nav-link"><i className="d-block fs-2 bi bi-person-bounding-box mx-1"></i>Profil</a></Link>
+              <button className="mx-4 nav-link btn btn-link" onClick={(e) => disconnect()} ><i className="d-block fs-2 bi bi-person-x-fill mx-1"></i> {textLang.disconnect}</button>
             </Nav>
             :
             <Nav className="mr-auto">
-              <Link href="/login"><a className="nav-link" title="Connexion" > <i className="d-block fs-5 bi bi-person-check-fill mx-1"></i>{textLang.connect}</a></Link>
-              <Link href="/signup"><a className="nav-link" title="Inscription" ><i className="d-block fs-5 bi bi-person-plus-fill mx-1"></i>{textLang.sub}</a></Link>
+              <Link href="/login"><a className="mx-4 nav-link" title="Connexion" > <i className="d-block fs-2 bi bi-person-check-fill mx-1"></i>{textLang.connect}</a></Link>
+              <Link href="/signup"><a className="mx-4 nav-link" title="Inscription" ><i className="d-block fs-2 bi bi-person-plus-fill mx-1"></i>{textLang.sub}</a></Link>
             </Nav>
-
           }
+           
+
+
         </Navbar.Collapse>
       </Navbar>
  
