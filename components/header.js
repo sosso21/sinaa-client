@@ -50,7 +50,7 @@ const handleChangeLang=(event , e )=>{
       
     
   <NavDropdown className="m-auto" title={textLang.lang} >
-        {["fr","en","ar"].map((e,i )=> <NavDropdown.Item key={i} onClick={event=>handleChangeLang(event , e ) }>{e} </NavDropdown.Item>
+        {["en","fr","ar"].map((e,i )=> <NavDropdown.Item key={i} onClick={event=>handleChangeLang(event , e ) }>{e} </NavDropdown.Item>
         )}
       </NavDropdown>
 
