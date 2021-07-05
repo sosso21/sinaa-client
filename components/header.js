@@ -40,12 +40,11 @@ const handleChangeLang=(event , e )=>{
 
   return ( 
    <>
-    <header >
+    <header className="bg-light" >
         <Link href="/" ><a title="home" className="navbar-brand"> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
         </Link>
       </header>
-
-
+ 
       <Navbar className={StyleHeader.sticky}  collapseOnSelect expand="lg" bg="light" variant="light">
       
     
