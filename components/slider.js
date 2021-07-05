@@ -1,8 +1,7 @@
-import { Markup } from "interweave";
-import { useRouter } from "next/router";
-
-import StyleSlider from "../styles/Slider.module.css";
 import { useState, useEffect } from "react";
+import { Markup } from "interweave";
+ 
+import StyleSlider from "../styles/Slider.module.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "react-slideshow-image/dist/styles.css";
@@ -47,7 +46,7 @@ const alldata = [
 ];
 
 const Slider = ({ data = alldata }) => {
-  const router = useRouter();
+ 
 
   const getData = (lang = "en") => {
     let arr = [];
@@ -98,7 +97,7 @@ const Slider = ({ data = alldata }) => {
     if (myLang) {
       setSliderItems(getData(myLang));
     }
-  }, [router.query]);
+  }, []);
 
   const properties = {
     duration: 5000,
