@@ -207,7 +207,7 @@ const Signup = () => {
                   required
                   id="conditions"
                 />
-                 Je reconnait avoir lue et approuver
+                 Je reconnait avoir lûs et approuver
                 <Link href="/legal/conditions">
                   <a title="les Condituins et termes utilisation">
                     les Condituins et termes de la plateforme
