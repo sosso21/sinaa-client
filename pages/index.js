@@ -23,11 +23,11 @@ export default function  Home({date = "heloo"}){
   )
 }
  
-export async function getStaticProps() {
-    
+export const getStaticProps= () => {
+    const time = Date().getTime() ;
   return {
     props: {
-      date : new Date().getTime() ,
+      date : time
     },
     revalidate: 20, // In seconds
   }
