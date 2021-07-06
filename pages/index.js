@@ -2,7 +2,7 @@ import Head from 'next/head'
  
 
 
-export default function  Home({date = "heloo"}){
+export default function  Home({date = "heloo",data=[]}){
  
   return (
     <div  >
@@ -17,18 +17,28 @@ export default function  Home({date = "heloo"}){
     hello : {date}
      </h1>
 
+<pre>
+
+  data : {JSON.stringify(data) }
+</pre>
  
     </main>
     </div>
   )
 }
  
-export const getStaticProps= () => {
-    const time = Date().getTime() ;
+export async function getStaticProps() {
+  const res = await fetch(`https://cless-server.herokuapp.com/api/products`)
+  const data = await res.json()
+
   return {
-    props: {
-      date : time
-    },
-    revalidate: 20, // In seconds
+     
+    props: {date : new Date().constructor(), data: data  }, // wil
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
   }
 }
+
+  
