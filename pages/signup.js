@@ -62,7 +62,7 @@ const Signup = () => {
           }
         },
         (err) => {
-          console.log("Une erreur c' est produit:", err);
+          console.log("Une erreur  est intervenue :", err);
         }
       );
   };
@@ -85,7 +85,7 @@ const Signup = () => {
           console.log("result;:", result);
         },
         (err) => {
-          console.log("Une erreur c' est produit:", err);
+          console.log("Une erreur  est intervenue :", err);
         }
       );
   };
@@ -207,17 +207,17 @@ const Signup = () => {
                   required
                   id="conditions"
                 />
-                J 'admet avoir lûs et accepter
+                 Je reconnait avoir lue et approuver
                 <Link href="/legal/conditions">
-                  <a title="les Condituins et termes d'utilisation">
-                    les Condituins et termes d 'utilisation
+                  <a title="les Condituins et termes utilisation">
+                    les Condituins et termes de la plateforme
                   </a>
                 </Link>
               </label>
               {errorLogin.error && <Error response={errorLogin} />}
               <div className="input-group ">
                 <button className=" m-auto  my-4 btn btn-lg btn-primary">
-                  S'inscrir
+                soumettre
                 </button>
               </div>
             </form>
