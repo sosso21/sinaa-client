@@ -2,14 +2,17 @@ import {useState,useEffect} from 'react';
 
 import Header from "../components/header";
 import Modal from 'react-bootstrap/Modal';
-import StyleLogin from "../styles/log.module.css"
-import HeadComponents from  "../components/HeadComponents"
+import StyleLogin from "../styles/log.module.css";
+import HeadComponents from  "../components/HeadComponents";
+import {Lang} from "../plugins/lang.js";
 
 import { useRouter } from "next/router";
 
 
-const Signin=() => {
+const Login=() => {
   const router = useRouter();
+  const textLang =Lang().Login;
+
 
   const [ log,setLog ]=useState( {email: '',pass: ''} );
   const [ seePass,setSeePass ]=useState( false );
@@ -62,7 +65,7 @@ const Signin=() => {
         }
       },
         ( err ) => {
-          console.log( 'Une erreur c\' est produit:',err )
+          console.log(textLang.errOccured,err )
         }
       )
   }
@@ -87,7 +90,7 @@ const Signin=() => {
 
       },
         ( err ) => {
-          console.log( 'Une erreur c\' est produit:',err )
+          console.log(textLang.errOccured,err )
         }
       )
   }
@@ -95,41 +98,41 @@ const Signin=() => {
   
   return (
     <>
-       <HeadComponents title="Connexion" />
+       <HeadComponents title={textLang.TitleConnect}/>
 
         <Header />
       <main className={`${StyleLogin.bglog} ${StyleLogin.bgLogin}` }>
         <section className={StyleLogin.wResponsive +" container my-4 text-center"}>
-          <h2 className="fw-lighter my-4">Connectez vous</h2>
+          <h1 className="fw-lighter my-4">{textLang.TitleConnect}</h1>
 
 
           <form onSubmit={e => onConnect( e )} >
        
             <div className="input-group my-1">
-              <input value={log.email} onChange={e => setLog( {email: e.target.value,pass: log.pass} )} type="email" className='form-control' placeholder='email' />
+              <input value={log.email} onChange={e => setLog( {email: e.target.value,pass: log.pass} )} type="email" className='form-control' placeholder={textLang.email} />
             </div> 
             
             <div className="input-group my-1">
-              <input value={log.pass} onChange={e => setLog( {email: log.email,pass: e.target.value} )} type={seePass? 'text':'password'} className='form-control ' placeholder='mot de passe' />
+              <input value={log.pass} onChange={e => setLog( {email: log.email,pass: e.target.value} )} type={seePass? 'text':'password'} className='form-control ' placeholder={textLang.pass} />
            
            </div>
            <div className="input-group ">
-              <i onClick={() =>   setSeePass( !seePass )}  className={StyleLogin.eyesItem+ ` text-primary bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" } `} ></i>
+              <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-primary bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
             </div>
              
-            <i onClick={() => setShow(true)} className=' btn btn-link my-4' >Mot de passe oublié ?</i>
+            <i onClick={() => setShow(true)} className=' btn btn-link my-4' >{textLang.passMissed}</i>
             <div className="input-group">
               {
                 errorLogin &&
                 <div className="text-center alert alert-danger input-group">
                   {errorLogin!=-1 ? <p className="text-center w-100"> {errorLogin} </p>
                     :
-                    <p className="text-center w-100">Confirmez votre email ! un lien a été envoyer à {log.email} <i className='btn btn-link' onClick={e => {e.preventDefault(); sendEmaillToConfirm()}}>Renvoyer </i></p>
+                    <p className="text-center w-100">{textLang.ConfirmEmailMsg}{log.email} <i className='btn btn-link' onClick={e => {e.preventDefault(); sendEmaillToConfirm()}}>{textLang.reSend}</i></p>
                   }
                 </div>
               }
             </div>
-            <button type='submit' className="my-4 btn-lg btn  btn-primary">Connexion</button>
+            <button type='submit' className="my-4 btn-lg btn  btn-primary">{textLang.btnConnect}</button>
 
           </form>
         </section>
@@ -143,22 +146,22 @@ const Signin=() => {
           >
             <Modal.Header closeButton>
               <Modal.Title id="example-custom-modal-styling-title">
-                <h2 className="my-4 fw-lighter">Réinitialisez votre mot de passe </h2>
+                <h2 className="my-4 fw-lighter">{textLang.titleModalMissendPass}</h2>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body> 
                <div>
                 <form className='text-center my-4' onSubmit={e => sendEmailToMp( e )}>
                   <div className="input-group ">
-                    <input value={mpEmail} onChange={e => setMpEmail( e.target.value)} type="email" placeholder='email' className="form-control " required />
+                    <input value={mpEmail} onChange={e => setMpEmail( e.target.value)} type="email" placeholder={textLang.email} className="form-control " required />
                   </div>
                   {mpError &&
                   
                   <div >
-                    {( mpError=="success" )? <p className="alert alert-success">email envoyé!</p>:<p className="alert alert-danger"> {mpError}</p>}
+                    {( mpError=="success" )? <p className="alert alert-success">{textLang.emailSended}</p>:<p className="alert alert-danger"> {mpError}</p>}
 
                   </div>}
-                  <button type="submit" className="btn-lg btn btn-primary my-4">Réinitialiser</button>
+                  <button type="submit" className="btn-lg btn btn-primary my-4">{textLang.reset}</button>
                 </form>
               </div> 
             </Modal.Body>
@@ -170,4 +173,4 @@ const Signin=() => {
   );
 };
 
-export default Signin 
+export default Login 

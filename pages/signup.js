@@ -6,9 +6,11 @@ import Header from "../components/header";
 import StyleSignup from "../styles/log.module.css";
 import HeadComponents from  "../components/HeadComponents"
 import Link from "next/link";
+import {Lang} from "../plugins/lang.js";
 import { useRouter } from "next/router";
 
 const Signup = () => {
+  const textLang =Lang().signup;
   const [log, setLog] = useState({
     condition: false,
     name: "",
@@ -34,7 +36,7 @@ const Signup = () => {
     e.stopPropagation();
     if (log.pass1 != log.pass2) {
       return setErrorLogin({
-        error: "les mots de passes ne sont pas indentique",
+        error: textLang.passNotIdentique,
       });
     }
 
@@ -62,7 +64,7 @@ const Signup = () => {
           }
         },
         (err) => {
-          console.log("Une erreur  est intervenue :", err);
+          console.log(textLang.errOccured , err);
         }
       );
   };
@@ -85,23 +87,22 @@ const Signup = () => {
           console.log("result;:", result);
         },
         (err) => {
-          console.log("Une erreur  est intervenue :", err);
+          console.log(textLang. errOccured, err);
         }
       );
   };
 
   return (
     <>
-         <HeadComponents title="Inscription" />
+         <HeadComponents title={textLang.TitleSign} />
         <Header />
       <main className={`${StyleSignup.bglog} ${StyleSignup.bgSignup}`}>
         <section
           className={StyleSignup.wResponsive + " container text-center my-4"}
         >
-          
           {PageState == 1 ? (
             <form onSubmit={(e) => handleSubmit(e)}>
-              <h2 className="fw-lighter my-4 text-white"> Inscrivez vous </h2>
+              <h1 className="fw-lighter my-4 text-white">{textLang.TitleSign}</h1>
               <div className="input-group my-1">
                 <input
                   value={log.name}
@@ -112,7 +113,7 @@ const Signup = () => {
                   }
                   type="text"
                   className="form-control"
-                  placeholder="Nom"
+                  placeholder={textLang.lastname}
                   required
                 />
               </div>
@@ -126,7 +127,7 @@ const Signup = () => {
                   }
                   type="text"
                   className="form-control "
-                  placeholder="Prénom"
+                  placeholder={textLang.firstname}
                   required
                 />
               </div>
@@ -140,7 +141,7 @@ const Signup = () => {
                   }
                   type="email"
                   className="form-control"
-                  placeholder="Email"
+                  placeholder={textLang.email }
                   required
                 />
               </div>
@@ -154,7 +155,7 @@ const Signup = () => {
                   }
                   type={seePass1 ? "text" : "password"}
                   className="form-control"
-                  placeholder="Mot de passe (min 8 caractères)"
+                  placeholder={textLang.pass }
                   required
                 />
               </div>
@@ -179,7 +180,7 @@ const Signup = () => {
                   }
                   type={seePass2 ? "text" : "password"}
                   className="form-control "
-                  placeholder="Confirmez le  Mot de passe"
+                  placeholder={textLang.confirmPass }
                   required
                 />
               </div>
@@ -194,7 +195,7 @@ const Signup = () => {
                   }
                 ></i>
               </div>
-              <label className="text-white" htmlFor="conditions">
+              <label className="text-white mx-1" htmlFor="conditions">
                 <input
                   onChange={() =>
                     changeLog({
@@ -207,17 +208,17 @@ const Signup = () => {
                   required
                   id="conditions"
                 />
-                 Je reconnait avoir lûs et approuver
+                 {textLang.acceptLabel}
                 <Link href="/legal/conditions">
-                  <a title="les Condituins et termes utilisation">
-                    les Condituins et termes de la plateforme
+                  <a className="mx-2" title={textLang.conditionTerms}>
+                    {textLang.conditionTerms}
                   </a>
                 </Link>
               </label>
               {errorLogin.error && <Error response={errorLogin} />}
               <div className="input-group ">
                 <button className=" m-auto  my-4 btn btn-lg btn-primary">
-                soumettre
+                {textLang.btnSign}
                 </button>
               </div>
             </form>
@@ -240,7 +241,7 @@ const Signup = () => {
                   onClick={(e) => resendEnmail(e)}
                   className="btn text-primary  "
                 >
-                  Renvoyer ?
+                  {textLang.resend}
                 </i>
               </span>
             </div>

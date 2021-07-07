@@ -1,5 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
     env: {
       "NAMEWEBSITE" : "SINAA",
       "URLCLIENT":"https://cless.pages.dev",
