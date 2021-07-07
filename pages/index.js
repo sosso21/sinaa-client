@@ -13,8 +13,7 @@ import styles from '../styles/Home.module.css'
  <main className="min-vh-100">
       <Header/> 
 
-<Slider/>
-
+ <h>Helloo</h>
 
  </main>
 
@@ -23,3 +22,7 @@ import styles from '../styles/Home.module.css'
 }
 
 export default Home
+
+
+
+// <Slider/>
