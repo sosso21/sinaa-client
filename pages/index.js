@@ -1,5 +1,5 @@
 import Header from "../components/header.js"
-import Slider from "../components/Slider.js"
+///  import Slider from "../components/Slider.js"
 import HeadComponents from  "../components/HeadComponents"
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
