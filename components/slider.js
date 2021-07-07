@@ -1,4 +1,4 @@
-/// import { Markup } from "interweave";
+import { Markup } from "interweave";
  
 import StyleSlider from "../styles/Slider.module.css";
 import { useState, useEffect } from "react";
@@ -116,6 +116,8 @@ const Slider = ({ data = alldata }) => {
           style={{backgroundImage: `url("${process.env.HOST_IMG + item.img}")`}}
           className={StyleSlider.slideItem}
         >
+          
+          {item.html && <Markup content={item.html} />}
         
         </section>
       ))}
@@ -127,6 +129,3 @@ const Slider = ({ data = alldata }) => {
 export default Slider;
 
 
-
-
-//  {item.html && <Markup content={item.html} />}
