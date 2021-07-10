@@ -3,7 +3,7 @@ module.exports = {
     env: {
       "NAMEWEBSITE" : "SINAA",
       "URLCLIENT":"https://cless.pages.dev",
-      "URLSERVER":"https://cless-server.herokuapp.com",
+      "URLSERVER":"http://127.0.0.1:1337",
       "HOST_IMG":"https://firebasestorage.googleapis.com/v0/b/cless-image.appspot.com/o/"
     },
     images: {

@@ -32,10 +32,16 @@ export const en = () => {
              acceptLabel: "I acknowledge having read and approve",
              conditionTerms: "the Terms and Conditions of the platform",
              btnSign: "Submit",
-             lastname: "Name",
+             username: "Username" ,
+             lastname: "Last name",
              firstname: "First name",
              passNotIdentique: "the passwords are not identical",
-             resend: "Resend?"
+             resend: "Resend?",
+             errorShortName: "Username, last name and first name must contain between 2 and 30 characters",
+             errorEmailInvalide: "invalid email",
+             passShort: "the password must contain at least: 8 characters, one uppercase, one lowercase and 2 digits",
+             infoExist: "Username / email information already exists",
+             successEmailSended: "an email has been sent to"
 
         }
     }

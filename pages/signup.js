@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import Flip from "react-reveal/Flip";
 import Error from "../components/error.jsx";
+import Fade from 'react-reveal/Fade';
 
 import Header from "../components/header";
 import StyleSignup from "../styles/log.module.css";
@@ -13,12 +14,14 @@ const Signup = () => {
   const textLang =Lang().signup;
   const [log, setLog] = useState({
     condition: false,
-    name: "",
+    username:"",
+    firstname: "",
     lastname: "",
     email: "",
     pass1: "",
     pass2: "",
   });
+  const [btnDisable, setBtnDisable] = useState(false);
   const [seePass1, setSeePass1] = useState(false);
   const [seePass2, setSeePass2] = useState(false);
   const [errorLogin, setErrorLogin] = useState("");
@@ -47,21 +50,37 @@ const Signup = () => {
         "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
       },
       body: new URLSearchParams({
-        firstname: log.name,
+        username: log.username,
+        firstname: log.firstname,
         lastname: log.lastname,
         email: log.email,
         pass: log.pass1,
       }).toString(),
     };
-
+    
+    setBtnDisable(true)
     fetch(process.env.URLSERVER+ "/api/register", header)
       .then((res) => res.json())
       .then(
         (result) => {
-          setErrorLogin(result);
-          if (result.success != undefined) {
-            setPageState(2);
+          setBtnDisable(false)
+          if (result.error == "short name") {
+            return setErrorLogin({error:textLang.errorShortName});
           }
+          else if (result.error == "email invalid") {
+            return setErrorLogin({error:textLang.errorEmailInvalide});
+          }
+          else if (result.error == "pass short") {
+            return setErrorLogin({error:textLang.passShort});
+          }
+          else if (result.error == "info already exists") {
+            return setErrorLogin({error:textLang.infoExist});
+          }
+          else if (result.success == `email sended`) {
+              setErrorLogin({success:`${textLang.successEmailSended} ${log.email}`});
+            return setPageState(2);
+          }
+        
         },
         (err) => {
           console.log(textLang.errOccured , err);
@@ -71,6 +90,7 @@ const Signup = () => {
 
   const resendEnmail = (e) => {
     e.preventDefault();
+    
     fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation", {
       method: "POST",
       headers: {
@@ -91,6 +111,13 @@ const Signup = () => {
         }
       );
   };
+ 
+  useEffect(() => {
+    if (errorLogin || btnDisable== true ) {
+      setBtnDisable(false)
+      setErrorLogin("")
+    }
+  }, [log])
 
   return (
     <>
@@ -105,15 +132,30 @@ const Signup = () => {
               <h1 className="fw-lighter my-4 text-white">{textLang.TitleSign}</h1>
               <div className="input-group my-1">
                 <input
-                  value={log.name}
+                  value={log.username}
                   onChange={(e) =>
                     changeLog({
-                      name: e.target.value,
+                      username: e.target.value,
                     })
                   }
                   type="text"
                   className="form-control"
-                  placeholder={textLang.lastname}
+                  placeholder={textLang.username}
+                  required
+                />
+              </div>
+              
+              <div className="input-group my-1">
+                <input
+                  value={log.firstname}
+                  onChange={(e) =>
+                    changeLog({
+                      firstname: e.target.value,
+                    })
+                  }
+                  type="text"
+                  className="form-control "
+                  placeholder={textLang.firstname}
                   required
                 />
               </div>
@@ -126,8 +168,8 @@ const Signup = () => {
                     })
                   }
                   type="text"
-                  className="form-control "
-                  placeholder={textLang.firstname}
+                  className="form-control"
+                  placeholder={textLang.lastname}
                   required
                 />
               </div>
@@ -215,9 +257,10 @@ const Signup = () => {
                   </a>
                 </Link>
               </label>
-              {errorLogin.error && <Error response={errorLogin} />}
+               
+            <Fade   top when={errorLogin && !btnDisable} > <Error response={errorLogin} /> </Fade> 
               <div className="input-group ">
-                <button className=" m-auto  my-4 btn btn-lg btn-primary">
+                <button className={`m-auto d-block my-4 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>
                 {textLang.btnSign}
                 </button>
               </div>
@@ -231,7 +274,6 @@ const Signup = () => {
                   }}
                   className="d-block bi bi-check-circle-fill"
                 >
-                  
                 </i>
               </Flip>
               <span className="text-white">
