@@ -35,7 +35,7 @@ export const en = () => {
              confirmPass: "Confirm password",
              acceptLabel: "I acknowledge having read and approve",
              conditionTerms: "the Terms and Conditions of the platform",
-             btnSign: "Submit",
+          
              username: "Username" ,
              lastname: "Last name",
              firstname: "First name",

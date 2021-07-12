@@ -38,7 +38,7 @@ export const fr = () => {
             confirmPass: "Confirmez le mot de passe",
             acceptLabel:"Je reconnait avoir lûs et approuver",
             conditionTerms:"les Condituins et termes de la plateforme",
-            btnSign: "Soumettre",
+          
             username: "Nom d'utilisateur" ,
             lastname:"Nom",
             firstname:"Prénom",
