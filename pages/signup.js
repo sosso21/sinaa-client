@@ -198,7 +198,7 @@ const Signup = () => {
                   onClick={() => setSeePass1(!seePass1)}
                   className={
                     StyleSignup.eyesItem +
-                    ` text-primary bi ${
+                    ` text-warning bi ${
                       seePass1 ? "bi-eye-fill" : "  bi-eye-slash-fill"
                     } `
                   }
@@ -223,7 +223,7 @@ const Signup = () => {
                   onClick={() => setSeePass2(!seePass2)}
                   className={
                     StyleSignup.eyesItem +
-                    ` text-primary bi ${
+                    ` text-warning bi ${
                       seePass2 ? "bi-eye-fill" : "  bi-eye-slash-fill"
                     } `
                   }
@@ -237,7 +237,7 @@ const Signup = () => {
                     })
                   }
                   checked={log.condition}
-                  className="form-check-input"
+                  className="form-check-input mx-1"
                   type="checkbox"
                   required
                   id="conditions"
@@ -252,7 +252,7 @@ const Signup = () => {
                
             <Fade   top when={errorLogin && !btnDisable} > <Error response={errorLogin} /> </Fade> 
               <div className="input-group ">
-                <button className={`m-auto d-block my-4 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>
+                <button className={`m-auto d-block my-4 btn btn-lg btn-warning ${btnDisable &&  "disabled"} `}>
                 {textLang.btnSign}
                 </button>
               </div>
@@ -273,7 +273,7 @@ const Signup = () => {
                 {errorLogin.success}.
                 <i
                   onClick={(e) => resendEnmail(e)}
-                  className="btn text-primary  "
+                  className="btn text-warning  "
                 >
                   {textLang.resend}
                 </i>

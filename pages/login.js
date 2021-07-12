@@ -134,7 +134,7 @@ useEffect(() => {
            
            </div>
            <div className="input-group ">
-              <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-primary bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
+              <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-warning bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
             </div>
              
             <i onClick={() => setShow(true)} className=' btn btn-link my-1' >{textLang.passMissed}</i>
@@ -142,7 +142,7 @@ useEffect(() => {
             
                  <Fade   top when={errorLogin} > {errorLogin} </Fade>
                   
-            <button type='submit' className={`mx-auto d-block my-1 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>{textLang.btnConnect}</button>
+            <button type='submit' className={`mx-auto d-block my-1 btn btn-lg btn-warning ${btnDisable &&  "disabled"} `}>{textLang.btnConnect}</button>
 
           </form>
         </section>
@@ -167,7 +167,7 @@ useEffect(() => {
                   </div>
                  <Fade top when={mpError}> <Error response={mpError} /> </Fade> 
                 
-                  <button type="submit" className={`m-auto d-block my-4 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>{textLang.reset}</button>
+                  <button type="submit" className={`m-auto d-block my-4 btn btn-lg btn-warning ${btnDisable &&  "disabled"} `}>{textLang.reset}</button>
                 </form>
               </div> 
             </Modal.Body>
