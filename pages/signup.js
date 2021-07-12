@@ -253,7 +253,7 @@ const Signup = () => {
             <Fade   top when={errorLogin && !btnDisable} > <Error response={errorLogin} /> </Fade> 
               <div className="input-group ">
                 <button className={`m-auto d-block my-4 btn btn-lg btn-warning ${btnDisable &&  "disabled"} `}>
-                {textLang.btnSign}
+                {textLang.TitleSign}
                 </button>
               </div>
             </form>
