@@ -23,6 +23,7 @@ const Error = ({ response = {} }) => {
            {response.error}
         </div>
       )}
+
     </>
   );
 };

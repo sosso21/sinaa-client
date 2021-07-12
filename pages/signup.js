@@ -55,6 +55,7 @@ const Signup = () => {
         lastname: log.lastname,
         email: log.email,
         pass: log.pass1,
+        lang:localStorage.getItem("lang") ||  'en'
       }).toString(),
     };
     
@@ -91,16 +92,7 @@ const Signup = () => {
   const resendEnmail = (e) => {
     e.preventDefault();
     
-    fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
-      body: new URLSearchParams({
-        email: log.email,
-      }).toString(),
-    })
+    fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+localStorage.getItem("lang") ||  'en'+"%%"+log.email)
       .then((res) => res.json())
       .then(
         (result) => {

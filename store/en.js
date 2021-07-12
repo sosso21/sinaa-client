@@ -17,11 +17,15 @@ export const en = () => {
             pass: "password",
             passMissed: "forgot password?",
             btnConnect: "Log in",
-            confirmEmailMsg: "Confirm your email! a link has been sent to",
-            reSend: "resend",
             titleModalMissendPass: "Reset your password.",
             emailSended: "email sent!",
-            reset: "Reset"
+            reset: "Reset",
+             emailNotFound: "this e-mail is not registered on our site",
+             errIncorrect: "incorrect e-mail or password",
+             errBlocked: "Your account is banned,",
+             errWaiting: "Confirm your email! a link has been sent to",
+             errUnknow: "error, please try again",
+             btnResend: "Resend"
         },
         signup: {
             errOccured: "An error occurred:",

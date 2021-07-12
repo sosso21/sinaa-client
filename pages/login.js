@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import StyleLogin from "../styles/log.module.css";
 import HeadComponents from  "../components/HeadComponents";
 import {Lang} from "../plugins/lang.js";
+import Error from "../components/error.jsx";
+import Fade from 'react-reveal/Fade';
 
 import { useRouter } from "next/router";
 
@@ -14,24 +16,19 @@ const Login=() => {
   const textLang =Lang().Login;
 
 
+  const [btnDisable, setBtnDisable] = useState(false);
   const [ log,setLog ]=useState( {email: '',pass: ''} );
   const [ seePass,setSeePass ]=useState( false );
   const [ errorLogin,setErrorLogin ]=useState("");
   const [ show,setShow ]=useState( false ) 
   const [ mpEmail,setMpEmail ]=useState("")
-  const [ mpError,setmpError ]=useState('')
+  const [ mpError,setmpError ]=useState("")
 
-  const sendEmaillToConfirm=() => {
-    fetch(process.env.URLSERVER+"/api/sendMeEmailConfirmation",{
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      body: new URLSearchParams( {
-        email: log.email
-      } ).toString()
-    } )
+  const sendEmaillToConfirm=(e) => {
+    e.preventDefault();
+    
+  fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+localStorage.getItem("lang") ||  'en'+"%%"+log.email)
+     
   }
 
   const onConnect=(e) => {
@@ -47,21 +44,35 @@ const Login=() => {
         pass: log.pass
       } ).toString()
     };
+    setBtnDisable(true)
+    setErrorLogin("")
     fetch( `${process.env.URLSERVER}/api/connect`,header )
       .then( res => res.json() )
       .then( ( result) => {
-        
-        if ( result.error==-1 ) {
-          setErrorLogin(-1)
-          return sendEmaillToConfirm()
-        }
+      
         if ( result.token!= undefined ) {
-          localStorage.setItem( "token",result.token);
-          sessionStorage.setItem( 'userInfo',JSON.stringify(result.userInfo) );
-          return router.push("/")
+           localStorage.setItem( "token",result.token);
+           sessionStorage.setItem( 'userInfo',JSON.stringify(result.userInfo) );
+           return router.push("/")
 
         } else if ( result.error != undefined ) {
-          setErrorLogin(  result.error )
+          setBtnDisable(false)
+          const err= result.error;
+          const className= "d-block text-center alert alert-danger form-group";
+
+          if (err== "email pass incorrect"){
+            setErrorLogin(<div className={className}>{textLang.errIncorrect}</div>)
+          }
+          if (err== "blocked"){
+            setErrorLogin(<div className={className}> {textLang.errBlocked}</div>)
+          }else if(err=="waiting"){
+ 
+          setErrorLogin(<div className="d-block text-center alert alert-warning form-group"> {textLang.errWaiting} <i className="mx-1">{log.email}</i><i className='btn btn-link' onClick={e => sendEmaillToConfirm(e)}>{textLang.btnResend}</i> </div>);
+          return sendEmaillToConfirm()
+          }
+          else{
+            setErrorLogin(<div className={className}>{textLang.errUnknow}</div>)
+          }
         }
       },
         ( err ) => {
@@ -69,24 +80,23 @@ const Login=() => {
         }
       )
   }
-
-  const sendEmailToMp=(e) => {
-    e.preventDefault()
-    const header={
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      body: new URLSearchParams( {
-        email:mpEmail
-      } ).toString()
-    };
-
-    fetch( `${process.env.URLSERVER}/api/sendEmailToResetPwd`,header )
+ 
+const sendEmailToMp =(e)=>{
+  e.preventDefault();
+setBtnDisable(true)
+setErrorLogin("")
+    fetch( `${process.env.URLSERVER}/api/sendEmailToResetPwd/${localStorage.getItem("lang") || 'en'}%%${mpEmail}`)
       .then( res => res.json() )
       .then( ( result ) => {
-        setmpError(result.response)
+        
+        setBtnDisable(false)
+        if (result.response=="success" ) {
+        return setmpError({success:textLang.emailSended})
+        }else if(result.response=="not Found email" ) {
+          return setmpError({error:textLang.emailNotFound})
+        }else {
+           return setmpError({error: "error"})
+        }
 
       },
         ( err ) => {
@@ -95,6 +105,13 @@ const Login=() => {
       )
   }
 
+useEffect(() => {
+  if ( btnDisable == true || mpEmail || errorLogin ) {
+    setBtnDisable(false)
+    setErrorLogin("")
+    setmpError("")
+  }
+}, [mpEmail,log])
   
   return (
     <>
@@ -120,19 +137,12 @@ const Login=() => {
               <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-primary bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
             </div>
              
-            <i onClick={() => setShow(true)} className=' btn btn-link my-4' >{textLang.passMissed}</i>
-            <div className="input-group">
-              {
-                errorLogin &&
-                <div className="text-center alert alert-danger input-group">
-                  {errorLogin!=-1 ? <p className="text-center w-100"> {errorLogin} </p>
-                    :
-                    <p className="text-center w-100">{textLang.ConfirmEmailMsg}{log.email} <i className='btn btn-link' onClick={e => {e.preventDefault(); sendEmaillToConfirm()}}>{textLang.reSend}</i></p>
-                  }
-                </div>
-              }
-            </div>
-            <button type='submit' className="my-4 btn-lg btn  btn-primary">{textLang.btnConnect}</button>
+            <i onClick={() => setShow(true)} className=' btn btn-link my-1' >{textLang.passMissed}</i>
+            
+            
+                 <Fade   top when={errorLogin} > {errorLogin} </Fade>
+                  
+            <button type='submit' className={`mx-auto d-block my-1 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>{textLang.btnConnect}</button>
 
           </form>
         </section>
@@ -155,13 +165,9 @@ const Login=() => {
                   <div className="input-group ">
                     <input value={mpEmail} onChange={e => setMpEmail( e.target.value)} type="email" placeholder={textLang.email} className="form-control " required />
                   </div>
-                  {mpError &&
-                  
-                  <div >
-                    {( mpError=="success" )? <p className="alert alert-success">{textLang.emailSended}</p>:<p className="alert alert-danger"> {mpError}</p>}
-
-                  </div>}
-                  <button type="submit" className="btn-lg btn btn-primary my-4">{textLang.reset}</button>
+                 <Fade top when={mpError}> <Error response={mpError} /> </Fade> 
+                
+                  <button type="submit" className={`m-auto d-block my-4 btn btn-lg btn-primary ${btnDisable &&  "disabled"} `}>{textLang.reset}</button>
                 </form>
               </div> 
             </Modal.Body>
@@ -174,3 +180,4 @@ const Login=() => {
 };
 
 export default Login 
+ 

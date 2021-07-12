@@ -17,11 +17,18 @@ export const fr = () => {
             pass: "mot de passe",
             passMissed: "mot de passe oublié ?",
             btnConnect: "Connexion",
-            confirmEmailMsg: "Confirmez votre email ! un lien a été envoyer à",
-            reSend: "renvoyer",
             titleModalMissendPass: "Réinitialisez votre mot de passe.",
             emailSended:"email envoyé!",
-            reset: "Réinitialiser"
+            reset: "Réinitialiser",
+            emailNotFound:"cet e-mail n'est pas inscrit sur notre site",
+ 
+            errIncorrect:"e-mail ou mot de passe incorrecte",
+            errBlocked:"Votre compte est banni,",
+            errWaiting:"Confirmez votre email ! un lien a été envoyer à",
+            errUnknow:"erreur , veuillez réesayer",
+            btnResend:"Renvoyer"
+
+
         },
         signup:{
             errOccured: "Une erreur c'est produit:",
@@ -37,8 +44,6 @@ export const fr = () => {
             firstname:"Prénom",
             passNotIdentique:"les mots de passes ne sont pas indentique",
             resend:"Renvoyer ?",
-
-            //---- 
             errorShortName: "Le nom d'utilisateur, le nom et le prénom doit contenir entre 2 et 30 caractères",
             errorEmailInvalide: "email invalide",
             passShort:"le mot de passe doit contenir au moin : 8 caractàres , une majuscule ,une minuscule et 2 chiffres",
