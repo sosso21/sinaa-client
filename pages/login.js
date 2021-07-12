@@ -137,7 +137,7 @@ useEffect(() => {
               <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-warning bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
             </div>
              
-            <i onClick={() => setShow(true)} className=' btn btn-link my-1' >{textLang.passMissed}</i>
+            <i onClick={() => setShow(true)} className='text-warning btn btn-link my-1' >{textLang.passMissed}</i>
             
             
                  <Fade   top when={errorLogin} > {errorLogin} </Fade>

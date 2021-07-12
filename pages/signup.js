@@ -244,7 +244,7 @@ const Signup = () => {
                 />
                  {textLang.acceptLabel}
                 <Link href="/legal/conditions">
-                  <a className="mx-2" title={textLang.conditionTerms}>
+                  <a className="text-warning mx-2" title={textLang.conditionTerms}>
                     {textLang.conditionTerms}
                   </a>
                 </Link>
