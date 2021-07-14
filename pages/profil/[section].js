@@ -1,86 +1,68 @@
-import  { useEffect, useRef } from "react";
-import Header from "../../components/header"
-import Footer from "../../components/footer";
-import conditions from  "../api/condition.json"
-import Mentions from "../../components/mention.jsx"
-import request from "../api/request.json"
-import { useClass } from "../../plugin/thme.js";
+import { useMemo,useEffect } from "react";
+import Header from "../../components/header";
+import Nav from "../../components/profil/nav.js";
 import { useRouter } from "next/router";
-import HeadComponents from  "../../components/HeadComponents"
 
+const Profil = () => { 
+const router = useRouter();
 
+const Navigation = [
+    {
+      name: "Général",
+      slug: "general",
+      element: "",
+    },
+    {
+      name: "Sécurité",
+      slug: "security",
+      element: "",
+    },
+    {
+      name: "Adresse",
+      slug: "adress",
+      element: "",
+    },
+    {
+      name: "Contact",
+      slug: "contact",
+      element: "",
+    },
+  ];
+   
+const test = useMemo(()=>() => {
+        const actifEleement= Navigation.filter(i=>router.query.section == i.slug)
+       
+        if (!!(actifEleement.length)) {
+            
+            return actifEleement[0]
+        }else{
+            return Navigation[0]
+        }
+    },
+    [router.query],
+)
 
+    useEffect(() => {
+       
+         
+        console.log('test:', test() )
+    }, [test])
+     
 
-
-
-const Legal = () =>{ 
-          const router = useRouter();
-          const [darkTheme, setDarkTheme, consumer] = useClass();
- 
-  const faaq = useRef()
-  const mention = useRef()
-  const condition = useRef()
-
-
-  useEffect(() => {
-    const  path = router.query.section
-    if(path){
-      if(path == "faq"){
-        faaq.current.scrollIntoView({ behavior:'smooth'})
-      }
-      else if(path == "mention"){
-        mention.current.scrollIntoView({ behavior:'smooth'})
-      }
-      else if(path == "conditions"){
-        condition.current.scrollIntoView({ behavior:'smooth'})
-      }
-    }
-
-  }, [router.query])
 
 
   return (
     <>
+      <Header />
 
-    <main className={consumer}>
-    
-              <Header darkTheme={darkTheme} setDarkTheme={(e) => setDarkTheme(e)} />
-      <div className="container">
+      <h1 className="my-4 text-center fw-lighter">Profil</h1>
 
-        <section className="my-4">
-          <h2 ref={faaq} className="fw-lighter">FAQ:</h2>
-          <ul>
-            {
-              request.map(i => <li className="my-1">
-                <h3>{i.req}</h3>
-                <article>{i.res} </article>
-              </li>)
-            }
-          </ul>
-        </section>
-        <section className="my-4">
-          <h2 ref={mention} className="fw-lighter">Mentions légals:</h2>
-          <Mentions />
-        </section>
-
-        <section className="my-4">
-          <h2 ref={condition} className="fwt-lighter">Conditions générales de vente concernent et d'utilisation;</h2>
-
-          <article>
-            <ul>
-              {conditions.li.map(i => <li>{i}</li>)}
-            </ul>
-          </article>
-
-        </section>
-
-      </div>
-
-      <Footer />
-    </main>
+      <Nav Navigation={Navigation}  actualRout={test()} />
+      <main className="container my-4 mx-auto">
+        {Navigation.map((i) => "hello")}
+      </main>
     </>
   );
 };
 
-export default Legal;
- 
+export default Profil;
