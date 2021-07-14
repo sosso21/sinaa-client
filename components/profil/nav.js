@@ -1,15 +1,12 @@
 import Link from "next/link";
 
 
-
-
  const Nav=({Navigation,actualRout}) =>{
-   
-
+  
     return (
-        <ul class="nav nav-pills nav-fill">
+        <ul className="nav nav-pills nav-fill">
        
-        {Navigation.map(i=>  <li className="nav-item">
+        {Navigation.map((i,key)=>  <li key={key} className="nav-item">
         <Link href={`/profil/${i.slug}`}>
           <a className={`nav-link ${(actualRout==i) && "active" }`} >{i.name}</a>
                 </Link>

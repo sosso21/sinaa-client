@@ -4,7 +4,8 @@ import HeadComponents from  "../components/HeadComponents"
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
- const Home=()=>{
+
+const  Home=()=>{
   return (
     <>
       
@@ -19,6 +20,4 @@ import styles from '../styles/Home.module.css'
     </>
   )
 }
-
 export default Home
- 

@@ -1,4 +1,4 @@
-import { useMemo,useEffect } from "react";
+import { useMemo } from "react";
 import Header from "../../components/header";
 import Nav from "../../components/profil/nav.js";
 import { useRouter } from "next/router";
@@ -34,21 +34,13 @@ const test = useMemo(()=>() => {
        
         if (!!(actifEleement.length)) {
             
-            return actifEleement[0]
+            return actifEleement[0 ]
         }else{
             return Navigation[0]
         }
     },
-    [router.query],
-)
-
-    useEffect(() => {
-       
-         
-        console.log('test:', test() )
-    }, [test])
-     
-
+    [router.query])
+ 
 
 
   return (

@@ -1,4 +1,3 @@
 import Profil from "./[section]"
-export default  () => <Profil/>
-
- 
+const DefaultProfil =() => <Profil/>
+export default  DefaultProfil
