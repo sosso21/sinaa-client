@@ -4,7 +4,7 @@ import Link from "next/link";
  const Nav=({Navigation,actualRout}) =>{
   
     return (
-        <ul className="nav nav-pills nav-fill">
+        <ul className="bg-dark text-light nav nav-pills nav-fill">
        
         {Navigation.map((i,key)=>  <li key={key} className="nav-item">
         <Link href={`/profil/${i.slug}`}>
@@ -17,4 +17,8 @@ import Link from "next/link";
 }
 
 export default Nav
- 
+ /*
+
+
+
+ */

@@ -1,7 +1,10 @@
 import { useMemo } from "react";
-import Header from "../../components/header";
-import Nav from "../../components/profil/nav.js";
 import { useRouter } from "next/router";
+import styleProfil from "../../styles/profil.module.css";
+import Header from "../../components/header";
+import Bounce from "react-reveal/Bounce";
+import Nav from "../../components/profil/nav.js";
+import Gneral from "../../components/profil/general.js";
 
 const Profil = () => { 
 const router = useRouter();
@@ -10,7 +13,7 @@ const Navigation = [
     {
       name: "Général",
       slug: "general",
-      element: "",
+      element: <Gneral/>
     },
     {
       name: "Sécurité",
@@ -29,12 +32,12 @@ const Navigation = [
     },
   ];
    
-const test = useMemo(()=>() => {
+const Componant = useMemo(()=>() => {
         const actifEleement= Navigation.filter(i=>router.query.section == i.slug)
        
         if (!!(actifEleement.length)) {
             
-            return actifEleement[0 ]
+            return actifEleement[0]
         }else{
             return Navigation[0]
         }
@@ -47,11 +50,13 @@ const test = useMemo(()=>() => {
     <>
       <Header />
 
+      <main className={styleProfil.bgProfil}> 
       <h1 className="my-4 text-center fw-lighter">Profil</h1>
 
-      <Nav Navigation={Navigation}  actualRout={test()} />
-      <main className="container my-4 mx-auto">
-        {Navigation.map((i) => "hello")}
+      <Nav Navigation={Navigation}  actualRout={Componant()} />
+       <Bounce left>{Componant().element}</Bounce>
+
+
       </main>
     </>
   );
