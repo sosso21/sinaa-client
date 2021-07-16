@@ -2,13 +2,14 @@ import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AAAAPf1gtp4:APA91bEnoAtR7i4QhAbHIqjinL3X41tE7-yTEdeJYjx80sm2ivhA-3MWCB9fOMmCf087AsCH-UKIt6pFpgaYKnY2TSvpeLVs9m4IIbwtv0HcLPIU1yy75yWcOzmMy2OGcGRg0WCXtZ2t",//
-    authDomain: "cless-image.firebaseapp.com",
-    projectId: "cless-image",
-    storageBucket: "cless-image.appspot.com",
-    messagingSenderId: "266243978910",//
-    appId: "1:561212264407:web:ad0acfccc442ca3464c592",
-    measurementId: "G-T3WGBD3W6M"
+   
+    apiKey: "AIzaSyArKdZmADDJYUtE2uCOGa1oYaldLjbCpbs",
+    authDomain: "sinaa-fr.firebaseapp.com",
+    projectId: "sinaa-fr",
+    storageBucket: "sinaa-fr.appspot.com",
+    messagingSenderId: "268616796903",
+    appId: "1:268616796903:web:a2bc4ddf2a3320361a3042",
+    measurementId: "G-CXBM5GQJFM"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -16,3 +17,18 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 
 export { storage, firebase as default };
+
+
+
+/* 
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
+*/
