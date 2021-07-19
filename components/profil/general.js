@@ -144,7 +144,7 @@ const Gneral = () => {
             aria-label=".form-select-lg example"required
           >
             <option>{textLang.dateBDay} </option> 
-            {getDefaultTime().dd.map(i=><option value={i}>{i} </option>)}
+            {getDefaultTime().dd.map((i,key)=><option key={key} value={i}>{i} </option>)}
           </select>
           <select
             onChange={(e) =>  setBDate({ ...bDate, mm: e.target.value })}
@@ -154,7 +154,7 @@ const Gneral = () => {
           >
             
             <option>{textLang.dateMounth} </option> 
-            {getDefaultTime().mm.map(i=><option value={i}>{i} </option>)}
+            {getDefaultTime().mm.map((i,key)=><option key={key} value={i}>{i} </option>)}
           </select>
           <select
             onChange={(e) =>  setBDate({ ...bDate, yyyy: e.target.value })}
@@ -164,7 +164,7 @@ const Gneral = () => {
           >
             
             <option>{textLang.dateYear} </option> 
-            {getDefaultTime().yyyy.map(i=><option value={i}>{i} </option>)}
+            {getDefaultTime().yyyy.map((i,key)=><option key={key} value={i}>{i} </option>)}
           </select>
         </div>
 

@@ -21,7 +21,6 @@ const Adress = () => {
      <h2 className="w-100 text-center my-4  fw-lighter">{textLang.title}</h2>
       <form className="w-100 my-4 mx-auto input-group">
 
-
        <div className="my-4 mx-auto">
           <label htmlFor="commune">
             {textLang.commune}
@@ -45,7 +44,7 @@ const Adress = () => {
             aria-label=".form-select-lg example"required
           >
             <option> {textLang.wilaya}  </option> 
-            {wilaya.map((i,key)=><option value={i}>{`${key+1} - ${i}`} </option>)}
+            {wilaya.map((i,index)=><option key={index} value={i}>{`${+index+1} - ${i}`} </option>)}
           </select>
         </div>
 

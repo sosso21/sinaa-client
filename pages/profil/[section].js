@@ -60,8 +60,6 @@ const Componant = useMemo(()=>() => {
 
       <Nav Navigation={Navigation}  actualRout={Componant()} />
        <Bounce left>{Componant().element}</Bounce>
-
-
       </main>
     </>
   );
