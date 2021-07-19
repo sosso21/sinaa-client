@@ -86,7 +86,7 @@ export const fr = () => {
             submitBtn: "Valider",
         },
         profilContact: {
-            title: "Information de Contact",
+            title: "Informations de Contacte",
             phoneLabel: "Votre numéro de téléphone",
             pOPhone: "(obligatoir) ex:0567890123",
             facebookLabel: "URL de votre Facebook",

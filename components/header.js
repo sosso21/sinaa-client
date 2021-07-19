@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
@@ -10,10 +10,6 @@ import {Lang} from "../plugins/lang.js"
 
 const Header = () =>
 {
-  useEffect(() => {
-   
-  sessionStorage.setItem( 'userInfo', '{"email":"sofianetop21.st@gmail.com","firstname":"…,"instagram":null,"Twitter":null,"facebook":null}' );
-  }, [])
   
   const router = useRouter();
   

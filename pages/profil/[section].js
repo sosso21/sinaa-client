@@ -38,8 +38,6 @@ const Navigation = [
   ];
    
 const Componant = useMemo(()=>() => {
-  
-  
         const actifEleement= Navigation.filter(i=>router.query.section == i.slug)
        
         if (!!(actifEleement.length)) {

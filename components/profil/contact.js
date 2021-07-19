@@ -20,7 +20,7 @@ const Contact = () => {
 
   return (
     <section>
-      <h2>{textLang.title}</h2>
+      <h2 className="w-100 text-center my-4  fw-lighter">{textLang.title}</h2>
       <form className="w-100 my-4 mx-auto input-group">
         <div className="my-4 mx-auto d-block">
           <label htmlFor="phone">
