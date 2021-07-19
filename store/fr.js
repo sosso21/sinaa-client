@@ -26,9 +26,7 @@ export const fr = () => {
             errBlocked: "Votre compte est banni,",
             errWaiting: "Confirmez votre email ! un lien a été envoyer à",
             errUnknow: "erreur , veuillez réesayer",
-            btnResend: "Renvoyer"
-
-
+            btnResend: "Renvoyer",
         },
         signup: {
             errOccured: "Une erreur c'est produit:",
@@ -48,7 +46,7 @@ export const fr = () => {
             errorEmailInvalide: "email invalide",
             passShort: "le mot de passe doit contenir au moin : 8 caractàres , une majuscule ,une minuscule et 2 chiffres",
             infoExist: "Les information nom d'utilisateur / email existe déjà",
-            successEmailSended: "un email a été envoyer à"
+            successEmailSended: "un email a été envoyer à",
         },
         profil: {
             title: "Profil",
@@ -58,7 +56,7 @@ export const fr = () => {
             contact: "Contact",
         },
         profilGeneral: {
-            title:("éditez vos informations").toUpperCase(),
+            title: "éditez vos informations".toUpperCase(),
             username: "Nom d'utilisateur",
             lastname: "Nom",
             firstname: "Prénom",
@@ -72,21 +70,30 @@ export const fr = () => {
             dateYear: "Année",
             birth_place: "Lieu de naissence",
             PObirth_place: "commune et département",
-            submitBtn: "Soumettre",
+            submitBtn: "Valider",
         },
-        profilSecurity:{
-            title:"Sécurité",
-            email:"Votre e-mail",
-            pOemail:"exemple@gmail.com",
-            submitBtn:"Soumettre",
+        profilSecurity: {
+            title: "Sécurité",
+            email: "Votre e-mail",
+            pOemail: "exemple@gmail.com",
+            submitBtn: "Valider",
         },
-        adress:{
-    title: ("Définissez votre adresse").toUpperCase(),
-    commune: "Votre Addresse",
-    pOCommune: "Commune , Daïra ",
-    wilaya:"Séléctionez votre wilaya",
-    submitBtn: "Soumettre",
-
-  }
+        adress: {
+            title: "Définissez votre adresse".toUpperCase(),
+            commune: "Votre Addresse",
+            pOCommune: "Commune , Daïra ",
+            wilaya: "Séléctionez votre wilaya",
+            submitBtn: "Valider",
+        },
+        profilContact: {
+            title: "Information de Contact",
+            phoneLabel: "Votre numéro de téléphone",
+            pOPhone: "(obligatoir) ex:0567890123",
+            facebookLabel: "URL de votre Facebook",
+            pONR: "(Facultatif) ex : https://www....",
+            instagramLabel: "URL de votre Instagram",
+            twitterLabel: "URL de votre Twitte",
+            submitBtn: "Valider",
+        },
     };
 };
