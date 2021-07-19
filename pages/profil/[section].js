@@ -5,30 +5,35 @@ import Header from "../../components/header";
 import Bounce from "react-reveal/Bounce";
 import Nav from "../../components/profil/nav.js";
 import Gneral from "../../components/profil/general.js";
+import Security from "../../components/profil/security.js";
+import Adress from "../../components/profil/adress.js";
+import Contact from "../../components/profil/contact.js";
+import { Lang } from "../../plugins/lang.js";
 
 const Profil = () => { 
+  const textLang = Lang().profil;
 const router = useRouter();
 
 const Navigation = [
     {
-      name: "Général",
+      name:textLang.general ,
       slug: "general",
       element: <Gneral/>
     },
     {
-      name: "Sécurité",
+      name:textLang.security ,
       slug: "security",
-      element: "",
+      element: <Security/>,
     },
     {
-      name: "Adresse",
+      name:textLang.adress ,
       slug: "adress",
-      element: "",
+      element: <Adress/>,
     },
     {
-      name: "Contact",
+      name:textLang.contact ,
       slug: "contact",
-      element: "",
+      element: <Contact/>,
     },
   ];
    
@@ -51,7 +56,7 @@ const Componant = useMemo(()=>() => {
       <Header />
 
       <main className={styleProfil.bgProfil}> 
-      <h1 className="my-4 text-center fw-lighter">Profil</h1>
+      <h1 className="my-4 text-center fw-lighter">{textLang.title}</h1>
 
       <Nav Navigation={Navigation}  actualRout={Componant()} />
        <Bounce left>{Componant().element}</Bounce>

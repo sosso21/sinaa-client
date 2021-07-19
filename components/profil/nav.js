@@ -2,6 +2,7 @@ import Link from "next/link";
 
 
  const Nav=({Navigation,actualRout}) =>{
+   
   
     return (
         <ul className="bg-dark text-light nav nav-pills nav-fill">

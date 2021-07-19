@@ -25,7 +25,7 @@ export const ar = () => {
       errBlocked: "حسابك محظور",
       errWaiting: "تأكيد بريدك الإلكتروني! تم إرسال ارتباط إلى",
       errUnknow: "خطأ ، يرجى المحاولة مرة أخرى",
-      btnResend: "إعادة إرسال"
+      btnResend: "إعادة إرسال",
     },
     signup: {
       errOccured: "حدث خطأ:",
@@ -35,18 +35,56 @@ export const ar = () => {
       confirmPass: "تأكيد كلمة المرور",
       acceptLabel: "أقر بأنني قرأت وأوافق",
       conditionTerms: "شروط وأحكام المنصة",
-    
+
       username: "اسم االمستخدم",
-      lastname: "الكنية",
+      lastname: "اللقب",
       firstname: "الاسم",
       passNotIdentique: "كلمات المرور غير متطابقة",
       resend: "إعادة الإرسال؟",
-      errorShortName:"يجب أن يحتوي اسم المستخدم واسم العائلة والاسم الأول بين 2 و 30 حرفًا",
+      errorShortName: "يجب أن يحتوي اسم المستخدم واسم العائلة والاسم الأول بين 2 و 30 حرفًا",
       errorEmailInvalide: "بريد إلكتروني غير صالح",
-      passShort:
-        "يجب أن تحتوي كلمة المرور على الأقل على: 8 أحرف ، وحرف كبير واحد ، وحرف صغير واحد ورقمان",
+      passShort: "يجب أن تحتوي كلمة المرور على الأقل على: 8 أحرف ، وحرف كبير واحد ، وحرف صغير واحد ورقمان",
       infoExist: "معلومات اسم المستخدم / البريد الإلكتروني موجودة بالفعل",
       successEmailSended: " \n تم إرسال بريد إلكتروني إلى \n ",
     },
+    profil: {
+      title: "الملف الشخصي",
+      general: "عام",
+      security: "الأمان",
+      adress: "العنوان",
+      contact: "جهة اتصال",
+    },
+    profilGeneral: {
+      title:"تحرير المعلومات الخاصة بك",
+      username: "اسم االمستخدم",
+      lastname: "اللقب",
+      firstname: "الاسم",
+      placeOlderNames: "بين 3 و 20 حرفًا بأحرف لاتينية",
+      selectSexe: "الجنس",
+      selectBoy: "ذكر",
+      selectGirl: "أنثى",
+      dateBirth: "تاريخ الميلاد",
+      dateBDay: "اليوم",
+      dateMounth: "الشهر",
+      dateYear: "السنة",
+    birth_place: "مكان الميلاد",
+    PObirth_place: "المدينة ولاية",
+    submitBtn: "إرسال",
+    },
+    profilSecurity: {
+      title: "الأمان",
+      email: "بريد إلكتروني" ,
+      pOemail: "example@gmail.com" ,
+      submitBtn: "إرسال",
+  },
+  adress:{
+    title: "حدد عنوانك",
+    commune: "عنوانك" ,
+     pOCommune: "البلدية ، دائرة" ,
+     wilaya: "حدد ولايتك",
+     submitBtn: "إرسال" ,
+
+
+  }
   };
 };

@@ -52,7 +52,7 @@ const Login=() => {
       
         if ( result.token!= undefined ) {
            localStorage.setItem( "token",result.token);
-           sessionStorage.setItem( 'userInfo',JSON.stringify(result.userInfo) );
+           sessionStorage.setItem( 'userInfo',JSON.stringify(result.userInfo));
            return router.push("/")
 
         } else if ( result.error != undefined ) {
@@ -120,7 +120,7 @@ useEffect(() => {
         <Header />
       <main className={`${StyleLogin.bglog} ${StyleLogin.bgLogin}` }>
         <section className={StyleLogin.wResponsive +" container my-4 text-center"}>
-          <h1 className="fw-lighter my-4">{textLang.TitleConnect}</h1>
+          <h1 className="fw-lighter text-light my-4">{textLang.TitleConnect}</h1>
 
 
           <form onSubmit={e => onConnect( e )} >
@@ -134,10 +134,10 @@ useEffect(() => {
            
            </div>
            <div className="input-group ">
-              <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-warning bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
+              <i onClick={() =>   setSeePass( !seePass )} className={StyleLogin.eyesItem+ ` text-primary bi  ${seePass ? "bi-eye-fill":"  bi-eye-slash-fill" }`} ></i>
             </div>
              
-            <i onClick={() => setShow(true)} className='text-warning btn btn-link my-1' >{textLang.passMissed}</i>
+            <i onClick={() => setShow(true)} className='text-primary btn btn-link my-1' >{textLang.passMissed}</i>
             
             
                  <Fade   top when={errorLogin} > {errorLogin} </Fade>
