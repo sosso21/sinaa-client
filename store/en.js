@@ -41,11 +41,9 @@ export const en = () => {
       firstname: "First name",
       passNotIdentique: "the passwords are not identical",
       resend: "Resend?",
-      errorShortName:
-        "Username, last name and first name must contain between 2 and 30 characters",
+      errorShortName: "Username, last name and first name must contain between 2 and 30 characters",
       errorEmailInvalide: "invalid email",
-      passShort:
-        "the password must contain at least: 8 characters, one uppercase, one lowercase and 2 digits",
+      passShort: "the password must contain at least: 8 characters, one uppercase, one lowercase and 2 digits",
       infoExist: "Username / email information already exists",
       successEmailSended: "an email has been sent to",
     },
@@ -55,6 +53,45 @@ export const en = () => {
       security: "Security",
       adress: "Address",
       contact: "Contact",
+      errOccured: "An error occurred:",
+      successMsg:"Your information has been updated",
+      errorsMsg: [{
+          errslug: "short name",
+          errMsg: "The last name / first name / Username must contain between a minimum of 3 and 30 characters",
+        },
+        {
+            errslug:  "user exist",
+            errMsg: "This username already exists, please try again"
+        },
+        {
+          errslug: "error phone",
+          errMsg: "Invalid phone number, please try again",
+        },
+        {
+          errslug: "error age",
+          errMsg: "Invalid age, please try again",
+        },
+        {
+          errslug: "error sexe",
+          errMsg: "Why are you gay",
+        },
+        {
+          errslug: "error wilaya",
+          errMsg: "Fuvk off From Algeria",
+        },
+        {
+          errslug: "error instagram",
+          errMsg: "You must enter an instagram URL",
+        },
+        {
+          errslug: "error Twitter",
+          errMsg: "You must enter a twitter url",
+        },
+        {
+          errslug: "error facebook",
+          errMsg: "You must enter a Facebook URL",
+        },
+      ],
     },
     profilGeneral: {
       title: "Edit your information".toUpperCase(),
@@ -77,7 +114,20 @@ export const en = () => {
       title: "Security",
       email: "Your e-mail",
       pOemail: "example@gmail.com",
+      pass:"Password",
+      pOpass:"enter your password",
       submitBtn: "Validate",
+      successMsg:"An email has been sent to \n",
+      error:[
+        {
+            errslug:"email invalid",
+            msg:"invalid e-mail, please try again"
+        },
+        {
+            errslug:"password invalid",
+            msg:"Incorrect password"
+        }
+    ]
     },
     adress: {
       title: "Set your address".toUpperCase(),
@@ -87,7 +137,7 @@ export const en = () => {
       submitBtn: "Validate",
     },
     profilContact: {
-      title: "Contact Information",
+      title: "Contact Informations",
       phoneLabel: "Your phone number",
       pOPhone: "(mandatory) ex: 0567890123",
       facebookLabel: "URL of your Facebook",

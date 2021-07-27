@@ -4760,6 +4760,10 @@ textarea.form-control-lg {
   color: #bababb;
 }
 
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;

@@ -54,4 +54,8 @@
     @include alert-variant($alert-background, $alert-border, $alert-color);
   }
 }
+
+.pre-wrap{
+  white-space: pre-wrap;
+}
 // scss-docs-end alert-modifiers

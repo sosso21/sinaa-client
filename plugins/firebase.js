@@ -11,24 +11,17 @@ const firebaseConfig = {
     appId: "1:268616796903:web:a2bc4ddf2a3320361a3042",
     measurementId: "G-CXBM5GQJFM"
 };
+ 
 
-firebase.initializeApp(firebaseConfig);
-
+if (!firebase.apps.length) {
+   firebase.initializeApp(firebaseConfig);
+}else {
+   firebase.app(); // if already initialized, use that one
+}
+ 
 const storage = firebase.storage();
 
 export { storage, firebase as default };
 
 
-
-/* 
-
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true;
-    }
-  }
-}
-
-*/
+ 

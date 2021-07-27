@@ -13,6 +13,7 @@
     "bootstrap-icons": "^1.5.0",
     "compressorjs": "^1.0.7",
     "dotenv": "^10.0.0",
+    "firebase": "^8.7.1",
     "interweave": "^12.7.2",
     "next": "11.0.1",
     "react": "17.0.2",

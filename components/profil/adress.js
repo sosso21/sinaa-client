@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import styleProfil from "../../styles/profil.module.css";
 import { Lang } from "../../plugins/lang.js";
+import Fade from "react-reveal/fade";
+import Error from "../error.jsx";
 import wilaya from "../../store/wilaya.js";
 
-const Adress = () => {
+const Adress = ({changeInfoUser}) => {
   const textLang = Lang().adress;
   
 
   const [user, setUser] = useState("");
+  const [disableBtn, setDisableBtn] = useState(false);
+  const [err, setErr] = useState("");
 
   useEffect(() => {
     const sessionUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -15,11 +19,29 @@ const Adress = () => {
   }, []);
   
 
+
+ const handleSubmitI=async(e)=>{
+   e.preventDefault();  
+   setDisableBtn(true)
+   const result = await changeInfoUser(user);
+    
+   if (result.success) {
+     setUser(result.success);
+     setErr({success:result.msg})
+   }else{
+     setErr({error:result.msg})
+   }
+ 
+ setDisableBtn(false)
+   
+ }
+
   return (
     <section>
      
      <h2 className="w-100 text-center my-4  fw-lighter">{textLang.title}</h2>
-      <form className="w-100 my-4 mx-auto input-group">
+    
+      <form onSubmit={handleSubmitI} className="my-4 mx-auto  input-group">
 
        <div className="my-4 mx-auto">
           <label htmlFor="commune">
@@ -48,10 +70,10 @@ const Adress = () => {
           </select>
         </div>
 
-
-
-        <div className="w-100 my-4 d-block text-center">
-            <button className="btn btn-lg btn-warning mx-auto" > {textLang.submitBtn} </button>
+ 
+        <div className="input-group"><span className=" mx-auto"><Fade top when={!disableBtn && err} > <Error response={err} /></Fade></span> </div>
+        <div className="input-group my-4 w-100">
+          <button className={`btn btn-warning btn-lg  mx-auto ${disableBtn?"disabled":""} `}>{textLang.submitBtn}</button>
         </div>
       </form>
       

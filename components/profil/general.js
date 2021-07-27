@@ -2,25 +2,49 @@ import { useState, useEffect } from "react";
 import styleProfil from "../../styles/profil.module.css";
 import myLoader from "../../plugins/imgLoader.js";
 import { Lang } from "../../plugins/lang.js";
+import submitImage from "../../plugins/CompressImageNSend.js";
+import Fade from "react-reveal/fade";
+import Error from "../error.jsx";
  
-const Gneral = () => {
+const Gneral = ({changeInfoUser}) => {
   const textLang = Lang().profilGeneral;
-
   const [user, setUser] = useState("");
   const [bDate, setBDate] = useState("");
+  const [disableBtn, setDisableBtn] = useState(false);
+  const [err, setErr] = useState("");
+
+
+  const handleChangePDP= async (file)=>{
+    setDisableBtn(true)
+const response =await submitImage(file)
+
+if (response.url) {
+  const result = await changeInfoUser({ profil_image_link:response.url});
+   
+  if (result.success) {
+    setUser(result.success)
+  }else{
+    console.log(result.msg)
+  }
+ 
+}
+setDisableBtn(false)
+  }
 
   useEffect(() => {
     const sessionUser = JSON.parse(sessionStorage.getItem("userInfo"));
-    setUser(sessionUser);
+    if (!user) {
+      setUser(sessionUser);
+    }
     if (sessionUser.birth_day) {
-      const date = new Date(sessionUser.birth_day);
+      const date = (sessionUser.birth_day).split("-")
       setBDate({
-        dd: date.getDate(),
-        mm: date.getMonth() + 1,
-        yyyy: date.getFullYear(),
+        dd: +date[2],
+        mm: +date[1],
+        yyyy: +date[0],
       });
     }
-  }, []);
+  }, [user]);
 
   const getDefaultTime = () => {
     const date = new Date();
@@ -46,16 +70,39 @@ const Gneral = () => {
       yyyy: yyyy,
     };
   };
- 
-  
+ const handleSubmitI=async(e)=>{
+   e.preventDefault(); 
+   const nToExa=(x)=> (x<10)?"0"+x:x;
+   const birth_date = new Date(bDate.yyyy+"-"+bDate.mm+"-"+bDate.dd);
+   let  obj = user;
 
-  
+   if (birth_date != "Invalid Date") {
+      obj = {...obj,birth_day:bDate.yyyy+"-"+nToExa(bDate.mm)+"-"+nToExa(bDate.dd)}
+     }
+
+   setDisableBtn(true)
+   const result = await changeInfoUser(obj); 
+   
+    
+   if (result.success) {
+     setUser(result.success);
+     setErr({success:result.msg})
+   }else{
+     setErr({error:result.msg})
+   }
+ 
+ setDisableBtn(false)
+   
+ }
+   
   return (
     <section>
       <h2 className="w-100 my-4 text-center d-block fw-lighter">{textLang.title} </h2>
+
+      
       <div className="w-100 text-center d-block">
         <i
-          className={styleProfil.imgProfil + " border-primary border"}
+          className={styleProfil.imgProfil }
           style={{
             backgroundImage: `url("${
               user.profil_image_link
@@ -64,9 +111,10 @@ const Gneral = () => {
             }")`,
           }}
         >
-          <i
-            className={styleProfil.biOnHover + " text-warning bi bi-camera"}
-          ></i>
+          <label htmlFor={!disableBtn && "imageFile"}
+            className={styleProfil.biOnHover + ` text-warning ${!!disableBtn?"spinner-border":"btn bi bi-camera"}` }
+          ></label>
+          <input type="file" id="imageFile" className="d-none" onChange={e=> handleChangePDP(e.target.files[0])} />
         </i>
       </div>
       <div className="w-100  text-center d-block">
@@ -75,7 +123,7 @@ const Gneral = () => {
 
       <hr className="w-100 mx-4  d-block border border-primary my-4" />
 
-      <form className="my-4 mx-auto  input-group">
+      <form onSubmit={handleSubmitI} className="my-4 mx-auto  input-group">
         <div className="my-2 mx-4">
           <label htmlFor="username">
             {textLang.username}
@@ -126,9 +174,9 @@ const Gneral = () => {
             onChange={(e) => setUser({ ...user, sexe: e.target.value })}
             value={user.sexe}
             className="w-50 mx-auto form-select form-select-lg"
-            aria-label=".form-select-lg example"required
+            aria-label=".form-select-lg example" required
           >
-            <option>{textLang.selectSexe} </option>
+            <option value="none">{textLang.selectSexe} </option>
             <option value="homme">{textLang.selectBoy} </option>
             <option value="femme">{textLang.selectGirl} </option>
           </select>
@@ -141,7 +189,7 @@ const Gneral = () => {
             onChange={(e) =>  setBDate({ ...bDate, dd: e.target.value })}
             value={bDate.dd}
             className="w-25 m-2  form-select form-select-lg"
-            aria-label=".form-select-lg example"required
+            aria-label=".form-select-lg example" required
           >
             <option>{textLang.dateBDay} </option> 
             {getDefaultTime().dd.map((i,key)=><option key={key} value={i}>{i} </option>)}
@@ -150,7 +198,8 @@ const Gneral = () => {
             onChange={(e) =>  setBDate({ ...bDate, mm: e.target.value })}
             value={bDate.mm}
             className="w-25 m-2  form-select form-select-lg"
-            aria-label=".form-select-lg example"required
+            aria-label=".form-select-lg example"
+            required
           >
             
             <option>{textLang.dateMounth} </option> 
@@ -183,8 +232,9 @@ const Gneral = () => {
           </label>
         </div>
         
+        <div className="input-group"><span className=" mx-auto"><Fade top when={!disableBtn && err} > <Error response={err} /> </Fade></span> </div>
         <div className="input-group my-4 w-100">
-          <button className="btn btn-warning btn-lg  mx-auto">{textLang.submitBtn}</button>
+          <button className={`btn btn-warning btn-lg  mx-auto ${disableBtn ? "disabled":""} `}>{textLang.submitBtn}</button>
         </div>
       </form>
     </section>
@@ -192,4 +242,4 @@ const Gneral = () => {
 };
 export default Gneral;
 
-// new Date(Date.UTC(1998,09-1,21));
+// new Date(Date.UTC(1998,09-1,21)); 

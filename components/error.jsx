@@ -13,13 +13,13 @@ const Error = ({ response = {} }) => {
   return (
     <>
       {response.success && (
-        <div className="text-center d-block alert alert-success form-group">
+        <div className="text-center d-block alert alert-success form-group pre-wrap">
            {response.success} 
         </div>
       )}
 
       {response.error && (
-        <div className="d-block text-center alert alert-danger form-group">
+        <div className="text-center d-block alert alert-error form-group pre-wrap">
            {response.error}
         </div>
       )}

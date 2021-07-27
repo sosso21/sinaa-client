@@ -14,11 +14,52 @@ const Profil = () => {
   const textLang = Lang().profil;
 const router = useRouter();
 
+const changeInfoUser =(user )=>{
+  return new Promise( (resolve, reject) => {
+   
+
+  fetch(process.env.URLSERVER+ "/api/changeUserInfo", {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: new URLSearchParams({
+      ...user,
+      token:localStorage.getItem("token")
+    }).toString(),
+  })
+  .then((res) => res.json())
+  .then(
+    (result) => {
+       
+      let msg = "";
+      if(result.success){
+          msg = textLang.successMsg;
+        sessionStorage.setItem("userInfo",JSON.stringify(result.success));
+      }else if(result.error == "disconnect"){
+        localStorage.clear("token");
+        sessionStorage.clear("userInfo");
+        router.push("/")
+      }else if(result.error){
+        const text = textLang.errorsMsg.filter(i=> i.errslug == result.error)[0] ;
+        msg = text ?  text.errMsg : "error";
+      }
+      resolve({...result,msg:msg});
+    },
+    (err) => {
+      reject({error:err});
+    }
+  );
+})
+}
+
+
 const Navigation = [
     {
       name:textLang.general ,
       slug: "general",
-      element: <Gneral/>
+      element: <Gneral changeInfoUser={changeInfoUser} />,
     },
     {
       name:textLang.security ,
@@ -28,29 +69,27 @@ const Navigation = [
     {
       name:textLang.adress ,
       slug: "adress",
-      element: <Adress/>,
+      element: <Adress changeInfoUser={changeInfoUser} />,
     },
     {
       name:textLang.contact ,
       slug: "contact",
-      element: <Contact/>,
+      element: <Contact changeInfoUser={changeInfoUser} />,
     },
   ];
    
 const Componant = useMemo(()=>() => {
         const actifEleement= Navigation.filter(i=>router.query.section == i.slug)
-       
+        
         if (!!(actifEleement.length)) {
-            
-            return actifEleement[0]
-        }else{
-            return Navigation[0]
+          return actifEleement[0];
+        }else {
+          return Navigation[0];
         }
     },
     [router.query])
  
-
-
+    
   return (
     <>
       <Header />

@@ -24,8 +24,7 @@ const Login=() => {
   const [ mpEmail,setMpEmail ]=useState("")
   const [ mpError,setmpError ]=useState("")
 
-  const sendEmaillToConfirm=(e) => {
-    e.preventDefault();
+  const sendEmaillToConfirm=() => {
     
   fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+localStorage.getItem("lang") ||  'en'+"%%"+log.email)
      
@@ -61,10 +60,10 @@ const Login=() => {
           const className= "d-block text-center alert alert-danger form-group";
 
           if (err== "email pass incorrect"){
-            setErrorLogin(<div className={className}>{textLang.errIncorrect}</div>)
+            return setErrorLogin(<div className={className}>{textLang.errIncorrect}</div>)
           }
           if (err== "blocked"){
-            setErrorLogin(<div className={className}> {textLang.errBlocked}</div>)
+            return setErrorLogin(<div className={className}> {textLang.errBlocked}</div>)
           }else if(err=="waiting"){
  
           setErrorLogin(<div className="d-block text-center alert alert-warning form-group"> {textLang.errWaiting} <i className="mx-1">{log.email}</i><i className='btn btn-link' onClick={e => sendEmaillToConfirm(e)}>{textLang.btnResend}</i> </div>);

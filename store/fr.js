@@ -54,6 +54,45 @@ export const fr = () => {
             security: "Sécurité",
             adress: "Adresse",
             contact: "Contact",
+            errOccured: "Une erreur c'est produit:",
+            successMsg:"Vos information ont bien été mis à jour",
+            errorsMsg: [{
+                    errslug: "short name",
+                    errMsg: "Le nom de famille  / prénom / Nom d'utilisateur doit contenir entre minimum 3 et 30 caractères"
+                },
+                {
+                    errslug:  "user exist",
+                    errMsg: "Ce nom d'utilisateur existe Déjà , veuillez réesayer"
+                },
+                {
+                    errslug: "error phone",
+                    errMsg: "Numéro de téléphone invalide , veuillez réesayer"
+                },
+                {
+                    errslug: "error age",
+                    errMsg: "Âge invalide , veuillez réesayer"
+                },
+                {
+                    errslug: "error sexe",
+                    errMsg: "Tu est un homme ya naqch"
+                },
+                {
+                    errslug: "error wilaya",
+                    errMsg: "Je suis Kabyle por votr formation"
+                },
+                {
+                    errslug: "error instagram",
+                    errMsg:"Vous devez renseigner une URL instagram"
+                },
+                {
+                    errslug: "error Twitter",
+                    errMsg: "Vous devez renseigner une URL twitter"
+                },
+                {
+                    errslug: "error facebook",
+                    errMsg:"Vous devez renseigner une URL Facebook"
+                },
+            ]
         },
         profilGeneral: {
             title: "éditez vos informations".toUpperCase(),
@@ -76,7 +115,20 @@ export const fr = () => {
             title: "Sécurité",
             email: "Votre e-mail",
             pOemail: "exemple@gmail.com",
+            pass:"Mot de passe",
+            pOpass:"saisissez votre Mot de passe",
             submitBtn: "Valider",
+            successMsg:"Un email vous as été envoyer à \n",
+            error:[
+                {
+                    errslug:"email invalid",
+                    msg:"e-mail invalide.veuillez réesayer"
+                },
+                {
+                    errslug:"password invalid",
+                    msg:"Mot de passe incorrecte"
+                }
+            ]
         },
         adress: {
             title: "Définissez votre adresse".toUpperCase(),
