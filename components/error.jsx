@@ -19,7 +19,7 @@ const Error = ({ response = {} }) => {
       )}
 
       {response.error && (
-        <div className="text-center d-block alert alert-error form-group pre-wrap">
+        <div className="text-center d-block alert alert-danger form-group pre-wrap">
            {response.error}
         </div>
       )}

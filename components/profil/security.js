@@ -77,7 +77,7 @@ const handleSubmit = (e)=>{
               id="email"
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              type="emial"
+              type="email"
               className="form-control "
               placeholder={textLang.pOemail}
               required
