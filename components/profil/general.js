@@ -112,7 +112,7 @@ setDisableBtn(false)
           }}
         >
           <label htmlFor={!disableBtn && "imageFile"}
-            className={styleProfil.biOnHover + ` text-warning ${!!disableBtn?"spinner-border":"btn bi bi-camera"}` }
+            className={styleProfil.biOnHover + ` fw-lighter text-warning ${!!disableBtn?"spinner-border spinner-border-sm":"btn bi bi-camera"}` }
           ></label>
           <input type="file" id="imageFile" className="d-none" onChange={e=> handleChangePDP(e.target.files[0])} />
         </i>
@@ -124,6 +124,7 @@ setDisableBtn(false)
       <hr className="w-100 mx-4  d-block border border-primary my-4" />
 
       <form onSubmit={handleSubmitI} className="my-4 mx-auto  input-group">
+      <span className="w-100 d-flex justify-content-center align-content-center flex-wrap flex-column">
         <div className="my-2 mx-4">
           <label htmlFor="username">
             {textLang.username}
@@ -168,6 +169,7 @@ setDisableBtn(false)
             />
           </label>
         </div>
+        </span>
  
         <div className="w-100 my-4 mx-auto d-block">
           <select
@@ -243,3 +245,30 @@ setDisableBtn(false)
 export default Gneral;
 
 // new Date(Date.UTC(1998,09-1,21)); 
+
+
+/*
+//-----------hello ----------------------
+
+sessionStorage.setItem( 'userInfo',  JSON.stringify({
+birth_day: "1922-12-04",
+birth_place: "madagasgar",
+commune: "draa ben khedda",
+email: "sofianetop21.st@gmail.com",
+firstname: "sofiane",
+lastname: "gherab",
+phone: 21559205748,
+profil_image_link: "https://firebasestorage.googleapis.com/v0/b/sinaa-fr.appspot.com/o/images%2F1627536615825_mini-hermes.jpg?alt=media&token=ba6009c6-2ae8-407e-aa13-9f121df2b40c",
+sexe: "femme",
+username: "hermes.dev",
+wilaya: "Tizi Ouzou",
+_id: "60fbe54c7759b3077cb8568c",
+}))
+
+
+///------------------------------ redirect  ------------------------
+
+
+window.location.href= "https://sinaa.pages.dev/profil"
+
+*/
