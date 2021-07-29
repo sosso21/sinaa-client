@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Fade from "react-reveal/fade";
+import Fade from "react-reveal/Rotate";
 import styleProfil from "../../styles/profil.module.css";
 import { Lang } from "../../plugins/lang.js";
 import Error from "../error.jsx";

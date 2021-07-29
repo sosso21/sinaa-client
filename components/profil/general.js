@@ -3,7 +3,7 @@ import styleProfil from "../../styles/profil.module.css";
 import myLoader from "../../plugins/imgLoader.js";
 import { Lang } from "../../plugins/lang.js";
 import submitImage from "../../plugins/CompressImageNSend.js";
-import Fade from "react-reveal/fade";
+import Fade from "react-reveal/Rotate";
 import Error from "../error.jsx";
  
 const Gneral = ({changeInfoUser}) => {
