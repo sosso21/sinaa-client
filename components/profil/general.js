@@ -3,7 +3,7 @@ import styleProfil from "../../styles/profil.module.css";
 import myLoader from "../../plugins/imgLoader.js";
 import { Lang } from "../../plugins/lang.js";
 import submitImage from "../../plugins/CompressImageNSend.js";
-import Fade from "react-reveal/Rotate";
+import Bounce from "react-reveal/Bounce";
 import Error from "../error.jsx";
  
 const Gneral = ({changeInfoUser}) => {
@@ -232,7 +232,7 @@ setDisableBtn(false)
           </label>
         </div>
         
-        <div className="input-group"><span className=" mx-auto"><Fade top when={!disableBtn && err} > <Error response={err} /> </Fade></span> </div>
+        <div className="input-group"><span className=" mx-auto"><Bounce top when={!disableBtn && err} > <Error response={err} /> </Bounce></span> </div>
         <div className="input-group my-4 w-100">
           <button className={`btn btn-warning btn-lg  mx-auto ${disableBtn ? "disabled":""} `}>{textLang.submitBtn}</button>
         </div>

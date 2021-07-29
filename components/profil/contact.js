@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Fade from "react-reveal/Rotate";
+import Bounce from "react-reveal/Bounce";
 import styleProfil from "../../styles/profil.module.css";
 import { Lang } from "../../plugins/lang.js";
 import Error from "../error.jsx";
@@ -91,7 +91,7 @@ const Contact = ({changeInfoUser}) => {
         </div>
 
         <div className="w-100 d-flex justify-content-around align-content-center flex-wrap my-4 mx-auto">
-          <Fade bottom when={!!social.facebook}>
+          <Bounce bottom when={!!social.facebook}>
             <label htmlFor="facebook">
               {textLang.facebookLabel}
 
@@ -104,9 +104,9 @@ const Contact = ({changeInfoUser}) => {
                 placeholder={textLang.pONR}
               />
             </label>
-          </Fade>
+          </Bounce>
 
-          <Fade bottom when={!!social.instagram}>
+          <Bounce bottom when={!!social.instagram}>
             <label htmlFor="instagram">
               {textLang.instagramLabel}
 
@@ -121,9 +121,9 @@ const Contact = ({changeInfoUser}) => {
                 placeholder={textLang.pONR}
               />
             </label>
-          </Fade>
+          </Bounce>
 
-          <Fade bottom when={!!social.twitter}>
+          <Bounce bottom when={!!social.twitter}>
             <label htmlFor="twitter">
               {textLang.twitterLabel}
 
@@ -136,10 +136,10 @@ const Contact = ({changeInfoUser}) => {
                 placeholder={textLang.pONR}
               />
             </label>
-          </Fade>
+          </Bounce>
         </div>
         
-        <div className="input-group"><span className=" mx-auto"><Fade top when={!disableBtn && err} > <Error response={err} /> </Fade></span> </div>
+        <div className="input-group"><span className=" mx-auto"><Bounce top when={!disableBtn && err} > <Error response={err} /> </Bounce></span> </div>
         <div className="input-group my-4 w-100">
           <button className={`btn btn-warning btn-lg  mx-auto ${disableBtn ?  "disabled":""} `}>{textLang.submitBtn}</button>
         </div>
