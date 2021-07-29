@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styleProfil from "../../styles/profil.module.css";
 import PassWord from "../../pages/password.js";
 import { Lang } from "../../plugins/lang.js";
-import Fade from "react-reveal/Rotate";
+import Rotate from "react-reveal/Rotate";
 import Error from "../error.jsx";
  
 const Security = () => {
@@ -101,7 +101,7 @@ const handleSubmit = (e)=>{
           </label>
         </div>
         
-        <div className="input-group"><span className=" mx-auto"><Fade top when={!disableBtn && err} > <Error response={err} /> </Fade></span> </div>
+        <div className="input-group"><span className=" mx-auto"><Rotate top when={!disableBtn && err} > <Error response={err} /> </Rotate></span> </div>
         <div className="input-group my-4 w-100">
           <button className={`btn btn-warning btn-lg  mx-auto ${disableBtn?"disabled":""} `}>{textLang.submitBtn}</button>
         </div>
