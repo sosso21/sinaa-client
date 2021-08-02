@@ -62,28 +62,22 @@ const Contact = ({changeInfoUser}) => {
 
         <div className="w-100 d-flex justify-content-around align-content-center flex-wrap my-4 mx-auto">
           <i
-            onClick={() => {
-              setsocial({ ...social, facebook: !social.facebook });
-              setUser({ ...user, facebook: "" });
-            }}
+            onClick={() =>setsocial({ ...social, facebook: !social.facebook })
+              }
             className={`fs-1 bi bi-facebook btn ${
               !!social.facebook ? "text-primary" : "text-secondary"
             }`}
           ></i>
           <i
-            onClick={() => {
-              setsocial({ ...social, instagram: !social.instagram });
-              setUser({ ...user, instagram: "" });
-            }}
+            onClick={() => setsocial({ ...social, instagram: !social.instagram })}
             className={`fs-1 bi bi-instagram btn ${
               !!social.instagram ? "text-danger" : "text-secondary"
             }`}
           ></i>
           <i
-            onClick={() => {
-              setsocial({ ...social, twitter: !social.twitter });
-              setUser({ ...user, twitter: "" });
-            }}
+            onClick={() => 
+              setsocial({ ...social, twitter: !social.twitter })
+            }
             className={`fs-1 bi bi-twitter btn ${
               !!social.twitter ? "text-info" : "text-secondary"
             }`}

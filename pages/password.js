@@ -2,26 +2,29 @@ import  { useState,useEffect } from 'react';
 import Header from  "../components/header";
  import { useRouter } from "next/router";
 import Flip from 'react-reveal/Flip';
+import Bounce from "react-reveal/Bounce";
+import Error from "../components/error.jsx";
 import StyleLog from "../styles/log.module.css"
 import HeadComponents from  "../components/HeadComponents"
+import { Lang } from "../plugins/lang.js";
 
 
 
     
 const Password=() => {
-  
+  const textLang = Lang().password;
   
   const router = useRouter(); 
 
-  const [missingPassState,setMissingPassState]=useState(1)
   const [mpInfo,setMpInfo]=useState({ omp: "",mp1: "",mp2: "" })
-  const [err,setErr]=useState('')
+  const [btnDisable, setBtnDisable] = useState(false);
+  const [err,setErr]=useState("")
 
 
   const resetPass=(e) => {
     e.preventDefault()
     if (mpInfo.mp1!=mpInfo.mp2) {
-      return setErr("les mots de passes ne sont pas identiques")
+      return setErr({eroor:textLang.passNotIdentique})
     }
 
     const header={
@@ -31,156 +34,106 @@ const Password=() => {
         'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
       body: new URLSearchParams({
-        authorization: router.query.token,
-        pass: mpInfo.mp1
+        authorization: router.query.token ? router.query.token : localStorage.getItem("token"),
+        pass: mpInfo.mp1,
+        omp: router.query.token ? "" :mpInfo.omp
       }).toString()
     };
-
+    setBtnDisable(true)
     fetch(`${process.env.URLSERVER}/api/resetPasswordForget`,header)
       .then(res => res.json())
       .then((result) => {
-        setErr(result.response)
-        if (result.response=="success") {
+        if (result.error) {
+          return setErr({error: textLang.errorType.filter(i=> i.error ==  result.error)[0].msg || "error" })
+          
+        }
+        
+        if (result.success=="success") {
+          setErr({success:textLang.success})
           setTimeout(() => {
-            setMissingPassState(3)
+            setErr({success:"animation"})
           },3000);
         } 
 
       },
         (err) => {
-          console.log('Une erreur c\' est produit:',err)
+          console.log(textLang.errOccured ,err)
         }
       )
+      
+    setBtnDisable(false)
   }
-
-  const resetWhithOldPass =(e)=>{
-    e.preventDefault();
-    if (mpInfo.mp1!=mpInfo.mp2) {
-      return setErr("les mots de passes ne sont pas identiques")
-    }
-    
-    const header={
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      body: new URLSearchParams({
-        operation :'password',
-        token: localStorage.getItem("token"),
-        form: JSON.stringify({
-        pass:  mpInfo.omp,
-        newPass: mpInfo.mp1
-      })}).toString()
-    };
-    
-    fetch(process.env.URLSERVER+"/api/updateUser" ,header)
-      .then(res => res.json())
-      .then((result) => {
-        
-        result.response ?  setErr(result.response) :  setErr(result.error)
-
-        if (result.response=="success") {
-          setTimeout(() => {
-            setMissingPassState(3)
-          },3000);
-        }
-
-      },
-        (err) => {
-          console.log('Une erreur c\' est produit:',err)
-        }
-      )
-
-  }
+  
 
   const sendEmail =(e)=>{
     e.preventDefault()
     const email = JSON.parse(sessionStorage.getItem("userInfo")).email
 
-    const header={
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      body: new URLSearchParams({
-        email : email
-    }).toString()
-    };
-    
-    fetch(process.env.URLSERVER+"/api/sendEmailToResetPwd" ,header)
+     
+  setBtnDisable(true);
+  setErr("");
 
-
+      fetch( `${process.env.URLSERVER}/api/sendEmailToResetPwd/${localStorage.getItem("lang") || 'en'}%%${email}`)
+        .then( res => res.json() )
+        .then( ( result ) => {
+          
+          if (result.response=="success" ) {
+          return setErr({success:textLang.successEmailSended+"\n "+email})
+          }else if(result.response=="not Found email" ) {
+            return setErr({error:textLang.emailNotFound})
+          }else {
+             return setErr({error: "error"})
+          }
+        },
+          ( err ) => {
+            console.log(textLang.errOccured,err )
+          }
+        )
+        setBtnDisable(false)
   }
+ 
 
   useEffect(() => {
-    
-    if (router.query.token) {
-      setMissingPassState(2);
-
-    }
-  },[])
-
+    console.log("router.route :",router)
+  }, [router])
 
   return (
-    <>
-       {(router.asPath== "/password" ) && <HeadComponents title="Réninitialiser le Mot de Passe" />}
+   
+    <main className=" h-auto w-100 d-flex align-content-between  justify-content-between flex-column">
+       {(router.route== "/password" ) && <HeadComponents   />}
 
-    <main className="min-vh-100 w-100 d-flex align-content-between  justify-content-between flex-column">
-       {(router.asPath== "/password" )&&  <Header  />}
-      <section className={"container text-center "+StyleLog.wResponsive}>
-        <h1 className="fw-lighter my-4">Redéfinissez votre mot de passe</h1>
+       {(router.route== "/password" )&&  <Header  />}
+      <section className={" container text-center "+StyleLog.wResponsive}>
+        <h1 className="fw-lighter my-4">{textLang.title} </h1>
 
 
-        {(missingPassState==1)&&<div>
-          <Flip right>
-            <form className='text-center my-4' onSubmit={e => resetWhithOldPass(e)}>
-              <div className="input-group my-1">
-                <input value={mpInfo.omp} onChange={e => setMpInfo({ omp: e.target.value,mp1: mpInfo.mp1,mp2: mpInfo.mp2 })} type="password" placeholder='Ancien mot de passe' className="form-control w-100" required />
-              </div>
-              <div className="input-group my-1">
-                <input value={mpInfo.mp1} onChange={e => setMpInfo({ mp1: e.target.value,omp: mpInfo.omp,mp2: mpInfo.mp2 })} type="password" placeholder='Nouveau mot de passe' className="form-control w-100" required />
-              </div>
-              <div className="input-group my-1">
-                <input value={mpInfo.mp2} onChange={e => setMpInfo({ mp2: e.target.value,mp1: mpInfo.mp1,omp: mpInfo.omp })} type="password" placeholder='confirmez le mot de passe' className="form-control w-100" required />
-              </div>
-              {err&&<div>
-                {(err=="success")? <p className="alert alert-success">mot de passe modifier avec succès ! </p>:<p className="alert alert-danger"> {err} 
-</p>}
+          <Flip top opposite collapse when={err.success!="animation"}>
+            <form className='text-center my-4' onSubmit={resetPass}>
+            {(router.route!== "/password" ) && <div className="input-group my-1">
+                <input value={mpInfo.omp} onChange={e => setMpInfo({ omp: e.target.value})} type="password" placeholder={textLang.OpPO} className="form-control w-100" required />
               </div>}
-   <p>Mot de passe oublié ? <i onClick={e=>sendEmail(e)} className="pointer text-primary btn btn-link"> Envoyer un email </i> </p>
-              <button type="submit" className="btn-lg btn btn-warning">Réinitialiser</button>
+              <div className="input-group my-1">
+                <input value={mpInfo.mp1} onChange={e => setMpInfo({...mpInfo,mp1: e.target.value })} type="password" placeholder={textLang.NfpPO} className="form-control w-100" required />
+              </div>
+              <div className="input-group my-1">
+                <input value={mpInfo.mp2} onChange={e => setMpInfo({...mpInfo, mp2: e.target.value })} type="password" placeholder={textLang.SnpPo} className="form-control w-100" required />
+              </div>
+              
+              {(router.route!= "/password" ) && <p>{textLang.passMissed} <i onClick={e=>sendEmail(e)} className=" text-primary btn btn-link mx-1"> {textLang.sendEmailLink} </i> </p>}
+            
+        <div className="input-group"><span className=" mx-auto"><Bounce top when={!btnDisable && err} > <Error response={err} /></Bounce></span> </div>
+        <div className="input-group my-4 w-100">
+          <button className={`btn btn-warning btn-lg  mx-auto ${!!btnDisable?"disabled":""}`}>{textLang.submitBtn}</button>
+        </div>
             </form>
           </Flip>
-        </div>}
-
-        {(missingPassState==2)&&<div>
-          <Flip right>
-            <form className='text-center my-4' onSubmit={e => resetPass(e)}>
-              <div className="input-group my-1">
-                <input value={mpInfo.mp1} onChange={e => setMpInfo({ mp1: e.target.value,omp: mpInfo.omp,mp2: mpInfo.mp2 })} type="password" placeholder='Nouveau mot de passe' className="form-control w-100" required />
-              </div>
-              <div className="input-group my-1">
-                <input value={mpInfo.mp2} onChange={e => setMpInfo({ mp2: e.target.value,mp1: mpInfo.mp1,omp: mpInfo.omp })} type="password" placeholder='confirmez le mot de passe' className="form-control w-100" required />
-              </div>
-              {err&&<div>
-                {(err=="success")? <p className="alert alert-success">mot de passe modifier avec succès ! </p>:<p className="alert alert-danger"> {err}</p>}
-
-              </div>}
-              <button type="submit" className="btn-lg btn btn-warning">Réinitialiser</button>
-            </form>
-          </Flip>
-        </div>}
-
-        {(missingPassState==3)&&<div align="center" className="mb-5 text-success" >
-          <Flip cascade>
-            <i className="bi bi-check-circle-fill"> </i>
-          </Flip>
-        </div>}
+          <Flip cascade opposite collapse  when={err.success=="animation"}>
+             
+            <i style={{fontSize:"20rem"} } className="mb-4 text-success bi bi-check-circle-fill"> </i>
+          </Flip>  
       </section>
     </main>
-    </>
+      
   );
 };
 

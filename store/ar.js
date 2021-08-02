@@ -9,6 +9,10 @@ export const ar = () => {
       setting: "الإعدادات",
       profil: "الملف الشخصي ",
       disconnect: "خروج",
+      //------
+      adsence: "Publicitées",
+      contact: "Contact",
+      post:"Déposer une annonce"
     },
     Login: {
       errOccured: "حدث خطأ:",
@@ -61,11 +65,11 @@ export const ar = () => {
         },
         {
             errslug:  "user exist",
-            errMsg: "اسم المستخدم هذا موجود بالفعل ، يرجى المحاولة مرة أخرى"
+            errMsg: "اسم المستخدم هذا موجود بالفعل, يرجى المحاولة مرة أخرى"
         },
         {
           errslug: "error phone",
-          errMsg: "رقم الهاتف غير صحيح ، يرجى المحاولة مرة أخرى"
+          errMsg: "رقم الهاتف غير صحيح, يرجى المحاولة مرة أخرى"
         },
         {
           errslug: "error age",
@@ -91,8 +95,8 @@ export const ar = () => {
           errslug: "error facebook",
           errMsg: "يجب عليك إدخال رابط الفيسبوك"
         },
-      ]
-
+      ],
+      NBprogress:"لكي تصبح بائعًا ، تحتاج إلى إكمال معلوماتك قدر الإمكان وتفصيلها."
     },
     profilGeneral: {
       title: "تحرير المعلومات الخاصة بك",
@@ -122,7 +126,7 @@ export const ar = () => {
       error:[
         {
             errslug:"email invalid",
-            msg:"بريد إلكتروني غير صالح ، يرجى المحاولة مرة أخرى"
+            msg:"بريد إلكتروني غير صالح, يرجى المحاولة مرة أخرى"
         },
         {
             errslug:"password invalid",
@@ -147,5 +151,33 @@ export const ar = () => {
       pONR: "(اختياري) ex: https://www.... :مثال",
       submitBtn: "التحقق من صحة",
     },
+    password: {
+      title: "إعادة تعيين كلمة المرور الخاصة بك",
+      passNotIdentique: "كلمات المرور غير متطابقة",
+      errOccured: "حدث خطأ:",
+      successEmailSended: "تم إرسال بريد إلكتروني إلى",
+      emailNotFound: "هذا البريد الإلكتروني غير مسجل على موقعنا",
+      success: "أحسنت! تمت إعادة تعيين كلمة المرور الخاصة بك",
+      errorType: [
+        {
+          error: "invelid",
+          msg: "يجب أن تحتوي كلمة المرور على الأقل: 8 أحرف, وحرف كبير واحد, وحرف صغير واحد, ورقمان"
+        },
+        {
+          error: "false old Pass",
+          msg: "كلمة المرور القديمة غير صحيحة"
+        },
+        {
+          error: "Link expired.",
+          msg: "انتهت صلاحية الرابط, يرجى المحاولة مرة أخرى"
+        },
+      ],
+    OpPO: "كلمة المرور القديمة",
+    NfpPO: "كلمة مرور جديدة",
+    SnpPo: "تأكيد كلمة المرور",
+    submitBtn: "إعادة تعيين",
+    passMissed: "هل نسيت كلمة المرور؟",
+    sendEmailLink: "إرسال بريد إلكتروني"
+  },
   };
 };

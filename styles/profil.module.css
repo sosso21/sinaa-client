@@ -9,18 +9,18 @@
 
   background-image: url("/adria-tormo-ISmRgkuPfcM-unsplash.jpg");
 }
-
+ 
 .bgProfil section {
   margin: auto auto;
   padding: 1rem 1rem;
   width: 75%;
-  min-height: 75vh;
   color: black;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
+  overflow-y: hidden;
 }
 
 .imgProfil {

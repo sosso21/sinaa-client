@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useState,useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import styleProfil from "../../styles/profil.module.css";
 import Header from "../../components/header";
@@ -9,10 +9,24 @@ import Security from "../../components/profil/security.js";
 import Adress from "../../components/profil/adress.js";
 import Contact from "../../components/profil/contact.js";
 import { Lang } from "../../plugins/lang.js";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const Profil = () => { 
   const textLang = Lang().profil;
 const router = useRouter();
+const [progress, setProgress] = useState(0);
+
+const calcProgress =()=>{
+  const user = JSON.parse(sessionStorage.getItem("userInfo"));
+ let pts =0 
+  for (const [key, value] of Object.entries(user)) {
+    if (value && value!="none") {
+      pts++;
+    }
+  }
+  setProgress(Math.round((pts/14)*100));
+ 
+}
 
 const changeInfoUser =(user )=>{
   return new Promise( (resolve, reject) => {
@@ -37,6 +51,7 @@ const changeInfoUser =(user )=>{
       if(result.success){
           msg = textLang.successMsg;
         sessionStorage.setItem("userInfo",JSON.stringify(result.success));
+        calcProgress()
       }else if(result.error == "disconnect"){
         localStorage.clear("token");
         sessionStorage.clear("userInfo");
@@ -51,9 +66,13 @@ const changeInfoUser =(user )=>{
       reject({error:err});
     }
   );
+  
 })
 }
 
+useEffect(() => {
+  calcProgress()
+}, [])
 
 const Navigation = [
     {
@@ -98,7 +117,14 @@ const Componant = useMemo(()=>() => {
       <h1 className="my-4 text-center fw-lighter">{textLang.title}</h1>
 
       <Nav Navigation={Navigation}  actualRout={Componant()} />
-       <Bounce left>{Componant().element}</Bounce>
+       <Bounce left>{Componant().element}
+       
+    <section>
+      {(progress<100) && <p><i className="bi bi-info-circle mx-1"></i> {textLang.NBprogress}</p>}
+       <ProgressBar variant="warning" className="w-100 bg-secondary fs-5 h-100" now={progress} label={`${progress}%`} />
+      </section>
+       </Bounce>
+       
       </main>
     </>
   );

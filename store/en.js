@@ -9,6 +9,10 @@ export const en = () => {
       setting: "setting",
       profil: "profil",
       disconnect: "Disconnect",
+      //----
+      adsence: "Publicitées",
+      contact: "Contact",
+      post:"Déposer une annonce"
     },
     Login: {
       errOccured: "An error occurred:",
@@ -92,6 +96,7 @@ export const en = () => {
           errMsg: "You must enter a Facebook URL",
         },
       ],
+      NBprogress:"To become a seller you need to complete your information as much as possible and detail it."
     },
     profilGeneral: {
       title: "Edit your information".toUpperCase(),
@@ -145,6 +150,33 @@ export const en = () => {
       instagramLabel: "URL of your Instagram",
       twitterLabel: "URL of your Twitte",
       submitBtn: "Validate",
-    },
+    },password: {
+      title: "Reset your password",
+      passNotIdentique: "the passwords are not identical",
+      errOccured: "An error occurred:",
+      successEmailSended: "an email has been sent to",
+      emailNotFound: "this e-mail is not registered on our site",
+      success: "Well done! your Password has been reset",
+      errorType: [
+        {
+          error: "invelid",
+          msg: "the password must contain at least: 8 characters, one uppercase, one lowercase and 2 digits"
+        },
+        {
+          error: "false old Pass",
+          msg: "The old password is incorrect"
+        },
+        {
+          error: "Link expired.",
+          msg: "The link has expired, please try again"
+        },
+      ],
+    OpPO: "Old password",
+    NfpPO: "New password",
+    SnpPo: "confirm the password",
+    submitBtn: "Reset",
+    passMissed: "Forgot your password?",
+    sendEmailLink: "Send an email"
+  },
   };
 };
