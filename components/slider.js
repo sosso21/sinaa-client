@@ -66,16 +66,15 @@ const Slider = ({ sliderData}) => {
 
   return (
     <Slide easing="ease" {...properties}>
-      {SliderItems.filter(i=> i.type=="slider").map((item, index) => (
-        <section
+      {SliderItems.filter(i=> i.type=="slider").map((item, index) =>  <section
           key={index}
           style={{backgroundImage: `url("${item.image_background}")`}}
           className={StyleSlider.slideItem}
-        
+        >
           {item.html && <Markup content={item.html} />}
         
         </section>
-      ))}
+       )}
     </Slide>
   );
 };
