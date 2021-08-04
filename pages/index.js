@@ -7,14 +7,14 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 
-const  Home=()=>{
+const Home=({sliderData})=>{
   return (
     <>
       <HeadComponents title="Inscription" />
  <main className="min-vh-100">
  
       <Header/> 
-      <Slider/>
+      <Slider sliderData={sliderData} />
 
 
      
@@ -24,3 +24,16 @@ const  Home=()=>{
   )
 }
 export default Home
+
+export async function getStaticProps() {
+  const res = await fetch(process.env.URLSERVER+"/api/homepage")
+  const HomePage = await res.json()
+
+  return {
+    props: {
+        sliderData: HomePage.slider
+      },
+    
+    revalidate: 7200,  
+  }
+}

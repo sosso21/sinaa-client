@@ -45,44 +45,44 @@ const alldata = [
   },
 ];
 
-const Slider = ({ data = alldata }) => {
+const Slider = ({ sliderData}) => {
   
 
   const getData = (lang = "en") => {
     let arr = [];
 
-    data.map((i) => {
+    sliderData.map((i) => {
        
       if (lang == "en") {
         arr = [
           ...arr,
           {
-            img: i.img,
-            html: i.en,
+            image_background: i.image_background,
+            html: i.html_integration.en,
           },
         ];
       } else if (lang == "fr") {
         arr = [
           ...arr,
           {
-            img: i.img,
-            html: i.fr,
+            image_background: i.image_background,
+            html: i.html_integration.fr,
           },
         ];
       } else if (lang == "ar") {
         arr = [
           ...arr,
           {
-            img: i.img,
-            html: i.ar,
+            image_background: i.image_background,
+            html: i.html_integration.ar,
           },
         ];
       } else {
         arr = [
           ...arr,
           {
-            img: i.img,
-            html: i.en,
+            image_background: i.image_background,
+            html: i.html_integration.en,
           },
         ];
       }
@@ -97,7 +97,7 @@ const Slider = ({ data = alldata }) => {
     if (myLang) {
       setSliderItems(getData(myLang));
     }
-  }, [data]);
+  }, [sliderData]);
 
   const properties = {
     duration: 5000,
@@ -113,9 +113,12 @@ const Slider = ({ data = alldata }) => {
       {SliderItems.map((item, index) => (
         <section
           key={index}
-          style={{backgroundImage: `url("${process.env.HOST_IMG + item.img}")`}}
+          style={{backgroundImage: `url("${item.image_background}")`}}
           className={StyleSlider.slideItem}
-        >
+        
+        >-------------------
+          {item.image_background}
+          --------------------------
           
           {item.html && <Markup content={item.html} />}
         
