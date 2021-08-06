@@ -1,7 +1,7 @@
 export const en = () => {
   return {
     header: {
-      faq: "FAQ & Help",
+      faq: "Help",
       connect: "login",
       sub: "register",
       search: "Search",

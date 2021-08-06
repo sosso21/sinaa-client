@@ -1,7 +1,7 @@
 export const fr = () => {
   return {
     header: {
-      faq: "FAQ & Aide",
+      faq: "Aide",
       connect: "Se Connecter",
       sub: "S'inscrir",
       search: "Rechercher",
@@ -11,7 +11,7 @@ export const fr = () => {
       disconnect: "Déconnexion",
       //----
       adsence: "Publicitées",
-      contact: "Contact",
+      contact: "Contacte",
       post:"Déposer une annonce"
  
     },

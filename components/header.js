@@ -34,7 +34,7 @@ const Header = () => {
     <>
       <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
         <Navbar.Collapse
-          className=" justify-content-end text-center"
+          className="justify-content-end text-center"
           
         >
           <span className="d-flex mx-4 px-4"> 
@@ -68,11 +68,11 @@ const Header = () => {
 
 
 
-      <Navbar className={StyleHeader.sticky}  collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar className={StyleHeader.sticky}  collapseOnSelect expand="sm" bg="light" variant="light">
       
 
         <header className="m-auto" >
-        <Link href="/" ><a title="home" className="mx-4 navbar-brand text-primary "><i className="fs-1 bi bi-gear-fill text-warning"><i className={"bi bi-lightning fs-1 text-dark "+StyleHeader.AbsolutBi}></i> </i> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
+        <Link href="/" ><a title="home" className="mx-4 navbar-brand text-primary "><i className="fs-3 bi bi-gear-fill text-warning"><i className={"bi bi-lightning fs-3 text-dark "+StyleHeader.AbsolutBi}></i> </i> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
         </Link>
       </header>
 
@@ -81,12 +81,11 @@ const Header = () => {
         <Navbar.Collapse
           className=" justify-content-end text-center"
           id="responsive-navbar-nav"
-        >
-          <div className="mx-auto w-100">
-            <form className="w-100">
-              <div  className="input-group mx-auto my-1">
+        > 
+            <form className={StyleHeader.inputSearch} >
+              <div  className="input-group px-4 mx-auto my-1 ">
               <Link href="/post">
-              <a className="mx-auto w-100 btn btn-warning btn-sm">
+              <a className="mx-4 w-100 btn btn-warning btn-sm">
                 {textLang.post}
               </a>
             </Link>
@@ -101,8 +100,7 @@ const Header = () => {
                  
               </button>
               </div>
-            </form>
-          </div>
+            </form> 
 
           <Nav>
             <Link href="/legal">

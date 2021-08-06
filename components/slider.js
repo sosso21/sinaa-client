@@ -65,6 +65,7 @@ const Slider = ({ sliderData}) => {
   };
 
   return (
+    
     <Slide easing="ease" {...properties}>
       {SliderItems.filter(i=> i.type=="slider").map((item, index) =>  <section
           key={index}
@@ -76,10 +77,16 @@ const Slider = ({ sliderData}) => {
         </section>
        )}
     </Slide>
+   
   );
 };
 
 
 export default Slider;
 
+/*
 
+    <aside className={StyleSlider.asideVertical} >
+
+</aside>
+*/

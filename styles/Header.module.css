@@ -16,6 +16,10 @@
 .sticky{
   width: 100%;
 } 
+.inputSearch{
+  min-width: 30rem;
+  margin: auto auto;
+}
 
   @media (min-width: 768px) {
     .sticky {

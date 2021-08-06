@@ -1,7 +1,7 @@
 export const ar = () => {
   return {
     header: {
-      faq: "التعليمات والمساعدة",
+      faq: "التعليمات",
       connect: "الدخول",
       sub: "تسجيل",
       search: "بحث",
