@@ -72,7 +72,7 @@ const Header = () => {
       
 
         <header className="m-auto" >
-        <Link href="/" ><a title="home" className="navbar-brand text-primary"><i className="fs-1 bi bi-gear-fill text-warning"><i className={"bi bi-lightning fs-1 text-dark "+StyleHeader.AbsolutBi}></i> </i> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
+        <Link href="/" ><a title="home" className="mx-4 navbar-brand text-primary "><i className="fs-1 bi bi-gear-fill text-warning"><i className={"bi bi-lightning fs-1 text-dark "+StyleHeader.AbsolutBi}></i> </i> <h1 className={StyleHeader.FFTitle}>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
         </Link>
       </header>
 
@@ -82,8 +82,8 @@ const Header = () => {
           className=" justify-content-end text-center"
           id="responsive-navbar-nav"
         >
-          <div className="mx-auto">
-            <form>
+          <div className="mx-auto w-100">
+            <form className="w-100">
               <div  className="input-group mx-auto my-1">
               <Link href="/post">
               <a className="mx-auto w-100 btn btn-warning btn-sm">
@@ -107,7 +107,7 @@ const Header = () => {
           <Nav>
             <Link href="/legal">
               <a className="mx-4 nav-link">
-                <i className="d-block fs-2 bi bi-question-circle-fill mx-1"></i>
+                <i className="d-block fs-3 bi bi-question-circle-fill mx-1"></i>
                 {textLang.faq}
               </a>
             </Link>
@@ -117,13 +117,13 @@ const Header = () => {
             <Nav className="mr-4 pr-4">
               <Link href="/setting">
                 <a className="mx-4 nav-link">
-                  <i className="d-block fs-2 bi bi-people-fill mx-1"></i>
+                  <i className="d-block fs-3 bi bi-people-fill mx-1"></i>
                   {textLang.setting}
                 </a>
               </Link>
               <Link href="/profil">
                 <a className="mx-4 nav-link">
-                  <i className="d-block fs-2 bi bi-person-bounding-box mx-1"></i>
+                  <i className="d-block fs-3 bi bi-person-bounding-box mx-1"></i>
                   Profil
                 </a>
               </Link>
@@ -131,7 +131,7 @@ const Header = () => {
                 className="mx-4 nav-link btn btn-link"
                 onClick={(e) => disconnect()}
               >
-                <i className="d-block fs-2 bi bi-person-x-fill mx-1"></i>{" "}
+                <i className="d-block fs-3 bi bi-person-x-fill mx-1"></i>{" "}
                 {textLang.disconnect}
               </button>
             </Nav>
@@ -140,13 +140,13 @@ const Header = () => {
               <Link href="/login">
                 <a className="mx-4 nav-link" title="Connexion">
                   {" "}
-                  <i className="d-block fs-2 bi bi-person-check-fill mx-1"></i>
+                  <i className="d-block fs-3 bi bi-person-check-fill mx-1"></i>
                   {textLang.connect}
                 </a>
               </Link>
               <Link href="/signup">
                 <a className="mx-4 nav-link" title="Inscription">
-                  <i className="d-block fs-2 bi bi-person-plus-fill mx-1"></i>
+                  <i className="d-block fs-3 bi bi-person-plus-fill mx-1"></i>
                   {textLang.sub}
                 </a>
               </Link>
