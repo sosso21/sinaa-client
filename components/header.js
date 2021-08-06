@@ -39,13 +39,13 @@ const Header = () => {
         >
           <span className="d-flex mx-4 px-4"> 
             <Link href="/adsence">
-              <a className="mx-2 btn btn-warning btn-lg">
+              <a className="mx-2 btn btn-primary btn-sm">
                 {textLang.adsence}
               </a>
             </Link>
 
             <Link href="/contact">
-              <a className="mx-2 btn btn-primary btn-lg">
+              <a className="mx-2 btn btn-primary btn-sm">
                 {textLang.contact}
               </a>
             </Link>
@@ -86,7 +86,7 @@ const Header = () => {
             <form>
               <div  className="input-group mx-auto my-1">
               <Link href="/post">
-              <a className="mx-auto w-100 btn btn-primary btn-lg">
+              <a className="mx-auto w-100 btn btn-warning btn-sm">
                 {textLang.post}
               </a>
             </Link>
@@ -94,11 +94,11 @@ const Header = () => {
               <div  className="input-group mx-auto my-1">
               <input
                 type="text"
-                className="form-control form-control-lg"
+                className="form-control form-control-sm"
                 placeholder={textLang.search}
               />
-              <button className="btn btn-outline-primary btn-lg bi bi-search ">
-                {" "}
+              <button className="btn btn-outline-primary btn-sm bi bi-search ">
+                 
               </button>
               </div>
             </form>
