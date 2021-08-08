@@ -77,16 +77,11 @@ const Slider = ({ sliderData}) => {
         </section>
        )}
     </Slide>
-   
+    
   );
 };
 
 
 export default Slider;
 
-/*
 
-    <aside className={StyleSlider.asideVertical} >
-
-</aside>
-*/

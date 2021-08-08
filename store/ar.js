@@ -9,10 +9,9 @@ export const ar = () => {
       setting: "الإعدادات",
       profil: "الملف الشخصي ",
       disconnect: "خروج",
-      //------
-      adsence: "Publicitées",
-      contact: "Contact",
-      post:"Déposer une annonce"
+      adsence: "الإعلانات",
+      contact: "اتصل",
+      post:"نشر إعلانا"
     },
     Login: {
       errOccured: "حدث خطأ:",

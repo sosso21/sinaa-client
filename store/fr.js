@@ -9,9 +9,9 @@ export const fr = () => {
       setting: "paramètres",
       profil: "profil",
       disconnect: "Déconnexion",
-      //----
-      adsence: "Publicitées",
-      contact: "Contacte",
+      
+      adsence: "publicité",
+      contact: "Contact",
       post:"Déposer une annonce"
  
     },
