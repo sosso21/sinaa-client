@@ -1,10 +1,53 @@
 .slideItem{
-    padding: 3rem 3rem ;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    padding: 1rem 1rem ;
+    min-width:100%;
+    min-height: 50vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
+}
+.SliderParent{
+    width:50%;
+    height: 50vh;
+    overflow: hidden;
+
+}
+.FlexParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.LateralAds{
+    padding: 1rem 1rem ;
+    width: 25%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.bottimAds{
+    padding: 1rem 1rem ;
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+@media (max-width: 768px) {
+    .LateralAds{
+        width: 100%;
+        height: 25vh;
+
+    } 
+.SliderParent{
+    width:100%;
+    height: 50vh;
+
+}
 }

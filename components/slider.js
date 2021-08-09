@@ -65,7 +65,16 @@ const Slider = ({ sliderData}) => {
   };
 
   return (
-    
+    <main className={StyleSlider.FlexParent} >
+ 
+{SliderItems.filter((i,index)=> i.type=="pub").map((item,key)=>
+    key==0 &&  <aside style={{backgroundImage: `url("${item.image_background}")`}}  className={StyleSlider.LateralAds} key={key}>
+        
+          {item.html && <Markup content={item.html} />}
+         
+      </aside>)}
+
+      <div className={StyleSlider.SliderParent } >
     <Slide easing="ease" {...properties}>
       {SliderItems.filter(i=> i.type=="slider").map((item, index) =>  <section
           key={index}
@@ -77,11 +86,27 @@ const Slider = ({ sliderData}) => {
         </section>
        )}
     </Slide>
+    </div>
     
+{SliderItems.filter((i,index)=> i.type=="pub").map((item,key)=>
+    key == 1  && <aside style={{backgroundImage: `url("${item.image_background}")`}}  className={StyleSlider.LateralAds} key={key}>
+        
+          {item.html && <Markup content={item.html} />}
+         
+      </aside>)}
+{SliderItems.filter((i,index)=> i.type=="pub").map((item,key)=>
+     key>1 && <aside style={{backgroundImage: `url("${item.image_background}")`}}  className={StyleSlider.bottimAds} key={key+2} >
+
+        <h1>------{key}--</h1>
+          {item.html && <Markup content={item.html} />}
+         
+      </aside> )}
+    
+    </main>
   );
 };
 
 
 export default Slider;
 
-
+ 

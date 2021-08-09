@@ -1,7 +1,7 @@
 .FFTitle h1 {
   display: inline;
   margin: 1rem auto 0 auto;
-  font-family: Copperplate Gothic Bold ;
+  font-family: Copperplate, "Copperplate Gothic";
   font-weight: bold;
 }
 .FFTitle{
