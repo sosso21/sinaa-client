@@ -97,7 +97,6 @@ const Slider = ({ sliderData}) => {
 {SliderItems.filter((i,index)=> i.type=="pub").map((item,key)=>
      key>1 && <aside style={{backgroundImage: `url("${item.image_background}")`}}  className={StyleSlider.bottimAds} key={key+2} >
 
-        <h1>------{key}--</h1>
           {item.html && <Markup content={item.html} />}
          
       </aside> )}

@@ -92,7 +92,7 @@ const Header = () => {
           </span>
 
           </header>
-
+          
           <Fade top when={!hideNav.hide}>
           {!hideNav.hide && 
           <nav className={StyleHeader.NavFlex}>
@@ -154,6 +154,7 @@ const Header = () => {
           )}
            </nav>}
            </Fade>
+           
 </>
   );
 };

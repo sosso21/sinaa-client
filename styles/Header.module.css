@@ -55,11 +55,12 @@
   }
   .NavFlex{
     flex-direction: column;
-    z-index: 1;
+    z-index: 0;
     margin: 1rem auto;
   }
   form.inputSearch{
     order: 5;
+    margin: 0.5rem auto;
   }
   .FFTitle , .FFTitle i ,.FFTitle h1 {
     font-size: 1.5rem;
