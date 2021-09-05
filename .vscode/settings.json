@@ -1,0 +1,4 @@
+{
+    "html.format.wrapAttributes": "force",
+    "prettier.proseWrap": "always"
+}

@@ -3,7 +3,7 @@ module.exports = {
     env: {
       "NAMEWEBSITE" : "SINAA",
       "URLCLIENT":"https://sinaa.pages.dev",
-      "URLSERVER":"http://127.0.0.1:1337",
+      "URLSERVER":"https://sinaa-server.herokuapp.com",
       
     },
     images: {
