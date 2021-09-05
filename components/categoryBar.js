@@ -52,8 +52,8 @@ const CategoryBar = ({ category }) => {
            
           <Nav className={StyleNav.ResponsiveNav +" "+ StyleNav.ScrollBar }>
             {TopNav &&
-             TopNav.map(i=> 
-                <Link href={"/category/" + i.slug}>
+             TopNav.map((i,key)=> 
+                <Link key={key} href={"/category/" + i.slug}>
                   <a className="h-100 btn nav-link btn-primary">
                     {i.title.toUpperCase()}
                   </a>
@@ -72,8 +72,8 @@ const CategoryBar = ({ category }) => {
           <Container>
             <Nav className="me-auto d-flex flex-column">
               {data &&
-                data.map((i) => (
-                  <Link href={"/category/" + i.slug}>
+                data.map((i,key) => (
+                  <Link key={key} href={"/category/" + i.slug}>
                     <a className="nav-link">{i.title}</a>
                   </Link>
                 ))}
