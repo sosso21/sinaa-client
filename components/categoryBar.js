@@ -54,7 +54,7 @@ const CategoryBar = ({ category }) => {
           <Nav className={StyleNav.ResponsiveNav + " " + StyleNav.ScrollBar}>
             {TopNav &&
               TopNav.map((i, key) => (
-                <i className="h-100 btn   btn-primary">
+                <i key={key} className="h-100 btn   btn-primary">
                   {i.title.toUpperCase()}
                 </i>
               ))}
@@ -80,7 +80,6 @@ const CategoryBar = ({ category }) => {
         )}
       </Fade>
 
-      
       <Flip when={Show} left>
         {Show && (
           <Navbar bg="primary" variant="dark">
