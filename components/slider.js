@@ -106,7 +106,4 @@ const Slider = ({ sliderData}) => {
   );
 };
 
-
 export default Slider;
-
- 
