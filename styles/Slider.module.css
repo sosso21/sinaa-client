@@ -9,9 +9,9 @@
 }
 .SliderParent{
     width:50%;
-    height: 50vh;
+    height: 60vh;
     overflow: hidden;
-
+    
 }
 .FlexParent{
     display: flex;
@@ -23,7 +23,7 @@
 .LateralAds{
     padding: 1rem 1rem ;
     width: 25%;
-    height: 50vh;
+    height: 60vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,7 +47,7 @@
     } 
 .SliderParent{
     width:100%;
-    height: 50vh;
+    height:max-content;
 
 }
 }

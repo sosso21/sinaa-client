@@ -48,6 +48,7 @@ const Slider = ({ sliderData}) => {
 
   const [SliderItems, setSliderItems] = useState(getData());
 
+
   useEffect(() => {
     const myLang = localStorage.getItem("lang");
     if (myLang) {
@@ -61,7 +62,7 @@ const Slider = ({ sliderData}) => {
     infinite: true,
     indicators: true,
     scale: 0.4,
-    arrows: false,
+    arrows: true,
   };
 
   return (

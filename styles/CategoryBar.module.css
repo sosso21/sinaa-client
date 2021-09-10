@@ -8,6 +8,9 @@
   align-content: center;
   z-index: 2;
 }
+.ScrollBar{
+  width: 100%;
+}
 
 .ResponsiveNav * {
   height: 100%;
@@ -22,13 +25,26 @@
   background: #f44c04;
   border-radius: 50%;
 }
+.ItemCategorie{
+  
+  cursor: pointer;
+  color:  white;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  text-overflow: clip;
+  
+}
+
+
 
 @media only screen and (max-width: 950px) {
   .ScrollBar {
     width: 100%;
     overflow-x: scroll;
     z-index: 0;
-    animation: ScrollX 1.5s alternate ease;
+    animation: ScrollX 1.5s  alternate ease;
   }
 }
 
