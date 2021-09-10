@@ -69,7 +69,7 @@ const CategoryBar = ({ category }) => {
               <Nav className="me-auto d-flex flex-column">
                 {data &&
                   data.map((i, key) => (
-                    <i className="btn btn-sm btn-primary d-flex justify-content-between">
+                    <i key={key} className="btn btn-sm btn-primary d-flex justify-content-between">
                       <p>{i.title}</p>
                       <i className="bi bi-chevron-compact-right"></i>
                     </i>
@@ -88,7 +88,7 @@ const CategoryBar = ({ category }) => {
               <Nav className="me-auto d-flex flex-column">
                 {data &&
                   data.map((i, key) => (
-                    <i className="btn btn-sm btn-primary d-flex justify-content-between">
+                    <i key={key} className="btn btn-sm btn-primary d-flex justify-content-between">
                       <p>{i.title}</p>
                       <i className="bi bi-chevron-compact-right"></i>
                     </i>
