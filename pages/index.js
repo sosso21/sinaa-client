@@ -8,7 +8,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 
-const Home=({sliderData,category})=>{
+const Home=({sliderData,category,product})=>{
  
   return (
     <>
@@ -37,6 +37,7 @@ export async function getStaticProps() {
     props: {
         sliderData: HomePage.slider,
         category:HomePage.category,
+        product: HomePage.product,
       },
     
     revalidate: 7200,  
