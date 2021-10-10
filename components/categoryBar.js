@@ -7,38 +7,16 @@ import Fade from "react-reveal/fade";
 import Flip from 'react-reveal/Flip';
 import StyleNav from "../styles/CategoryBar.module.css";
 import formularSchema from "../store/formularSchema";
+import { Lang,TranslateCategory } from "../plugins/lang.js";
 
 const CategoryBar = ({ category }) => {
-  const [data, setData] = useState("");
-  const [TopNav, setTopNav] = useState("");
+  const textLang = Lang().category;
+  const data = TranslateCategory(category)
+  const TopNav = TranslateCategory(formularSchema)
+  
   const [Show, setShow] = useState(false);
   const [underCategorie, setUnderCategorie] = useState("");
-
-  const translateArr = (Arr) => {
-    const myLang = localStorage.getItem("lang") || "en";
-    console.log("myLang", myLang);
-    let protoData = [];
-
-    for (let index = 0; index < Arr.length; index++) {
-      const element = Arr[index];
-
-      if (myLang == "en") {
-        protoData = [...protoData, { ...element, title: element.name_en }];
-      } else if (myLang == "fr") {
-        protoData = [...protoData, { ...element, title: element.name_fr }];
-      } else if (myLang == "ar") {
-        protoData = [...protoData, { ...element, title: element.name_ar }];
-      }
-    }
-    return protoData;
-  };
-
-  useEffect(() => {
-    setData(translateArr(category));
-
-    setTopNav(translateArr(formularSchema));
-  }, []);
-
+ 
   return (
     <>
       <Navbar className="py-0 px-0" bg="primary" variant="dark">
@@ -48,7 +26,7 @@ const CategoryBar = ({ category }) => {
             className={StyleNav.ResponsiveNav}
           >
             <i className="nav-link text-light bi bi-list"></i>
-            <h2 className="text-light fs-4">Categories</h2>
+            <h2 className="text-light fs-4">{textLang.title}</h2>
           </Nav>
 
           <Nav className={StyleNav.ResponsiveNav + " " + StyleNav.ScrollBar}>

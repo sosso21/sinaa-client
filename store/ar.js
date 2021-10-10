@@ -178,5 +178,13 @@ export const ar = () => {
     passMissed: "هل نسيت كلمة المرور؟",
     sendEmailLink: "إرسال بريد إلكتروني"
   },
+  category:{
+    title:"التصنيفات"
+  },
+  product:{
+    title:"منتجات",
+    currency:"DZD",
+    star:"اضافة الى المفضلة"
+  }
   };
 };

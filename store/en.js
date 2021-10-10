@@ -9,10 +9,9 @@ export const en = () => {
       setting: "setting",
       profil: "profil",
       disconnect: "Disconnect",
-      //----
-      adsence: "Publicitées",
+      adsence: "Advertisements",
       contact: "Contact",
-      post:"Déposer une annonce"
+      post:"Place an ad "
     },
     Login: {
       errOccured: "An error occurred:",
@@ -178,5 +177,13 @@ export const en = () => {
     passMissed: "Forgot your password?",
     sendEmailLink: "Send an email"
   },
+  category:{
+    title:"Categorys"
+  },
+  product:{
+    title:"Products",
+    currency:"DZD",
+    star:"Add to favorits"
+  }
   };
 };

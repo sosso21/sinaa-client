@@ -1,0 +1,56 @@
+ 
+.listImage {
+  padding: auto auto;
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.listImage li {
+  margin: 1rem 1rem;
+  list-style: none;
+}
+.SectionSheet {
+  width: auto;
+  height: auto;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.imagesSliderNSmall,
+.articleSheet {
+  z-index: 0;
+  margin: auto auto;
+  padding: 2rem 2rem;
+  max-width: 35rem;
+}
+.imagesSliderNSmall {
+  z-index: 1;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+.asideElement {
+  
+  margin:auto auto ;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+@media (max-width: 1200px) {
+  .imagesSliderNSmall,
+  .articleSheet {
+      position: unset;
+    max-width: unset;
+    
+  } 
+}

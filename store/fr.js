@@ -9,7 +9,6 @@ export const fr = () => {
       setting: "paramètres",
       profil: "profil",
       disconnect: "Déconnexion",
-      
       adsence: "publicité",
       contact: "Contact",
       post:"Déposer une annonce"
@@ -185,5 +184,13 @@ export const fr = () => {
     passMissed:"Mot de passe oublié ?",
     sendEmailLink:"Envoyer un email"
   },
+  category:{
+    title:"Catégories"
+  },
+  product:{
+    title:"Produits",
+    currency:"DZD",
+    star:"Ajouter aux favorits"
+  }
   };
 };

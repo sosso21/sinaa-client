@@ -12,6 +12,7 @@
   "dependencies": {
     "bootstrap-icons": "^1.5.0",
     "compressorjs": "^1.0.7",
+    "date-fns": "^2.24.0",
     "dotenv": "^10.0.0",
     "firebase": "^8.7.1",
     "interweave": "^12.7.2",
@@ -19,6 +20,7 @@
     "react": "17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "17.0.2",
+    "react-image-magnify": "^2.7.4",
     "react-reveal": "^1.2.2",
     "react-slideshow-image": "^3.5.0"
   },

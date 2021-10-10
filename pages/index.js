@@ -3,6 +3,7 @@ import Header from "../components/header.js"
 import CategoryBar from "../components/categoryBar.js"
   import Slider from "../components/slider.js"
 import HeadComponents from  "../components/HeadComponents"
+import ItemArticle from  "../components/itemArticle.jsx"
 import Head from 'next/head'
  
 import styles from '../styles/Home.module.css'
@@ -18,6 +19,7 @@ const Home=({sliderData,category,product})=>{
       <Header/>
       <CategoryBar category={category} />
       <Slider sliderData={sliderData} />
+      <ItemArticle category={category.filter(i=>i.top_in_page == true)} product={product} />
 
 
      
@@ -29,8 +31,8 @@ const Home=({sliderData,category,product})=>{
 export default Home
 
 export async function getStaticProps() {
-  const res = await fetch(process.env.URLSERVER+"/api/homepage")
-  const HomePage = await res.json()
+  const res = await fetch(process.env.URLSERVER+"/api/homepage");
+  const HomePage = await res.json();
   
 
   return {
