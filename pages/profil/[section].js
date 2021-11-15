@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styleProfil from "../../styles/profil.module.css";
 import Header from "../../components/header";
 import Bounce from "react-reveal/Bounce";
-import Nav from "../../components/profil/nav.js";
+import Nav from "../../components/nav.js";
 import Gneral from "../../components/profil/general.js";
 import Security from "../../components/profil/security.js";
 import Adress from "../../components/profil/adress.js";
@@ -77,28 +77,28 @@ useEffect(() => {
 const Navigation = [
     {
       name:textLang.general ,
-      slug: "general",
+      slug: "/profil/general",
       element: <Gneral changeInfoUser={changeInfoUser} />,
     },
     {
       name:textLang.security ,
-      slug: "security",
+      slug: "/profil/security",
       element: <Security/>,
     },
     {
       name:textLang.adress ,
-      slug: "adress",
+      slug: "/profil/adress",
       element: <Adress changeInfoUser={changeInfoUser} />,
     },
     {
       name:textLang.contact ,
-      slug: "contact",
+      slug: "/profil/contact",
       element: <Contact changeInfoUser={changeInfoUser} />,
     },
   ];
    
 const Componant = useMemo(()=>() => {
-        const actifEleement= Navigation.filter(i=>router.query.section == i.slug)
+        const actifEleement= Navigation.filter(i=>"/profil/"+router.query.section == i.slug)
         
         if (!!(actifEleement.length)) {
           return actifEleement[0];
@@ -113,7 +113,7 @@ const Componant = useMemo(()=>() => {
     <>
       <Header />
 
-      <main className={styleProfil.bgProfil}> 
+      <main className={styleProfil.containerSection+" "+ styleProfil.bgProfil}> 
       <h1 className="my-4 text-center fw-lighter">{textLang.title}</h1>
 
       <Nav Navigation={Navigation}  actualRout={Componant()} />

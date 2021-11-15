@@ -6,13 +6,13 @@ import Nav from "react-bootstrap/Nav";
 import Fade from "react-reveal/fade";
 import Flip from 'react-reveal/Flip';
 import StyleNav from "../styles/CategoryBar.module.css";
-import formularSchema from "../store/formularSchema";
+import {schema} from "../store/formularSchema";
 import { Lang,TranslateCategory } from "../plugins/lang.js";
 
 const CategoryBar = ({ category }) => {
   const textLang = Lang().category;
   const data = TranslateCategory(category)
-  const TopNav = TranslateCategory(formularSchema)
+  const TopNav = TranslateCategory(schema)
   
   const [Show, setShow] = useState(false);
   const [underCategorie, setUnderCategorie] = useState("");

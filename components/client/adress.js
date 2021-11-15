@@ -63,7 +63,7 @@ const Adress = ({changeInfoUser}) => {
             onChange={(e) =>  setUser({ ...user, wilaya: e.target.value })}
             value={user.wilaya}
             className="w-50 mx-auto form-select form-select-lg"
-            
+            aria-label=".form-select-lg example"required
           >
             <option> {textLang.wilaya}  </option> 
             {wilaya.map((i,index)=><option key={index} value={i}>{`${+index+1} - ${i}`} </option>)}

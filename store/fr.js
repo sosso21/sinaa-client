@@ -191,6 +191,17 @@ export const fr = () => {
     title:"Produits",
     currency:"DZD",
     star:"Ajouter aux favorits"
+  },
+  client_space:{
+    title:"espaceClient",
+    nav:{
+      addProduct:"Ajouter un produit",
+      MmyFavorit:"Favorits",
+      myProducts:"mes produits",
+    },
+    post:{
+      addPost:"nouveau produit"
+    }
   }
   };
 };
