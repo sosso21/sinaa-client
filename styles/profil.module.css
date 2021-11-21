@@ -14,6 +14,28 @@
 .bgClient{
   background-image: url("/blue-machine.jpg");
 }
+
+.ifram{
+  margin: 1rem 1rem 1rem 1rem;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 168px;
+  min-width: 300px;
+  position: relative;
+  border-radius: 40%;
+
+}
+.ParentImg{
+  position: relative;
+}
+
+
+.ifram i , .ParentImg i {
+  position: absolute;
+  right: 0.25rem;
+  top:0.25rem;
+}
  
 .containerSection section {
   margin: auto auto;
@@ -82,10 +104,11 @@
 }
  
 .addImgBtn{
-  width: 8rem;
-  height: 8rem;
-  cursor: pointer ;
-  
+  width: 128px;
+  height: 128px;
+  cursor: pointer;
+margin:0 1rem;
+
   border: black 1px  ;
   border-style: dashed double  ;
   display: flex;
