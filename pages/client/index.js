@@ -4,20 +4,18 @@ export default  DefaultClient
 
 
  
-  
-  export async function getStaticProps({ params }) {
-     
-    const res = await fetch(process.env.URLSERVER + "/api/homepage");
-    const HomePage = await res.json();
-   
-   
-    return {
-      props: {
-        category: HomePage.category,
-        products: HomePage.product, 
-      },
-      revalidate: 60,
-    };
-  }
+export async function getStaticProps({ params }) {
   
   
+  //let   body={token:localStorage.getItem("token")}
+ 
+  const res = await fetch(process.env.URLSERVER + "/api/category/find" );
+  const category = await res.json();
+ 
+  return {
+    props: {
+      category:category,
+    },
+    revalidate: 60,
+  };
+}

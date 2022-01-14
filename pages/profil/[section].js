@@ -28,9 +28,14 @@ const calcProgress =()=>{
  
 }
 
-const changeInfoUser =(user )=>{
+const changeInfoUser =( user )=>{
   return new Promise( (resolve, reject) => {
-   
+    
+   let   body={token:localStorage.getItem("token")}
+    for (const key in user) {
+     if(!!user[key])
+     body[key] = user[key]
+    }
 
   fetch(process.env.URLSERVER+ "/api/changeUserInfo", {
     method: "POST",
@@ -39,18 +44,19 @@ const changeInfoUser =(user )=>{
       "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
     body: new URLSearchParams({
-      ...user,
-      token:localStorage.getItem("token")
+       str:JSON.stringify(body)
     }).toString(),
   })
   .then((res) => res.json())
   .then(
     (result) => {
-       
-      let msg = "";
-      if(result.success){
-          msg = textLang.successMsg;
+      
+let msg = "";
+
+      if(!!result.success){
+        msg = textLang.successMsg;
         sessionStorage.setItem("userInfo",JSON.stringify(result.success));
+        
         calcProgress()
       }else if(result.error == "disconnect"){
         localStorage.clear("token");
@@ -61,6 +67,7 @@ const changeInfoUser =(user )=>{
         msg = text ?  text.errMsg : "error";
       }
       resolve({...result,msg:msg});
+      
     },
     (err) => {
       reject({error:err});
@@ -83,7 +90,7 @@ const Navigation = [
     {
       name:textLang.security ,
       slug: "/profil/security",
-      element: <Security/>,
+      element: <Security  changeInfoUser={changeInfoUser}/>,
     },
     {
       name:textLang.adress ,

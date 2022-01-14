@@ -121,7 +121,14 @@ export const en = () => {
       pass:"Password",
       pOpass:"enter your password",
       submitBtn: "Validate",
-      successMsg:"An email has been sent to \n",
+      successMsg:"An email has been sent to \n", 
+      identity: {
+        title: "Confirm your identity",
+        description: "Perform an identity verification in order to obtain a validation certification. This will allow you to better refer to the algorithm as well as provide a pledge of confidence to your customers.",
+        add: "upload an identity document",
+        send: "send the confirmation request",
+        waiting: "Your request has been sent. It will be analyzed shortly. Thank you for your cooperation."
+      },
       error:[
         {
             errslug:"email invalid",

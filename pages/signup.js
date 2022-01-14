@@ -60,7 +60,7 @@ const Signup = () => {
     };
     
     setBtnDisable(true)
-    fetch(process.env.URLSERVER+ "/api/register", header)
+    fetch(process.env.URLSERVER+ "/api/client/signup", header)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -92,7 +92,7 @@ const Signup = () => {
   const resendEnmail = (e) => {
     e.preventDefault();
     
-    fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+localStorage.getItem("lang") ||  'en'+"%%"+log.email)
+    fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+(localStorage.getItem("lang") || 'en')+"%%"+log.email)
       .then((res) => res.json())
       .then(
         (result) => {

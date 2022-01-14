@@ -29,7 +29,7 @@ import {UploadFile} from "./UploadFile"
       
       setData({
         ...data,
-        _Cv_link:{
+        _cv_link:{
           _id: Date.now(),
           progress:0,
           url:"",
@@ -63,10 +63,10 @@ import {UploadFile} from "./UploadFile"
  
  <div className="mx-auto d-block">
 
-             { !data._Cv_link ? <UploadFile
+             { !data._cv_link ? <UploadFile
               icon="bi bi-file-earmark-richtext"
               handleUploadFile={handleChange}
-              /> : <i className="py-2 px-2 mx-4 rounded btn-lg btn-dark d-flex justify-content-between"><span>{(data._Cv_link || {raw:{name:""}}).raw.name} </span> <span onClick={()=>setData({...data,_Cv_link:""}) } className="bi bi-x  text-danger my-auto btn "></span> </i> 
+              /> : <i className="w-75 py-2 px-2 mx-auto rounded btn-lg btn-dark d-flex justify-content-between"><span className="text-truncate w-75">{(data._cv_link || {raw:{name:""}}).raw.name} </span> <span onClick={()=>setData({...data,_cv_link:""}) } className="bi bi-x  text-danger my-auto btn "></span> </i> 
               }
               </div> 
               

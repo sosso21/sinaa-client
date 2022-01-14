@@ -179,8 +179,8 @@ setDisableBtn(false)
             aria-label=".form-select-lg example" required
           >
             <option value="none">{textLang.selectSexe} </option>
-            <option value="homme">{textLang.selectBoy} </option>
-            <option value="femme">{textLang.selectGirl} </option>
+            <option value="boy">{textLang.selectBoy} </option>
+            <option value="women">{textLang.selectGirl} </option>
           </select>
         </div>
 
@@ -218,21 +218,7 @@ setDisableBtn(false)
             {getDefaultTime().yyyy.map((i,key)=><option key={key} value={i}>{i} </option>)}
           </select>
         </div>
-
-        <div className="my-2 mx-auto">
-          <label htmlFor="birthPlace">
-            {textLang.birth_place}
-            <input
-              id="birthPlace"
-              value={user.birth_place}
-              onChange={(e) => setUser({ ...user, birth_place: e.target.value })}
-              type="text"
-              className="form-control"
-              placeholder={textLang.PObirth_place}
-              required
-            />
-          </label>
-        </div>
+ 
         
         <div className="input-group"><span className=" mx-auto"><Bounce top when={!disableBtn && err} > <Error response={err} /> </Bounce></span> </div>
         <div className="input-group my-4 w-100">
@@ -243,32 +229,4 @@ setDisableBtn(false)
   );
 };
 export default Gneral;
-
-// new Date(Date.UTC(1998,09-1,21)); 
-
-
-/*
-//-----------hello ----------------------
-
-sessionStorage.setItem( 'userInfo',  JSON.stringify({
-birth_day: "1922-12-04",
-birth_place: "madagasgar",
-commune: "draa ben khedda",
-email: "sofianetop21.st@gmail.com",
-firstname: "sofiane",
-lastname: "gherab",
-phone: 21559205748,
-profil_image_link: "https://firebasestorage.googleapis.com/v0/b/sinaa-fr.appspot.com/o/images%2F1627536615825_mini-hermes.jpg?alt=media&token=ba6009c6-2ae8-407e-aa13-9f121df2b40c",
-sexe: "femme",
-username: "hermes.dev",
-wilaya: "Tizi Ouzou",
-_id: "60fbe54c7759b3077cb8568c",
-}))
-
-
-///------------------------------ redirect  ------------------------
-
-
-window.location.href= "https://sinaa.pages.dev/profil"
-
-*/
+ 

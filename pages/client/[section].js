@@ -5,13 +5,10 @@ import Header from "../../components/header";
 import Bounce from "react-reveal/Bounce";
 import Nav from "../../components/nav.js";
 import Post from "../../components/client/post.js";
-import Security from "../../components/client/security.js";
-import Adress from "../../components/client/adress.js";
-
 import { Lang } from "../../plugins/lang.js";
 
 
-const Client =   ({ category=[], products=[] }) => {
+const Client =   ({ category=[]  }) => {
     
   const textLang = Lang().client_space;
 const router = useRouter();
@@ -27,12 +24,12 @@ const Navigation = [
     {
       name:textLang.nav.MmyFavorit ,
       slug: "/client/favorit",
-      element: <Security/>,
+      element:<h1>favorit</h1> ,
     },
     {
       name:textLang.nav.myProducts ,
       slug: "/client/product",
-      element: <Adress changeInfoUser={()=>{} } />,
+      element:<h1>product</h1> ,
     },
   ];
    
@@ -67,7 +64,7 @@ const Componant = useMemo(()=>() => {
 
   
 export default Client;  
-
+ 
 
 
 export async function getStaticPaths() {
@@ -83,18 +80,19 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
+
 export async function getStaticProps({ params }) {
-   
-  const res = await fetch(process.env.URLSERVER + "/api/homepage");
-  const HomePage = await res.json();
+  
+  
+  //let   body={token:localStorage.getItem("token")}
  
+  const res = await fetch(process.env.URLSERVER + "/api/category/find" );
+  const category = await res.json();
  
   return {
     props: {
-      category: HomePage.category,
-      products: HomePage.product, 
+      category:category,
     },
     revalidate: 60,
   };
 }
-

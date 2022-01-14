@@ -121,6 +121,7 @@ export const fr = () => {
       submitBtn: "Valider",
     },
     profilSecurity: {
+      
       title: "Sécurité",
       email: "Votre e-mail",
       pOemail: "exemple@gmail.com",
@@ -128,6 +129,13 @@ export const fr = () => {
       pOpass: "saisissez votre Mot de passe",
       submitBtn: "Valider",
       successMsg: "Un email vous as été envoyer à \n",
+      identity:{
+        title:"Confirmez votre identité",
+        description: "Effectuez une vérification d'identité  afin d'obtenir une certification de validation . cela permettras de mieux vous référencer sur l'algorithme ainsi que de fournir un gage de confiance au près de votre clientèles.",
+        add:"téléchargez une pièce d'identité ",
+        send:"envoyer la demande de confirmation",
+        waiting:"Votre demande a bien été envoyé. cette dernière seras analyser d'ici peu. merci de votre collaboration."
+      },
       error: [
         {
           errslug: "email invalid",

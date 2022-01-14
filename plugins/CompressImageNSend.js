@@ -32,13 +32,15 @@ export const sendImage = (CompressedImg) => {
   });
 };
 
-const submitImage = (file) => {
+const submitImage = (file,CanICompress = true) => {
    
-  return new Promise((resolve, reject) => {
+  return new Promise( async (resolve, reject) => {
   if (!file) {
     return reject("file missed");
   }
-
+if (!CanICompress) {
+  return resolve(await sendImage(file)) ;
+}
   new Compressor(file, {
     quality: 0.1,
     minHeight: 720,
@@ -54,4 +56,3 @@ const submitImage = (file) => {
 };
 
 export default submitImage ;
-  

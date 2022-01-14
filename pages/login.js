@@ -26,7 +26,7 @@ const Login=() => {
 
   const sendEmaillToConfirm=() => {
     
-  fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+localStorage.getItem("lang") ||  'en'+"%%"+log.email)
+  fetch(process.env.URLSERVER+ "/api/sendMeEmailConfirmation/"+(localStorage.getItem("lang") ||  'en')+"%%"+log.email)
      
   }
 
@@ -45,7 +45,7 @@ const Login=() => {
     };
     setBtnDisable(true)
     setErrorLogin("")
-    fetch( `${process.env.URLSERVER}/api/connect`,header )
+    fetch( `${process.env.URLSERVER}/api/client/connect`,header )
       .then( res => res.json() )
       .then( ( result) => {
       
@@ -166,7 +166,7 @@ useEffect(() => {
                   </div>
                  <Fade top when={mpError}> <Error response={mpError} /> </Fade> 
                 
-                  <button type="submit" className={`m-auto d-block my-4 btn btn-lg btn-warning ${btnDisable &&  "disabled"} `}>{textLang.reset}</button>
+                  <button type="submit" className={`m-auto d-block my-4 btn btn-lg btn-warning ${!!btnDisable &&  "disabled"} `}>{textLang.reset}</button>
                 </form>
               </div> 
             </Modal.Body>

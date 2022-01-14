@@ -36,7 +36,7 @@ export const GetInputHtml = ({
         className={SelectClassName}
         value={value}
       >
-        <option key="0001">Selectionnez une option</option>
+        <option value="" key="0001">Selectionnez une option</option>
         { [...opt].map((i, key) => (
           <option key={key} value={i.slug}>
             {i.title}
