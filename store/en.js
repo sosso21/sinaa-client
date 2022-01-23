@@ -193,15 +193,107 @@ export const en = () => {
     star:"Add to favorits"
   },
   client_space:{
-      title:"espaceClient",
+      title:"Client Space",
       nav:{
-        addProduct:"Ajouter un produit",
-        MmyFavorit:"Favorits",
-        myProducts:"mes produits",
+        addProduct:"Add a product",
+        MmyFavorit:"Favorites",
+        myProducts:"my products",
+      }, 
+      post: {
+        addPost: "New product",
+        success:"Your post `$%title%` has been successfully updated under id #$%id% ",
+        err: {
+          incompletArea: "Incomplete field",
+          emailInvalid: "Invalid Email",
+          numberInvalid: "Invalid number",
+        },
+        input: {
+          generic: {
+            POSelect: "Enter an item",
+            pOinput: "Enter the field"
+          },
+          title: "Title",
+       
+          adress: "Address",
+          commune: "District",
+          email: {
+            title: 'Email(s)',
+            pO: "Add a new email"
+          },
+          phone: {
+            title: 'Phone(s)',
+            pO: "Add a phone number"
+          },
+          description: {
+            title: 'Description',
+            pO: "Precisely describe your product and encourage your audience to take action!"
+          },
+          rubric: "Section:",
+          workProposal: "Work proposal:",
+          categ: {
+            underCategory: "Sub Category",
+            category: "Category"
+          },
+          next: "Next",
+          profession: "profession",
+          diploma: "diploma",
+          salary: "Salary",
+          Sector: "Sector",
+          society: "Company",
+          region: "geographic sector",
+          price: 'Price',
+          Mark: "Brand",
+          typestate: "state",
+          vehicle: "Vehicle",
+          transport_service: "Transport Service",
+          formation_category: "Training Category",
+          sector_product: "Product Sector",
+          service_category:'service category'
+
+        }
+      }
       },
-      post:{
-        addPost:"nouveau produit"
-      }
-      }
+      sheet: {
+        salary: "Salary",
+        price: "Price",
+        createdAt: "Published on",
+        adress: "Available at",
+        description: "Description",
+        seeMore: "See more",
+        seller: {
+          activity: "Note",
+          createdAt: "Member since",
+          adress: "Seller's address"
+        },
+        phoneNemail: {
+          phone: "Phone(s)",
+          email: "Email(s)",
+        },
+        activity: {
+          not: "Not active",
+          medium: "Active",
+          good: "Very active",
+        },
+        GetSupInfo: {
+          seeCV: "View CV",
+          sector: "Sector",
+          name_society: "Company name",
+          recrutement_type: "Type of recruitment",
+          mark: "Brand",
+          typeArticle: "Type of article",
+          vehicle: "Vehicle",
+          service: "Service",
+          region: "cover",
+          formationtype: "Formation type",
+          service_type: "Type of service",
+        },
+      },
+      preFooter: [
+        {
+          className: "bi-hammer",
+          strong: "efficient",
+          text: "An efficient platform made for professionals",
+        },
+      ]
   };
 };

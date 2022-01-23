@@ -95,7 +95,7 @@ export const ar = () => {
           errMsg: "يجب عليك إدخال رابط الفيسبوك"
         },
       ],
-      NBprogress:"لكي تصبح بائعًا ، تحتاج إلى إكمال معلوماتك قدر الإمكان وتفصيلها."
+      NBprogress:"لكي تصبح بائعًا, تحتاج إلى إكمال معلوماتك قدر الإمكان وتفصيلها."
     },
     profilGeneral: {
       title: "تحرير المعلومات الخاصة بك",
@@ -194,15 +194,108 @@ export const ar = () => {
     star:"اضافة الى المفضلة"
   },
   client_space:{
-    title:"espaceClient",
+    title:"منطقة الزبون",
     nav:{
-      addProduct:"Ajouter un produit",
-      MmyFavorit:"Favorits",
-      myProducts:"mes produits",
+      addProduct:"أضف منتجًا",
+      MmyFavorit:"المفضلة",
+      myProducts:"منتجاتي",
     },
-    post:{
-      addPost:"nouveau produit"
-    }
-  }
+      post: {
+        addPost: "منتج جديد",
+        success:"تم تحديث مشاركتك '$%%title` بنجاح تحت المعرف #$%id%",
+        err: {
+          incompletArea: "حقل غير مكتمل",
+          emailInvalid: "بريد إلكتروني غير صالح",
+          numberInvalid: "رقم غير صالح",
+        },
+        input: {
+          generic: {
+            POSelect: "أدخل عنصرًا",
+            pOinput: "أدخل الحقل"
+          },
+          title: "Title",
+       
+          adress: "العنوان",
+          commune: "عام",
+          email: {
+            title: "البريد الإلكتروني",
+            pO: "إضافة بريد إلكتروني جديد"
+          },
+          phone: {
+            title: "الهاتف (الهواتف)",
+            pO: "أضف رقم هاتف"
+          },
+          description: {
+            title: "الوصف",
+            pO: "صِف منتجك بدقة وشجع جمهورك على اتخاذ إجراء!"
+          },
+          rubric: "القسم:",
+          workProposal: "اقتراح العمل:",
+          categ: {
+            underCategory: "الفئة الفرعية",
+            category: "الفئة"
+          },
+          next: "التالي",
+          profession: "مهنة",
+          diploma: "دبلوم",
+          salary: "الراتب",
+          Sector: "القطاع",
+          society: "الشركة",
+          region: "القطاع الجغرافي",
+          price: "السعر",
+          Mark: "العلامة التجارية",
+          typestate: "الحالة",
+          Tehicle: "مركبة",
+          transport_service: "خدمة النقل",
+          formation_category: "فئة التدريب",
+          المقطعr_product: "قطاع المنتج",
+          service_category: "فئة الخدمة"
+
+        }
+      }
+  },
+  sheet: {
+    salary: "الراتب",
+    price: "السعر",
+    createdAt: "تم النشر في",
+    adress: "متاح في",
+    description: "الوصف",
+    seeMore: "شاهد المزيد",
+    seller: {
+      activity: "ملاحظة",
+      createdAt: "عضو منذ",
+      adress: "عنوان البائع"
+    },
+    phoneNemail: {
+      phone: "الهاتف (الهواتف)",
+      email: "البريد الإلكتروني",
+    },
+    activity: {
+      not: "غير نشطة",
+      medium: "نشط",
+      good: "نشط جدًا",
+    },
+    GetSupInfo: {
+      seeCV: "عرض السيرة الذاتية",
+      sector: "القطاع",
+      name_society: "اسم الشركة",
+      recrutement_type: "نوع التوظيف",
+      mark: "العلامة التجارية",
+      typeArticle: "نوع المقالة",
+      vehicle: "مركبة",
+      service: "الخدمة",
+      region: "cover",
+      formationtype: "نوع التكوين",
+      service_type: "نوع الخدمة",
+    },
+  },
+  preFooter: [
+    {
+      className: "bi-hammer",
+      strong: "تأثير",
+      text: "منصة فعالة مصممة للمحترفين",
+    },
+  ]
   };
 };
+ 

@@ -16,6 +16,20 @@ const Header = () => {
 
   const textLang = Lang().header;
   
+
+
+useLayoutEffect(() => {
+ const token = localStorage.getItem("token")
+ const userInfo = sessionStorage.getItem("userInfo")
+
+ if(!!token && !!userInfo){
+  setUsConnect(true)
+ }
+ 
+
+}, []);
+
+
    useLayoutEffect(() => {
    if( Math.round(elementDimension.current.offsetWidth) <= 768){
     seHhideNav({hamburg:true , hide:true })
@@ -98,7 +112,7 @@ const Header = () => {
           <nav className={StyleHeader.NavFlex}>
 
         <span className={StyleHeader.inputSearch+ " mx-4 nav-lin"}>
-              <Link href="/post">
+              <Link href={isConnect? "/client/post" :"/login"}>
               <a className=" btn btn-warning btn-sm">
                 {textLang.post}
               </a>
@@ -111,7 +125,7 @@ const Header = () => {
 
           {isConnect ? (
             <>
-              <Link href="/setting">
+              <Link href="/client">
                 <a className="mx-4 nav-link">
                   <i className="d-block fs-3 bi bi-people-fill mx-1"></i>
                   {textLang.setting}
@@ -135,8 +149,8 @@ const Header = () => {
           ) : (
             <>
               <Link href="/login">
-                <a className="mx-4 nav-link" title="Connexion">
-                  {" "}
+                <a className="mx-4 nav-link" title="connect">
+                   
                   <i className="d-block fs-3 bi bi-person-check-fill mx-1"></i>
                   {textLang.connect}
                 </a>
@@ -145,7 +159,7 @@ const Header = () => {
               <Help/>
               
               <Link href="/signup">
-                <a className="mx-4 nav-link" title="Inscription">
+                <a className="mx-4 nav-link" title="signup">
                   <i className="d-block fs-3 bi bi-person-plus-fill mx-1"></i>
                   {textLang.sub}
                 </a>

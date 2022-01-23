@@ -4,6 +4,7 @@ import styleClient from "../../styles/profil.module.css";
 import Header from "../../components/header";
 import Bounce from "react-reveal/Bounce";
 import Nav from "../../components/nav.js";
+import Footer from "../../components/footer.js"
 import Post from "../../components/client/post.js";
 import { Lang } from "../../plugins/lang.js";
 
@@ -58,6 +59,7 @@ const Componant = useMemo(()=>() => {
        </Bounce>
        
       </main>
+      <Footer/>
     </>
   );
 };

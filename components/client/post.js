@@ -1,10 +1,11 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { schema, work_proposal } from "../../store/formularSchema";
 import styleClient from "../../styles/profil.module.css";
 import myLoader from "../../plugins/imgLoader.js";
 import { GetInputHtml, GetSelectHtml } from "./GetFormHtml.js";
 import { PutSupInfo } from "./PutSupInfo";
 import { UploadFile } from "./UploadFile";
+import { useRouter } from "next/router";
 import { Lang, TranslateCategory } from "../../plugins/lang.js";
 import { IFrameYoutube } from "./iFrameYoutube";
 import Image from "next/image";
@@ -15,6 +16,7 @@ import Error from "../error.jsx";
 import wilaya from "../../store/wilaya.js";
 
 const Post = ({ _category = [] }) => {
+  const router = useRouter();
   const category = TranslateCategory(_category);
 
   const [step, setStep] = useState({ n: 1, next: true });
@@ -34,22 +36,25 @@ const Post = ({ _category = [] }) => {
   const childrenCategory = (
     actual_category = null,
     all = [],
-    _formular = " Divers"
-    ) => {
-      
-    const banned_w_p = !!data.work_proposal ? work_proposal.filter(e => e != data.work_proposal)[0] : '';
+    _formular = "Divers"
+  ) => {
+    const banned_w_p = !!data.work_proposal
+      ? work_proposal.filter((e) => e != data.work_proposal)[0]
+      : "";
 
     if (actual_category == null) {
-      
-      return [...all].filter(
-        (i) => ![...i.parent_category_list].length && i.format_profuct == _formular
-      ).filter(e => e.work_proposal != banned_w_p);
+      return [...all]
+        .filter(
+          (i) =>
+            ![...i.parent_category_list].length && i.format_profuct == _formular
+        )
+        .filter((e) => e.work_proposal != banned_w_p);
     }
 
     const parent_category_list =
-    (actual_category.parent_category_list || { categories: null })
-    .categories || [];
-    
+      (actual_category.parent_category_list || { categories: null })
+        .categories || [];
+
     const children = [...all].filter((i) => {
       const all_parent_category_list =
         (i.parent_category_list || { categories: null }).categories || null;
@@ -76,7 +81,7 @@ const Post = ({ _category = [] }) => {
         return true;
       }
     });
-    return [...children].filter(e => e.work_proposal != banned_w_p);
+    return [...children].filter((e) => e.work_proposal != banned_w_p);
   };
 
   const addNewAdress = () => {
@@ -91,7 +96,7 @@ const Post = ({ _category = [] }) => {
       });
       setAdress({ wilaya: "", commune: "" });
     } else {
-      setAdress({ ...adress, err: "champs incomplet" });
+      setAdress({ ...adress, err: textLang.err.incompletArea });
     }
   };
   const addNewEmail = () => {
@@ -102,7 +107,7 @@ const Post = ({ _category = [] }) => {
         setData({ ...data, email: [...dataEmail, email] });
       setContact({ ...contact, email: "", emailErr: "" });
     } else {
-      setContact({ ...contact, emailErr: "E-mail invalide" });
+      setContact({ ...contact, emailErr: textLang.err.emailInvalid });
     }
   };
 
@@ -114,7 +119,7 @@ const Post = ({ _category = [] }) => {
         setData({ ...data, phone: [...dataPhone, "+213" + phone] });
       setContact({ ...contact, phone: "", phoneErr: "" });
     } else {
-      setContact({ ...contact, phoneErr: "Numéro invalide" });
+      setContact({ ...contact, phoneErr: textLang.err.numberInvalid });
     }
   };
 
@@ -143,110 +148,143 @@ const Post = ({ _category = [] }) => {
       array = [
         !!data.title,
         !!(data.adress || []).length,
-        (!!(data.phone || []).length || !!(data.email || []).length),
+        !!(data.phone || []).length || !!(data.email || []).length,
         !!Images.length,
         !!data.description,
       ];
-    }
-    else if (step.n == 2) {
+    } else if (step.n == 2) {
       array = [
         !!parent_category.length,
-        !(!!childrenCategory(
-          parent_category[parent_category.length - 1],
-          category,
-          Formular
-        ).length && (Formular == "Job" ? !!data.work_proposal : true))
-
-      ]
-    }
-
-    else if (step.n == 3) {
-      let requiredSchema = []
+        !(
+          !!childrenCategory(
+            parent_category[parent_category.length - 1],
+            category,
+            Formular
+          ).length && (Formular == "Job" ? !!data.work_proposal : true)
+        ),
+      ];
+    } else if (step.n == 3) {
+      let requiredSchema = [];
       if (Formular == "Job") {
-
         if (Formular == "Job") {
-          
           if (data.work_proposal == "request") {
-
-            requiredSchema = ["profession",
-              "diploma",
-              "_cv_link"]
+            requiredSchema = ["profession", "diploma", "_cv_link"];
           }
           if (data.work_proposal == "offer") {
-            requiredSchema = [
-              "profession",
-              "sector_work",
-              "society",
-              "region"]
+            requiredSchema = ["profession", "sector_work", "society", "region"];
           }
-
+        } else {
+          requiredSchema = schema.filter((e) => Formular == e.slug)[0].schema;
         }
-        else {
-          requiredSchema = schema.filter(e => Formular == e.slug)[0].schema
 
-        }
- 
-
-        array = requiredSchema.map(i => !!data[i]  && (!Array.isArray(data[i]) ||  !!data[i].length))
-
+        array = requiredSchema.map(
+          (i) => !!data[i] && (!Array.isArray(data[i]) || !!data[i].length)
+        );
       }
     }
-
- 
 
     if (step.next == true && array.includes(false)) {
       setStep({ ...step, next: false });
     } else if (step.next == false && !array.includes(false)) {
       setStep({ ...step, next: true });
     }
-
   }, [Formular, Images, parent_category, data]);
 
-const handleSubmit = async (e)=>{
-  e.preventDefault();
- 
-let body={ ...data ,
-  category : {id : parent_category[parent_category.length-1].id},
-  emails:[...data.email || []].map(i=>{ return {email: i}}),
-phones: [...data.phone || []].map(i=>{ return {phone:+i}}),
-service_categorys:[...data.service_category || []].map(i=>{ return {service_category:i} })
-}; 
-let imgs =[];
-for (let index = 0; index < Images.length; index++) {
-  const element = Images[index];
-  const img = await  submitImage(element.raw);
-  imgs=[...imgs,{image:img.url }]
-}
-body={...body, images:imgs}
+  useEffect(() => {
+    if (!!router.query.edit) {
 
-if (!!body._cv_link) {
-  const cv_link = await submitImage(body._cv_link.raw,false);
-  body={...body, cv_link:cv_link.url};
-}
+      fetch(process.env.URLSERVER + `/api/product/findOne/${+router.query.edit}`)
+        .then((res) => res.json())
+        .then((res) => {
 
+          setData({
+            ...res,
+            email: [...(res.emails || [])].map((i) => i.email),
+            phone: [...(res.phones || [])].map((i) => i.phone),
+            service_category: [...(res.service_categorys || [])].map(
+              (i) => i.service_category
+            ),
+            _cv_link: (!!res.cv_link ? { progress: 100, preview: res.cv_link, raw: { name: res.cv_link } } : "")
+          });
+          setParent_category([
+            ...parent_category,
+            category.filter((i) => i.id == res.category.id)[0],
+          ])
 
-    body={...body,token:localStorage.getItem("token")}
-    
-fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
-  method: "POST",
-  headers: {
-    Accept: "application/json, text/plain, */*",
-    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-  },
-  body: new URLSearchParams({
-     str:JSON.stringify(body)
-  }).toString(),
-})
-.then((res) => res.json())
-.then((res) =>{
-  console.log('res:', res)
-  
-})
+          setImages([...res.images].map(i => ({
+            progress: 100, preview: i.image
+          })))
+          setFormular(res.category.format_profuct)
 
+        });
+    }
+  }, [router]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStep({...step,next:false})
 
-}
+    let body = {
+      ...data,
+      category: { id: parent_category[parent_category.length - 1].id },
+      emails: [...(data.email || [])].map((i) => {
+        return { email: i };
+      }),
+      phones: [...(data.phone || [])].map((i) => {
+        return { phone: +i || 0 };
+      }),
+      service_categorys: [...(data.service_category || [])].map((i) => {
+        return { service_category: i };
+      }),
+    };
+    let imgs = [];
+    for (let index = 0; index < Images.length; index++) {
+      const element = Images[index];
+      let url = "";
+      if (element.progress == 100) {
+        url = element.preview;
+      } else {
+        const img = await submitImage(element.raw);
+        url = img.url;
+      }
+      imgs = [...imgs, { image: url }];
+    }
 
+    body = { ...body, images: imgs };
+
+    if (!!body._cv_link && body._cv_link.progress == 0) {
+      const cv_link = await submitImage(body._cv_link.raw, false);
+      body = { ...body, cv_link: cv_link.url };
+    } else if (!!body._cv_link) {
+      body = { ...body, cv_link: body._cv_link.preview };
+    }
+
+    body = { ...body, token: localStorage.getItem("token") };
+
+    fetch(process.env.URLSERVER + (!!router.query.edit ? "/api/porduct/EditArticle" : "/api/porduct/postArticle"), {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      body: new URLSearchParams({
+        str: JSON.stringify(body),
+      }).toString(),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (!!res.error && res.error == "disconnect") {
+          localStorage.setItem("token", "")
+          sessionStorage.clear()
+          router.push("/login")
+
+        }
+        else if (!!res.success) {
+          setData(res.success)
+          setStep({ next: false, n: 4 })
+        }
+      });
+  };
 
   return (
     <section className="min-vh-100">
@@ -261,7 +299,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           <div className="form-group">
             <GetInputHtml
               id="titleProduct"
-              text="Titre"
+              text={textLang.input.title}
               onChange={(value) => setData({ ...data, title: value })}
               value={data.title}
               labelClassName="w-100"
@@ -291,7 +329,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           </div>
 
           <div className="form-group my-4">
-            <label htmlFor="adress">Adresse</label>
+            <label htmlFor="adress">{textLang.input.adress}</label>
             <span className="d-flex justify-content-center align-content-center">
               <select
                 id="adress"
@@ -301,7 +339,10 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
                   setAdress({ ...adress, err: "", wilaya: e.target.value })
                 }
               >
-                <option  key="002" value="" > Saosossez la willaya </option>
+                <option key="002" value="">
+                  {" "}
+                  {textLang.input.generic.POSelect}
+                </option>
                 {wilaya.map((i, index) => (
                   <option key={index} value={i}>
                     {`${+index + 1} - ${i}`}
@@ -311,7 +352,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
               <input
                 type="text"
                 className="form-control"
-                placeholder="commune"
+                placeholder={textLang.input.commune}
                 value={adress.commune}
                 onChange={(e) =>
                   setAdress({ ...adress, err: "", commune: e.target.value })
@@ -359,13 +400,13 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           </div>
 
           <div className="form-group my-4">
-            <label htmlFor="email">E-mail(s)</label>
+            <label htmlFor="email">{textLang.input.email.title} </label>
             <span className="d-flex justify-content-center align-content-center">
               <input
                 type="email"
                 className="form-control"
                 id="email"
-                placeholder="Ajoutez un nouvel email"
+                placeholder={textLang.input.email.pO}
                 onChange={(e) =>
                   setContact({
                     ...contact,
@@ -417,14 +458,14 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           </div>
 
           <div className="form-group my-4">
-            <label htmlFor="phone">Téléphone(s)</label>
+            <label htmlFor="phone">{textLang.input.phone.title}</label>
             <span className="d-flex justify-content-center align-content-center">
               <i className="h-100 my-auto mx-1">+213</i>
               <input
                 type="phone"
                 className="form-control"
                 id="phone"
-                placeholder="saisissez un vouveau téléphone"
+                placeholder={textLang.input.phone.pO}
                 onChange={(e) =>
                   setContact({
                     ...contact,
@@ -484,15 +525,16 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">{textLang.input.description.title}</label>
             <textarea
               onChange={(e) =>
                 setData({ ...data, description: e.target.value })
               }
+              value={data.description}
               className="w-100 form-control"
               id="description"
               rows="10"
-              placeholder="Decrivez et détaillez  votre produit"
+              placeholder={textLang.input.description.pO}
             ></textarea>
           </div>
         </section>
@@ -509,7 +551,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
           <Bounce left>
             <GetSelectHtml
               id="rubrique"
-              text="Rubrique :"
+              text={textLang.input.rubric}
               onChange={(value) => {
                 setParent_category([]);
                 setFormular(value);
@@ -523,7 +565,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
             {Formular == "Job" ? (
               <GetSelectHtml
                 id="work_proposal"
-                text="Proposition de travail :"
+                text={textLang.workProposal}
                 onChange={(value) => {
                   setData({ ...data, work_proposal: value });
                 }}
@@ -567,7 +609,7 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
               <GetSelectHtml
                 id="category"
                 text={
-                  !!parent_category.length ? "Sous Categorie:" : "Categorie"
+                  !!parent_category.length ? textLang.input.categ.underCategory : textLang.input.categ.category
                 }
                 onChange={(value) =>
                   setParent_category([
@@ -602,12 +644,21 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
         </section>
       </Fade>
 
+      <Bounce when={step.n == 4} bottom>
+<section className="text-center">
+<i style={{fontSize:"10rem"}} className="bi bi-bag-check-fill text-success mx-auto d-block">
+  </i> 
+  <p className="text-primary fs-5">{(textLang.success).replace('$%id%', data.id ).replace('$%title%', data.title )} </p> 
+
+      </section>
+      </Bounce>
+
       <section className="my-2 w-100 d-flex justify-content-between">
         <button
           onClick={() => setStep({ next: step.next, n: step.n - 1 })}
           className={
             "btn btn-lg bi bi-chevron-compact-left " +
-            (step.n != 1 ? "btn-primary" : "disabled btn-secondary")
+            ((step.n != 1 && step.n != 4) ? "btn-primary" : "disabled btn-secondary")
           }
         ></button>
 
@@ -619,14 +670,14 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
             }
             onClick={handleSubmit}
           >
-            Submit 
+            {textLang.input.next}
           </button>
         ) : (
           <button
             onClick={() => setStep({ next: false, n: step.n + 1 })}
             className={
               "btn btn-lg bi bi-chevron-compact-right " +
-              (!!step.next
+              ((!!step.next && step.n != 4)
                 ? "btn-primary"
                 : "disabled btn-secondary text-light")
             }
@@ -637,4 +688,3 @@ fetch(process.env.URLSERVER+ "/api/porduct/postArticle", {
   );
 };
 export default Post;
- 

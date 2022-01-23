@@ -62,11 +62,14 @@
   color: white;
   border-bottom-left-radius: 50%;
 }
+
+
 .titleProduct {
   
   width: 100%;
   height: 1.6rem;
   font-size: 0.8rem;
+  font-weight: bold;
 
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -97,11 +100,8 @@ transform: translateY(50%);
 
 }
 .starSpan:hover{
-  
   transform: translateY(0);
-
-}
-   
+} 
 
 
 @media (max-width: 768px) {

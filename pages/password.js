@@ -7,7 +7,7 @@ import Error from "../components/error.jsx";
 import StyleLog from "../styles/log.module.css"
 import HeadComponents from  "../components/HeadComponents"
 import { Lang } from "../plugins/lang.js";
-
+import Footer from "../components/footer"
 
 
     
@@ -132,7 +132,10 @@ const Password=() => {
             <i style={{fontSize:"20rem"} } className="mb-4 text-success bi bi-check-circle-fill"> </i>
           </Flip>  
       </section>
+
+      {(router.route== "/password" )&&  <Footer  />}
     </main>
+    
       
   );
 };

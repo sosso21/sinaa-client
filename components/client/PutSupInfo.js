@@ -19,6 +19,9 @@ import {UploadFile} from "./UploadFile"
   import {GetInputHtml,GetSelectHtml} from "./GetFormHtml.js"
 
   export const PutSupInfo = ({Formular,data ,setData}) => {
+     
+const textLang = Lang().client_space.post.input;
+
     
     if (Formular == "Job") {
       if (data.work_proposal == "request") {
@@ -46,7 +49,7 @@ import {UploadFile} from "./UploadFile"
           <>
             <GetSelectHtml
               id="profession"
-              text="profession"
+              text={textLang.profession}
               onChange={(value) => setData({ ...data, profession: value })}
               value={data.profession}
               options={profession}
@@ -54,14 +57,14 @@ import {UploadFile} from "./UploadFile"
 
             <GetSelectHtml
               id="diploma"
-              text="diploma"
+              text={textLang.diploma}
               onChange={(value) => setData({ ...data, diploma: value })}
               value={data.diploma}
               options={diploma}
           
             />
  
- <div className="mx-auto d-block">
+ <div className="w-100 mx-auto d-block">
 
              { !data._cv_link ? <UploadFile
               icon="bi bi-file-earmark-richtext"
@@ -80,14 +83,14 @@ import {UploadFile} from "./UploadFile"
             <GetInputHtml
               id="price"
               type="number"
-              text="Salaire"
+              text={textLang.salary}
               onChange={(value) => setData({ ...data, price: value })}
               value={data.price}
             />
 
             <GetSelectHtml
               id="profession"
-              text="profession"
+              text={textLang.profession}
               onChange={(value) => setData({ ...data, profession: value })}
               value={data.profession}
               options={profession}
@@ -95,7 +98,7 @@ import {UploadFile} from "./UploadFile"
 
             <GetSelectHtml
               id="sector_work"
-              text="Secteur"
+              text={textLang.Sector}
               onChange={(value) => setData({ ...data, sector_work: value })}
               value={data.sector_work}
               options={sector_work}
@@ -103,14 +106,14 @@ import {UploadFile} from "./UploadFile"
 
             <GetInputHtml
               id="society"
-              text="nom de l'entreprise"
+              text={textLang.society}
               onChange={(value) => setData({ ...data, society: value })}
               value={data.society}
             />
 
             <GetSelectHtml
               id="region"
-              text="secteur géographique"
+              text={textLang.region}
               onChange={(value) => setData({ ...data, region: value })}
               value={data.region}
               options={region}
@@ -126,7 +129,7 @@ import {UploadFile} from "./UploadFile"
           <GetInputHtml
             id="price"
             type="number"
-            text="prix"
+            text={textLang.price}
             onChange={(value) => setData({ ...data, price: value})}
             value={data.price}
           />
@@ -134,7 +137,7 @@ import {UploadFile} from "./UploadFile"
  
           <GetSelectHtml
             id="Mark"
-            text="Mark"
+            text={textLang.Mark}
             onChange={(value) => setData({ ...data, Mark: value })}
             value={data.Mark}
             options={Mark}
@@ -144,7 +147,7 @@ import {UploadFile} from "./UploadFile"
 
           <GetSelectHtml
             id="typestate"
-            text="etat"
+            text={textLang.typestate}
             onChange={(value) => setData({ ...data, typestate: value })}
             value={data.typestate}
             options={typestate}
@@ -160,14 +163,14 @@ import {UploadFile} from "./UploadFile"
           <GetInputHtml
             id="price"
             type="number"
-            text="prix"
+            text={textLang.price}
             onChange={(value) => setData({ ...data, price: value})}
             value={data.price}
           />
 
           <GetSelectHtml
             id="vehicle"
-            text="vehicle"
+            text={textLang.vehicle}
             onChange={(value) => setData({ ...data, vehicle: value })}
             value={data.vehicle}
             options={vehicle}
@@ -175,7 +178,7 @@ import {UploadFile} from "./UploadFile"
           
           <GetSelectHtml
             id="transport_service"
-            text="transport service"
+            text={textLang.transport_service}
             onChange={(value) => setData({ ...data, transport_service: value })}
             value={data.transport_service}
             options={transport_service}
@@ -183,7 +186,7 @@ import {UploadFile} from "./UploadFile"
           
           <GetSelectHtml
             id="region"
-            text="secteur géographique"
+            text={textLang.region}
             onChange={(value) => setData({ ...data, region: value })}
             value={data.region}
             options={region}
@@ -200,14 +203,14 @@ import {UploadFile} from "./UploadFile"
           <GetInputHtml
             id="price"
             type="number"
-            text="prix"
+            text={textLang.price}
             onChange={(value) => setData({ ...data, price: value})}
             value={data.price}
           />
 
           <GetSelectHtml
             id="formation_category"
-            text="formation category"
+            text={textLang.formation_category}
             onChange={(value) => setData({ ...data, formation_category: value })}
             value={data.formation_category}
             options={formation_category}
@@ -222,13 +225,13 @@ import {UploadFile} from "./UploadFile"
           <GetInputHtml
             id="price"
             type="number"
-            text="prix"
+            text={textLang.price}
             onChange={(value) => setData({ ...data, price: value})}
             value={data.price}
           />
           <GetSelectHtml
             id="sector_product"
-            text="sector product"
+            text={textLang.sector_product}
             onChange={(value) => setData({ ...data, sector_product: value })}
             value={data.sector_product}
             options={sector_product}
@@ -242,7 +245,7 @@ import {UploadFile} from "./UploadFile"
           <GetInputHtml
             id="price"
             type="number"
-            text="prix"
+            text={textLang.price}
             onChange={(value) => setData({ ...data, price:value})}
             value={data.price}
           />
@@ -267,7 +270,7 @@ import {UploadFile} from "./UploadFile"
 
           <GetSelectHtml
             id="service_category"
-            text="service category"
+            text={textLang.service_category}
             onChange={(value) => setData({ ...data,service_category:[...dataService_category,value]}) }
             value=""
             options={service_category}
@@ -278,7 +281,7 @@ import {UploadFile} from "./UploadFile"
     return <GetInputHtml
     id="price"
     type="number"
-    text="prix"
+    text={textLang.price}
     onChange={(value) => setData({ ...data, price:value})}
     value={data.price}
   />

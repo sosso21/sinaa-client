@@ -10,6 +10,7 @@ import Adress from "../../components/profil/adress.js";
 import Contact from "../../components/profil/contact.js";
 import { Lang } from "../../plugins/lang.js";
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Footer from "../../components/footer"
 
 const Profil = () => { 
   const textLang = Lang().profil;
@@ -133,7 +134,9 @@ const Componant = useMemo(()=>() => {
        </Bounce>
        
       </main>
+      <Footer/>
     </>
+
   );
 };
 

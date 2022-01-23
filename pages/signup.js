@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import Flip from "react-reveal/Flip";
 import Error from "../components/error.jsx";
 import Fade from 'react-reveal/Fade';
-
+import Footer from "../components/footer"
 import Header from "../components/header";
 import StyleSignup from "../styles/log.module.css";
 import HeadComponents from  "../components/HeadComponents"
@@ -283,6 +283,7 @@ const Signup = () => {
         </section>
  
       </main>
+      <Footer/>
     </>
   );
 };

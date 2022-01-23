@@ -11,8 +11,7 @@ export const fr = () => {
       disconnect: "Déconnexion",
       adsence: "publicité",
       contact: "Contact",
-      post:"Déposer une annonce"
- 
+      post: "Déposer une annonce",
     },
     Login: {
       errOccured: "Une erreur c'est produit:",
@@ -101,7 +100,8 @@ export const fr = () => {
           errMsg: "Vous devez renseigner une URL Facebook",
         },
       ],
-      NBprogress:"Pour devenir vendeur il vous faut compléter un maximum vos informations et les détailler."
+      NBprogress:
+        "Pour devenir vendeur il vous faut compléter un maximum vos informations et les détailler.",
     },
     profilGeneral: {
       title: "éditez vos informations".toUpperCase(),
@@ -121,7 +121,6 @@ export const fr = () => {
       submitBtn: "Valider",
     },
     profilSecurity: {
-      
       title: "Sécurité",
       email: "Votre e-mail",
       pOemail: "exemple@gmail.com",
@@ -129,12 +128,14 @@ export const fr = () => {
       pOpass: "saisissez votre Mot de passe",
       submitBtn: "Valider",
       successMsg: "Un email vous as été envoyer à \n",
-      identity:{
-        title:"Confirmez votre identité",
-        description: "Effectuez une vérification d'identité  afin d'obtenir une certification de validation . cela permettras de mieux vous référencer sur l'algorithme ainsi que de fournir un gage de confiance au près de votre clientèles.",
-        add:"téléchargez une pièce d'identité ",
-        send:"envoyer la demande de confirmation",
-        waiting:"Votre demande a bien été envoyé. cette dernière seras analyser d'ici peu. merci de votre collaboration."
+      identity: {
+        title: "Confirmez votre identité",
+        description:
+          "Effectuez une vérification d'identité  afin d'obtenir une certification de validation . cela permettras de mieux vous référencer sur l'algorithme ainsi que de fournir un gage de confiance au près de votre clientèles.",
+        add: "téléchargez une pièce d'identité ",
+        send: "envoyer la demande de confirmation",
+        waiting:
+          "Votre demande a bien été envoyé. cette dernière seras analyser d'ici peu. merci de votre collaboration.",
       },
       error: [
         {
@@ -165,51 +166,143 @@ export const fr = () => {
       submitBtn: "Valider",
     },
     password: {
-      title:"Redéfinissez votre mot de passe",
+      title: "Redéfinissez votre mot de passe",
       passNotIdentique: "les mots de passes ne sont pas indentique",
       errOccured: "Une erreur c'est produit:",
       successEmailSended: "un email a été envoyer à ",
       emailNotFound: "cet e-mail n'est pas inscrit sur notre site",
-      success:"Bravo ! votre Mot de passe a bien été réinitialiser",
+      success: "Bravo ! votre Mot de passe a bien été réinitialiser",
       errorType: [
         {
           error: "invelid",
-          msg:  "le mot de passe doit contenir au moin : 8 caractàres , une majuscule ,une minuscule et 2 chiffres"
+          msg: "le mot de passe doit contenir au moin : 8 caractàres , une majuscule ,une minuscule et 2 chiffres",
         },
         {
           error: "false old Pass",
-          msg:"L'ancien mot de passe est incorrecte"
+          msg: "L'ancien mot de passe est incorrecte",
         },
         {
           error: "Link expired.",
-          msg:"Le lien a éxpirer, veuillez réesayer"
+          msg: "Le lien a éxpirer, veuillez réesayer",
         },
       ],
-    OpPO:"Ancien mot de passe",
-    NfpPO:"Nouveau mot de passe",
-    SnpPo:"confirmez le mot de passe",
-    submitBtn:"Réinitialiser",
-    passMissed:"Mot de passe oublié ?",
-    sendEmailLink:"Envoyer un email"
-  },
-  category:{
-    title:"Catégories"
-  },
-  product:{
-    title:"Produits",
-    currency:"DZD",
-    star:"Ajouter aux favorits"
-  },
-  client_space:{
-    title:"espaceClient",
-    nav:{
-      addProduct:"Ajouter un produit",
-      MmyFavorit:"Favorits",
-      myProducts:"mes produits",
+      OpPO: "Ancien mot de passe",
+      NfpPO: "Nouveau mot de passe",
+      SnpPo: "confirmez le mot de passe",
+      submitBtn: "Réinitialiser",
+      passMissed: "Mot de passe oublié ?",
+      sendEmailLink: "Envoyer un email",
     },
-    post:{
-      addPost:"nouveau produit"
-    }
-  }
-  };
+    category: {
+      title: "Catégories",
+    },
+    product: {
+      title: "Produits",
+      currency: "DZD",
+      star: "Ajouter aux favorits",
+    },
+    client_space: {
+      title: "Espace Client",
+      nav: {
+        addProduct: "Ajouter un produit",
+        MmyFavorit: "Favorits",
+        myProducts: "mes produits",
+      },
+      post: {
+        addPost: "Nouveau produit",
+        success:
+          "Votre publication `$%title%` a bien été mis à jour sous l'identifiant #$%id%",
+        err: {
+          incompletArea: "Champs Incomplet",
+          emailInvalid: "E-mail Invalide",
+          numberInvalid: "Numéro invalide",
+        },
+        input: {
+          generic: {
+            POSelect: "Saisissez un élément",
+            pOinput: "Saisissez le champ",
+          },
+          title: "Titre",
+
+          adress: "Adresse",
+          commune: "Commune",
+          email: {
+            title: "E-mail(s)",
+            pO: "Ajoutez un nouvel email",
+          },
+          phone: {
+            title: "Téléphone(s)",
+            pO: "Ajoutez un numéro de téléphoone",
+          },
+          description: {
+            title: "Description",
+            pO: "Décrivez précisément votre produit et ainsitez les votre audience à passer à l'action!",
+          },
+          rubric: "Rubrique:",
+          workProposal: "Proposition de travail :",
+          categ: {
+            underCategory: "Sous Catégorie",
+            category: "Catégorie",
+          },
+          next: "Suivant",
+          profession: "profession",
+          diploma: "diplôme ",
+          salary: "Salaire",
+          Sector: "Secteur",
+          society: "Société",
+          region: "secteur géographique",
+          price: "Price",
+          Mark: "Marque",
+          typestate: "état",
+          vehicle: "Véhicule",
+          transport_service: "Service de transport",
+          formation_category: "Catégorie de formation",
+          sector_product: "Secteur du produit",
+          service_category: "catégorie du service",
+        },
+      },
+    },
+    sheet: {
+      salary: "Salaire",
+      price: "Prix",
+      createdAt: "Publié le",
+      adress: "Disponible à",
+      description: "Description",
+      seeMore: "Voir plus",
+      seller: {
+        activity: "Remarque",
+        createdAt: "Membre depuis",
+        adress: "Adresse du vendeur",
+      },
+      phoneNemail: {
+        phone: "Téléphone(s)",
+        email: "E-mail(s)",
+      },
+      activity: {
+        not: "Peu actif",
+        medium: "Actif",
+        good: "Très actif",
+      },
+      GetSupInfo: {
+        seeCV: "Voir le CV",
+        sector: "Secteur",
+        name_society: "Nom de l'entreprise",
+        recrutement_type: "Type de recrutement",
+        mark: "Marque",
+        typeArticle: "Type d'article",
+        vehicle: "Véhicule",
+        service: "Service",
+        region: "coverture",
+        formationtype: "Type de formation",
+        service_type: "Type de service",
+      },
+    },
+  preFooter: [
+    {
+      className: "bi-hammer",
+      strong: "Efficace",
+      text: "Une plateforme efficace fait pour les professionnel",
+    },
+  ]
+};
 };

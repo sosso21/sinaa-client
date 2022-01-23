@@ -5,11 +5,13 @@ import CategoryBar from "../components/categoryBar.js"
 import HeadComponents from  "../components/HeadComponents"
 import ItemArticle from  "../components/itemArticle.jsx"
 import Head from 'next/head'
- 
+import PreFooter from "../components/preFooter" 
+import Footer from "../components/footer.js"
+
 import styles from '../styles/Home.module.css'
 
 
-const Home=({sliderData,category,product})=>{
+const Home=({product,category,sliderData})=>{
  
   return (
     <>
@@ -19,8 +21,9 @@ const Home=({sliderData,category,product})=>{
       <Header/>
       <CategoryBar category={category} />
       <Slider sliderData={sliderData} />
-      <ItemArticle category={category.filter(i=>i.top_in_page == true)} product={product} />
-
+      <ItemArticle category={category.filter(i=>i.home == true)} product={product} />
+      <PreFooter />
+      <Footer/>
 
      
 
@@ -31,15 +34,15 @@ const Home=({sliderData,category,product})=>{
 export default Home
 
 export async function getStaticProps() {
-  const res = await fetch(process.env.URLSERVER+"/api/homepage");
+  const res = await fetch(process.env.URLSERVER+"/api/porduct/findhomepage");
   const HomePage = await res.json();
   
 
   return {
     props: {
-        sliderData: HomePage.slider,
-        category:HomePage.category,
-        product: HomePage.product,
+      product: HomePage.product,
+      category:HomePage.category,
+      sliderData: HomePage.slider,
       },
     
     revalidate: 7200,  

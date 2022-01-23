@@ -7,6 +7,7 @@ import HeadComponents from  "../components/HeadComponents";
 import {Lang} from "../plugins/lang.js";
 import Error from "../components/error.jsx";
 import Fade from 'react-reveal/Fade';
+import Footer from "../components/footer"
 
 import { useRouter } from "next/router";
 
@@ -174,6 +175,7 @@ useEffect(() => {
         </aside>
         
       </main>
+      <Footer/>
     </>
   );
 };
