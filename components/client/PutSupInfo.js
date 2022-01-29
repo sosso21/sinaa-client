@@ -13,8 +13,9 @@ import {
     service_category,
     region
   } from "../../store/formularSchema";
-import { Lang, TranslateCategory } from "../../plugins/lang.js";
+import { Lang, TranslateCategory } from "../../plugins/lang";
 import {UploadFile} from "./UploadFile"
+import ListServiceCategory from "./list_service_category"
 
   import {GetInputHtml,GetSelectHtml} from "./GetFormHtml.js"
 
@@ -239,7 +240,7 @@ const textLang = Lang().client_space.post.input;
         </>
       );
     } else if(Formular == "Service") {
-      const dataService_category =data.service_category || [];
+      
       return (
         <>
           <GetInputHtml
@@ -250,28 +251,12 @@ const textLang = Lang().client_space.post.input;
             value={data.price}
           />
 
-          <div className="w-100 d-flex justify-content-center" >
-            <ul className="mx-auto list-group list-group-flush">
-              {
-               data.service_category &&  [...TranslateCategory(service_category)].filter(i => [...data.service_category].includes(i.slug)).map((i, key) => <li key={key} className="list-group-item"><i
-               onClick={() =>
-                 setData({
-                   ...data,
-                   service_category: [...data.service_category].filter((item) => item != i.slug),
-                 })
-               }
-               className="btn mx-2 bi bi-x"
-             ></i>
-             {i.title} </li>
-                )
-              }
-            </ul>
-          </div>
-
+              <ListServiceCategory items={data.service_category} obj={service_category} setData={setData} data={data} />
+              
           <GetSelectHtml
             id="service_category"
             text={textLang.service_category}
-            onChange={(value) => setData({ ...data,service_category:[...dataService_category,value]}) }
+            onChange={(value) => setData({ ...data,service_category:[...(data.service_category || []),value]}) }
             value=""
             options={service_category}
           />

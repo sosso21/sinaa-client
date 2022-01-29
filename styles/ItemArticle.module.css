@@ -9,12 +9,11 @@
 
 .allPosts {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between ;
+  flex-wrap: wrap; 
   align-content: space-between;
 }
 
-.allPosts li {
+.mdPost {
   display: flex;
   justify-content: left;
   flex-direction: column;
@@ -30,26 +29,83 @@
     position: relative;
 }
 
-.allPosts li:hover{
-  
+.mdPost:hover{
     transform: scale(1.1);
-
+}
+ 
+.SmPost{
+  margin: 1rem 1rem;
+  max-width: 9rem;
+  min-width: 4.5rem;
 }
 
+.LgPost{
+  list-style: none;
+  margin: 3rem 2rem;
+
+
+  width: max-content;
+  overflow: hidden;
+  text-overflow: hidden;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    
+}
+ 
+.boxLgLink {
+  width: max-content;
+  color: inherit !important;
+  text-decoration: none;
+  width: 100%;
+  display: flex; 
+
+
+ }
+
 .ImgCartDiv {
-  
+  position:  relative;
   width: 100%;
   height: 12rem;
-  max-height: 12rem;
-  min-height: 6rem;
   overflow: hidden;
   display: flex;
   justify-content: flex-end ;
   
 }
+.ImgCartDivSm{
+  height: 9rem;
+}
+
+
+.ImgCartDivLg {
+  
+  position:  relative;
+  width: min-content;
+  height: 16rem;  
+  margin: 0.5rem 1rem;
+   
+}
+
+.CardBoxLg{
+  width: 100%;
+  min-width: 20rem;
+  height: min-content;
+  max-height: 16rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.paragraphDdescription{
+  overflow: hidden;
+  margin-top: 1rem;
+  height: 100%;
+}
  
 .soldeContent {
   position: absolute;
+  top: 0;
+  right: 0;
    text-justify: auto;
    text-align: center;
   
@@ -62,7 +118,11 @@
   color: white;
   border-bottom-left-radius: 50%;
 }
-
+.editableBtn{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 
 .titleProduct {
   
@@ -108,5 +168,11 @@ transform: translateY(50%);
   .allPosts {
     justify-content: center;
   }
+  .boxLgLink{
+    flex-direction: column;
+  } 
+  .ImgCartDivLg{
+    margin: auto auto;
+  } 
 }
 

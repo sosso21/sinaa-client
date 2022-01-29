@@ -7,6 +7,7 @@ import { PutSupInfo } from "./PutSupInfo";
 import { UploadFile } from "./UploadFile";
 import { useRouter } from "next/router";
 import { Lang, TranslateCategory } from "../../plugins/lang.js";
+import {childrenCategory} from "../../plugins/childCategory"
 import { IFrameYoutube } from "./iFrameYoutube";
 import Image from "next/image";
 import submitImage from "../../plugins/CompressImageNSend.js";
@@ -33,56 +34,6 @@ const Post = ({ _category = [] }) => {
   const [disableBtn, setDisableBtn] = useState(false);
   const [err, setErr] = useState("");
 
-  const childrenCategory = (
-    actual_category = null,
-    all = [],
-    _formular = "Divers"
-  ) => {
-    const banned_w_p = !!data.work_proposal
-      ? work_proposal.filter((e) => e != data.work_proposal)[0]
-      : "";
-
-    if (actual_category == null) {
-      return [...all]
-        .filter(
-          (i) =>
-            ![...i.parent_category_list].length && i.format_profuct == _formular
-        )
-        .filter((e) => e.work_proposal != banned_w_p);
-    }
-
-    const parent_category_list =
-      (actual_category.parent_category_list || { categories: null })
-        .categories || [];
-
-    const children = [...all].filter((i) => {
-      const all_parent_category_list =
-        (i.parent_category_list || { categories: null }).categories || null;
-      if (!all_parent_category_list) {
-        return false;
-      }
-      for (let index = 0; index < parent_category_list.length; index++) {
-        const element = parent_category_list[index];
-        if (
-          !!all_parent_category_list.filter((item) => element._id == item._id)
-            .length
-        ) {
-          return false;
-        }
-      }
-      if (
-        !all_parent_category_list.filter((i) => actual_category._id == i._id)
-          .length ||
-        parent_category_list.length + 1 != all_parent_category_list.length ||
-        i.format_profuct != _formular
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    return [...children].filter((e) => e.work_proposal != banned_w_p);
-  };
 
   const addNewAdress = () => {
     if (adress.wilaya && adress.commune) {
@@ -159,7 +110,9 @@ const Post = ({ _category = [] }) => {
           !!childrenCategory(
             parent_category[parent_category.length - 1],
             category,
-            Formular
+            Formular,
+    data,
+    work_proposal,
           ).length && (Formular == "Job" ? !!data.work_proposal : true)
         ),
       ];
@@ -287,14 +240,14 @@ const Post = ({ _category = [] }) => {
   };
 
   return (
-    <section className="min-vh-100">
+    <section className="h-100">
       <h2 className="w-100 my-4 text-center d-block fw-lighter">
         {textLang.addPost}
       </h2>
 
       <Fade when={step.n == 1} right>
         <section
-          className={step.n == 1 ? "min-vh-100 d-flex flex-column" : "d-none"}
+          className={step.n == 1 ? "h-100 d-flex flex-column" : "d-none"}
         >
           <div className="form-group">
             <GetInputHtml
@@ -544,7 +497,7 @@ const Post = ({ _category = [] }) => {
         <section
           className={
             step.n == 2
-              ? "min-vh-100 d-flex justify-content-center align-items-center align-content-center flex-column"
+              ? "h-100 d-flex justify-content-center align-items-center align-content-center flex-column"
               : "d-none"
           }
         >
@@ -601,7 +554,9 @@ const Post = ({ _category = [] }) => {
                 !!childrenCategory(
                   parent_category[parent_category.length - 1],
                   category,
-                  Formular
+                  Formular,
+                  data,
+                  work_proposal,
                 ).length && !(Formular == "Job" && !data.work_proposal)
               }
               left
@@ -621,7 +576,9 @@ const Post = ({ _category = [] }) => {
                 options={childrenCategory(
                   parent_category[parent_category.length - 1],
                   category,
-                  Formular
+                  Formular,
+                  data,
+                  work_proposal,
                 )}
                 labelClassName="d-block my-4"
                 SelectClassName="mx-auto form-select btn btn-primary"
@@ -636,16 +593,16 @@ const Post = ({ _category = [] }) => {
         <section
           className={
             step.n == 3
-              ? "min-vh-100 d-flex justify-content-center align-items-center align-content-center flex-column"
+              ? "h-100 d-flex justify-content-center align-items-center align-content-center flex-column"
               : "d-none"
           }
         >
-          <PutSupInfo Formular={Formular} data={data} setData={setData} />
+        { (step.n == 3) &&  <PutSupInfo Formular={Formular} data={data} setData={setData} />}
         </section>
       </Fade>
 
       <Bounce when={step.n == 4} bottom>
-<section className="text-center">
+<section className="text-center d-flex flex-column align-content-center">
 <i style={{fontSize:"10rem"}} className="bi bi-bag-check-fill text-success mx-auto d-block">
   </i> 
   <p className="text-primary fs-5">{(textLang.success).replace('$%id%', data.id ).replace('$%title%', data.title )} </p> 

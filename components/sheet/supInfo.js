@@ -171,6 +171,12 @@ const GetSupInfo = ({post}) => {
           </li>
         </ul>
       );
+    }else{
+      return (
+        <>
+         <br/>
+        </>
+      )
     }
   };
 

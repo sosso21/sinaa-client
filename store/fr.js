@@ -6,7 +6,7 @@ export const fr = () => {
       sub: "S'inscrir",
       search: "Rechercher",
       lang: "français",
-      setting: "paramètres",
+      setting:"Espace Client",
       profil: "profil",
       disconnect: "Déconnexion",
       adsence: "publicité",
@@ -195,6 +195,8 @@ export const fr = () => {
     },
     category: {
       title: "Catégories",
+      underCategory: "Sous Catégories",
+      recent:"récents"
     },
     product: {
       title: "Produits",

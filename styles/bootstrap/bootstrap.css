@@ -10815,11 +10815,6 @@ footer a:hover {
   text-decoration: none;
 }
 
-::selection {
-  background: #f44c04;
-  text-shadow: none;
-}
-
 footer {
   padding: 2rem 0;
   background-color: #212529;

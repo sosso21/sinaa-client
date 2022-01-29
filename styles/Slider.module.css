@@ -11,8 +11,16 @@
     width:50%;
     height: 60vh;
     overflow: hidden;
-    
+    text-align: center;
 }
+.imgSmall{
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+}
+.imgSmall:hover{
+    transform: scale(1.5);
+}
+
 .FlexParent{
     display: flex;
     justify-content: center;
@@ -23,7 +31,7 @@
 .LateralAds{
     padding: 1rem 1rem ;
     width: 25%;
-    height: 60vh;
+    height: 70vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -19,12 +19,7 @@ footer a:hover {
   color: $primary-orange;
   text-decoration: none;
 }
-
-::selection {
-  background: $primary-orange;
-  text-shadow: none;
-}
-
+ 
 footer {
   padding: 2rem 0;
   background-color:$dark ;

@@ -1,16 +1,10 @@
-.FFTitle h1 {
-  display: inline;
-  margin: 1rem auto 0 auto;
-  font-family: Copperplate, "Copperplate Gothic";
-  font-weight: bold;
-}
+ 
 .FFTitle{
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
   text-decoration: none;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bolder;
+
+  display: flex;
 }
 
 .sticky {
@@ -61,9 +55,6 @@
   form.inputSearch{
     order: 5;
     margin: 0.5rem auto;
-  }
-  .FFTitle , .FFTitle i ,.FFTitle h1 {
-    font-size: 1.5rem;
-  }
+  } 
 
 }

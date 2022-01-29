@@ -5,7 +5,9 @@ import Link from "next/link";
 import StyleHeader from "../styles/Header.module.css";
 import { useRouter } from "next/router";
 import { Lang } from "../plugins/lang.js";
+import Image from "next/image";
 
+11
 const Header = () => {
   const router = useRouter();
 
@@ -64,7 +66,21 @@ useLayoutEffect(() => {
   
  {(hideNav.hamburg==true) &&  <i onClick={()=>  seHhideNav({hamburg:true ,hide:!hideNav.hide})} className="btn btn-lg fs-3 bi bi-list"></i> }
   
-       <Link href="/" ><a title="home" className={StyleHeader.FFTitle} ><i className="fs-3 bi bi-gear-fill text-warning"></i> <i className="bi bi-lightning fs-3 text-dark"></i><h1>{process.env.NAMEWEBSITE.toUpperCase()} </h1> </a>
+  
+       <Link href="/" ><a title={process.env.NAMEWEBSITE}  className={StyleHeader.FFTitle} >
+         
+       <Image
+              className="rounded"
+                loader={({ src }) => {
+                  return src;
+                }}
+                src="/logo.png"
+                alt="logo sinaa"
+                width={40}
+                height={'1rem'}
+              />
+       
+         <h1 className="fw-bolder my-auto mx-2 d-flex">{[...process.env.NAMEWEBSITE.toUpperCase()].map((i,k)=>((k==2)?<Fade top><span className="text-warning">{i}</span> </Fade>:<Fade left><span>{i}</span> </Fade>  ) ) } </h1> </a>
         </Link> 
         
 </span>

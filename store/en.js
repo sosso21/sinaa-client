@@ -6,7 +6,7 @@ export const en = () => {
       sub: "register",
       search: "Search",
       lang: "English",
-      setting: "setting",
+      setting:"Client Space",
       profil: "profil",
       disconnect: "Disconnect",
       adsence: "Advertisements",
@@ -185,7 +185,10 @@ export const en = () => {
     sendEmailLink: "Send an email"
   },
   category:{
-    title:"Categorys"
+    title:"Categorys",
+    underCategory: "Sub Categorys",
+    recent:"recents"
+
   },
   product:{
     title:"Products",

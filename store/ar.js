@@ -6,7 +6,7 @@ export const ar = () => {
       sub: "تسجيل",
       search: "بحث",
       lang: "العربية",
-      setting: "الإعدادات",
+      setting:"منطقة الزبون",
       profil: "الملف الشخصي ",
       disconnect: "خروج",
       adsence: "الإعلانات",
@@ -186,7 +186,10 @@ export const ar = () => {
     sendEmailLink: "إرسال بريد إلكتروني"
   },
   category:{
-    title:"التصنيفات"
+    title:"التصنيفات",
+    underCategory: "الفئة الفرعية",
+    recent:"الأخيرة"
+
   },
   product:{
     title:"منتجات",
