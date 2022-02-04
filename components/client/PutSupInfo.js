@@ -1,5 +1,4 @@
 import {
-    schema,
     work_proposal,
     profession,
     diploma,

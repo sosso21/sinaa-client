@@ -27,8 +27,6 @@ useLayoutEffect(() => {
  if(!!token && !!userInfo){
   setUsConnect(true)
  }
- 
-
 }, []);
 
 
@@ -55,7 +53,7 @@ useLayoutEffect(() => {
     }
   };
 
-  const Help=()=><Link href="/legal"><a className="mx-4 nav-link"><i className="d-block fs-3 bi bi-question-circle-fill mx-1"></i>{textLang.faq}</a></Link>
+  const Help=()=><Link href="/legal"><a title={textLang.faq} className="mx-4 nav-link"><i className="d-block fs-3 bi bi-question-circle-fill mx-1"></i>{textLang.faq}</a></Link>
    
 
   return (
@@ -66,7 +64,7 @@ useLayoutEffect(() => {
   
  {(hideNav.hamburg==true) &&  <i onClick={()=>  seHhideNav({hamburg:true ,hide:!hideNav.hide})} className="btn btn-lg fs-3 bi bi-list"></i> }
   
-  
+
        <Link href="/" ><a title={process.env.NAMEWEBSITE}  className={StyleHeader.FFTitle} >
          
        <Image
@@ -96,14 +94,14 @@ useLayoutEffect(() => {
 
               <span className="d-flex mx-4 px-4 align-content-center align-items-center "> 
             <Link href="/adsence">
-              <a className="mx-2 btn btn-primary btn-sm">
+              <a  title={textLang.adsence} className="mx-2 btn btn-primary btn-sm">
               <i className="mx-1 bi bi-megaphone-fill"></i>
               {(hideNav.hamburg==false) && textLang.adsence} 
               </a>
             </Link>
 
             <Link href="/contact">
-              <a className="mx-2 btn btn-primary btn-sm">
+              <a title={textLang.contact} className="mx-2 btn btn-primary btn-sm">
               <i className="mx-1 bi bi-envelope-fill"></i>
               {(hideNav.hamburg==false) &&  textLang.contact} 
               </a>
@@ -129,7 +127,7 @@ useLayoutEffect(() => {
 
         <span className={StyleHeader.inputSearch+ " mx-4 nav-lin"}>
               <Link href={isConnect? "/client/post" :"/login"}>
-              <a className=" btn btn-warning btn-sm">
+              <a title={textLang.post} className=" btn btn-warning btn-sm">
                 {textLang.post}
               </a>
             </Link>
@@ -142,16 +140,16 @@ useLayoutEffect(() => {
           {isConnect ? (
             <>
               <Link href="/client">
-                <a className="mx-4 nav-link">
+                <a className="mx-4 nav-link"  title={textLang.setting} >
                   <i className="d-block fs-3 bi bi-people-fill mx-1"></i>
                   {textLang.setting}
                 </a>
               </Link>
               <Help/>
               <Link href="/profil">
-                <a className="mx-4 nav-link">
+                <a  title={textLang.profil} className="mx-4 nav-link">
                   <i className="d-block fs-3 bi bi-person-bounding-box mx-1"></i>
-                  Profil
+                  {textLang.profil}
                 </a>
               </Link>
               <button
@@ -165,7 +163,7 @@ useLayoutEffect(() => {
           ) : (
             <>
               <Link href="/login">
-                <a className="mx-4 nav-link" title="connect">
+                <a className="mx-4 nav-link"  title={textLang.connect}>
                    
                   <i className="d-block fs-3 bi bi-person-check-fill mx-1"></i>
                   {textLang.connect}
@@ -175,7 +173,7 @@ useLayoutEffect(() => {
               <Help/>
               
               <Link href="/signup">
-                <a className="mx-4 nav-link" title="signup">
+                <a className="mx-4 nav-link"  title={textLang.sub}> 
                   <i className="d-block fs-3 bi bi-person-plus-fill mx-1"></i>
                   {textLang.sub}
                 </a>

@@ -7,7 +7,7 @@ const basicSchema = [
   "email",
   "images",
 ];
-const basicFilter = ["price", "adress"];
+const basicFilter = ["q","price", "adress"];
 
 export const schema = [{
     slug: "Service",

@@ -251,7 +251,11 @@ export const en = () => {
           transport_service: "Transport Service",
           formation_category: "Training Category",
           sector_product: "Product Sector",
-          service_category:'service category'
+          service_category:'service category',
+          q:{
+            title:"Keywords",
+            placeOlder:"Search.."
+          }
 
         }
       }
@@ -297,6 +301,9 @@ export const en = () => {
           strong: "efficient",
           text: "An efficient platform made for professionals",
         },
-      ]
+      ],
+      filter:{
+        btnName:"filter"
+      }
   };
 };

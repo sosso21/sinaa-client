@@ -33,7 +33,7 @@ const ItemArticle =  ({ category, product }) => {
           <Bounce left>
             <ul className={StyleItem.allPosts}>
               {[...translateProduct].filter(p=> p.category.id == itemsCategory.id)
-              .map((product) => <LgBox product={product}/> )}
+              .map((product) => <SmBox product={product}/> )}
             </ul>
           </Bounce>
         </section>

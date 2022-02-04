@@ -31,6 +31,7 @@ const CategoryBar = ({ category }) => {
   };
 
   const setMyFormular = (slug) => {
+    setActual_category("")
     const isAlready = !!(_formular == slug);
     set_formular(!!isAlready ? "" : slug);
     if (!isAlready) {
@@ -72,7 +73,8 @@ const CategoryBar = ({ category }) => {
           </Nav>
         </Container>
       </Navbar>
-      <div className="d-flex">
+      
+      <div className={StyleNav.absoluteCategoryBar }>
         <Fade when={Show} left>
           {Show && (
             <Navbar bg="primary" variant="dark">
@@ -90,7 +92,7 @@ const CategoryBar = ({ category }) => {
                         <i
                           key={key}
                           onClick={() => setMyCategoryParent(i.slug, key)}
-                          className={`btn btn-sm btn-primary d-flex justify-content-between ${
+                          className={`btn text-nowrap btn-sm btn-primary d-flex justify-content-between ${
                             actual_category == i.slug && "active"
                           }`}
                         >
@@ -182,7 +184,7 @@ const CategoryBar = ({ category }) => {
                           <a
                             key={key}
                             title={i.title}
-                            className="btn btn-sm btn-primary d-flex justify-content-between"
+                            className="text-left btn btn-sm btn-primary"
                           >
                            <strong>{i.title} </strong>
                           </a>

@@ -8,6 +8,7 @@
   align-content: center;
   z-index: 1.1;
 }
+
 .ScrollBar{
   width: 100%;
 }
@@ -36,16 +37,13 @@
   text-overflow: clip;
   
 }
-
-.primaryCategorys{
-  z-index: 10;
+.absoluteCategoryBar{
+  display: flex;
+  position: absolute;
+  z-index: 20;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
-.secondaryCategorys{
-  z-index:1;
   
-}
-
-
 @media only screen and (max-width: 950px) {
   .ScrollBar {
     width: 100%;

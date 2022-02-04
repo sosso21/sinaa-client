@@ -26,7 +26,7 @@ const textLang = Lang().client_space.post.input.generic;
       />  </label>);
   };
 
-  export  const GetSelectHtml = ({ id, text, onChange, value, options,translate=true, labelClassName="mx-2 my-4", SelectClassName = "mx-auto form-select" }) => {
+  export  const GetSelectHtml = ({ id, text, onChange, value, options,translate=true, labelClassName="mx-2 my-4", SelectClassName = "mx-auto form-select form-select-lg" }) => {
     const opt = translate ? TranslateCategory(options) : options
 const textLang = Lang().client_space.post.input.generic;
   

@@ -252,7 +252,11 @@ export const ar = () => {
           transport_service: "خدمة النقل",
           formation_category: "فئة التدريب",
           المقطعr_product: "قطاع المنتج",
-          service_category: "فئة الخدمة"
+          service_category: "فئة الخدمة",
+          q:{
+            title:"الكلمات الرئيسية",
+            placeOlder:"بحث .."
+          }
 
         }
       }
@@ -298,7 +302,10 @@ export const ar = () => {
       strong: "تأثير",
       text: "منصة فعالة مصممة للمحترفين",
     },
-  ]
+  ],
+  filter:{
+    btnName:"التصفية"
+  }
   };
 };
  

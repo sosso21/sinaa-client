@@ -7,7 +7,7 @@ import ItemArticle from  "../components/itemArticle.jsx"
 import Head from 'next/head'
 import PreFooter from "../components/preFooter" 
 import Footer from "../components/footer.js"
-
+import FilterBar from "../components/filter/filter"
 import styles from '../styles/Home.module.css'
 
 
@@ -21,6 +21,7 @@ const Home=({product,category,sliderData})=>{
       <Header/>
       <CategoryBar category={category} />
       <Slider sliderData={sliderData} />
+      <FilterBar _actual_category={category[1].slug} all_category={category} />
       <ItemArticle category={category.filter(i=>i.home == true)} product={product} />
       <PreFooter />
       <Footer/>

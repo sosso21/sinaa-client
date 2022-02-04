@@ -261,6 +261,10 @@ export const fr = () => {
           formation_category: "Catégorie de formation",
           sector_product: "Secteur du produit",
           service_category: "catégorie du service",
+          q:{
+            title:"Mots Clés",
+            placeOlder:"Recherche.."
+          }
         },
       },
     },
@@ -305,6 +309,9 @@ export const fr = () => {
       strong: "Efficace",
       text: "Une plateforme efficace fait pour les professionnel",
     },
-  ]
+  ],
+  filter:{
+    btnName:"filter"
+  }
 };
 };
